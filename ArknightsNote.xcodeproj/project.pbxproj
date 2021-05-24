@@ -1,0 +1,421 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		629A614526545C57002AAC34 /* ArknightsNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A614426545C57002AAC34 /* ArknightsNoteApp.swift */; };
+		629A614726545C57002AAC34 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A614626545C57002AAC34 /* ContentView.swift */; };
+		629A614926545C58002AAC34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 629A614826545C58002AAC34 /* Assets.xcassets */; };
+		629A614C26545C58002AAC34 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 629A614B26545C58002AAC34 /* Preview Assets.xcassets */; };
+		629A615726545CBF002AAC34 /* RecruitHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A615626545CBF002AAC34 /* RecruitHome.swift */; };
+		629A615926545CF1002AAC34 /* RecruitTagSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A615826545CF1002AAC34 /* RecruitTagSheet.swift */; };
+		629A615B26545CF4002AAC34 /* RecruitItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A615A26545CF4002AAC34 /* RecruitItem.swift */; };
+		629A615D26545CF7002AAC34 /* RecruitRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A615C26545CF7002AAC34 /* RecruitRow.swift */; };
+		629A615F26545CF9002AAC34 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A615E26545CF9002AAC34 /* Model.swift */; };
+		629A616126545CFC002AAC34 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A616026545CFC002AAC34 /* ViewModel.swift */; };
+		629A616626546052002AAC34 /* FlexibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A616526546052002AAC34 /* FlexibleView.swift */; };
+		629A616826546056002AAC34 /* _FlexibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A616726546056002AAC34 /* _FlexibleView.swift */; };
+		629A616A2654605A002AAC34 /* SizeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A61692654605A002AAC34 /* SizeReader.swift */; };
+		629A616C2654631D002AAC34 /* RecruitTagCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A616B2654631D002AAC34 /* RecruitTagCloud.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		629A614126545C57002AAC34 /* ArknightsNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArknightsNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		629A614426545C57002AAC34 /* ArknightsNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArknightsNoteApp.swift; sourceTree = "<group>"; };
+		629A614626545C57002AAC34 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		629A614826545C58002AAC34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		629A614B26545C58002AAC34 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		629A614D26545C58002AAC34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		629A615626545CBF002AAC34 /* RecruitHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecruitHome.swift; sourceTree = "<group>"; };
+		629A615826545CF1002AAC34 /* RecruitTagSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecruitTagSheet.swift; sourceTree = "<group>"; };
+		629A615A26545CF4002AAC34 /* RecruitItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecruitItem.swift; sourceTree = "<group>"; };
+		629A615C26545CF7002AAC34 /* RecruitRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecruitRow.swift; sourceTree = "<group>"; };
+		629A615E26545CF9002AAC34 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		629A616026545CFC002AAC34 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		629A616526546052002AAC34 /* FlexibleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlexibleView.swift; sourceTree = "<group>"; };
+		629A616726546056002AAC34 /* _FlexibleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _FlexibleView.swift; sourceTree = "<group>"; };
+		629A61692654605A002AAC34 /* SizeReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeReader.swift; sourceTree = "<group>"; };
+		629A616B2654631D002AAC34 /* RecruitTagCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitTagCloud.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		629A613E26545C57002AAC34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		629A613826545C57002AAC34 = {
+			isa = PBXGroup;
+			children = (
+				629A614326545C57002AAC34 /* ArknightsNote */,
+				629A614226545C57002AAC34 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		629A614226545C57002AAC34 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				629A614126545C57002AAC34 /* ArknightsNote.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		629A614326545C57002AAC34 /* ArknightsNote */ = {
+			isa = PBXGroup;
+			children = (
+				629A616426546046002AAC34 /* Flexible */,
+				629A616326545D0A002AAC34 /* ViewModel */,
+				629A616226545D06002AAC34 /* Model */,
+				629A615326545C9B002AAC34 /* View */,
+				629A614426545C57002AAC34 /* ArknightsNoteApp.swift */,
+				629A614626545C57002AAC34 /* ContentView.swift */,
+				629A614826545C58002AAC34 /* Assets.xcassets */,
+				629A614D26545C58002AAC34 /* Info.plist */,
+				629A614A26545C58002AAC34 /* Preview Content */,
+			);
+			path = ArknightsNote;
+			sourceTree = "<group>";
+		};
+		629A614A26545C58002AAC34 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				629A614B26545C58002AAC34 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		629A615326545C9B002AAC34 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				629A615426545C9B002AAC34 /* Gacha */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		629A615426545C9B002AAC34 /* Gacha */ = {
+			isa = PBXGroup;
+			children = (
+				629A615526545C9B002AAC34 /* Recruit */,
+			);
+			path = Gacha;
+			sourceTree = "<group>";
+		};
+		629A615526545C9B002AAC34 /* Recruit */ = {
+			isa = PBXGroup;
+			children = (
+				629A615A26545CF4002AAC34 /* RecruitItem.swift */,
+				629A615C26545CF7002AAC34 /* RecruitRow.swift */,
+				629A615626545CBF002AAC34 /* RecruitHome.swift */,
+				629A615826545CF1002AAC34 /* RecruitTagSheet.swift */,
+				629A616B2654631D002AAC34 /* RecruitTagCloud.swift */,
+			);
+			path = Recruit;
+			sourceTree = "<group>";
+		};
+		629A616226545D06002AAC34 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				629A615E26545CF9002AAC34 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		629A616326545D0A002AAC34 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				629A616026545CFC002AAC34 /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		629A616426546046002AAC34 /* Flexible */ = {
+			isa = PBXGroup;
+			children = (
+				629A61692654605A002AAC34 /* SizeReader.swift */,
+				629A616526546052002AAC34 /* FlexibleView.swift */,
+				629A616726546056002AAC34 /* _FlexibleView.swift */,
+			);
+			path = Flexible;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		629A614026545C57002AAC34 /* ArknightsNote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 629A615026545C58002AAC34 /* Build configuration list for PBXNativeTarget "ArknightsNote" */;
+			buildPhases = (
+				629A613D26545C57002AAC34 /* Sources */,
+				629A613E26545C57002AAC34 /* Frameworks */,
+				629A613F26545C57002AAC34 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ArknightsNote;
+			productName = ArknightsNote;
+			productReference = 629A614126545C57002AAC34 /* ArknightsNote.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		629A613926545C57002AAC34 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					629A614026545C57002AAC34 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+				};
+			};
+			buildConfigurationList = 629A613C26545C57002AAC34 /* Build configuration list for PBXProject "ArknightsNote" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 629A613826545C57002AAC34;
+			productRefGroup = 629A614226545C57002AAC34 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				629A614026545C57002AAC34 /* ArknightsNote */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		629A613F26545C57002AAC34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				629A614C26545C58002AAC34 /* Preview Assets.xcassets in Resources */,
+				629A614926545C58002AAC34 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		629A613D26545C57002AAC34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				629A615F26545CF9002AAC34 /* Model.swift in Sources */,
+				629A615726545CBF002AAC34 /* RecruitHome.swift in Sources */,
+				629A615D26545CF7002AAC34 /* RecruitRow.swift in Sources */,
+				629A616826546056002AAC34 /* _FlexibleView.swift in Sources */,
+				629A616A2654605A002AAC34 /* SizeReader.swift in Sources */,
+				629A616C2654631D002AAC34 /* RecruitTagCloud.swift in Sources */,
+				629A614726545C57002AAC34 /* ContentView.swift in Sources */,
+				629A616626546052002AAC34 /* FlexibleView.swift in Sources */,
+				629A615B26545CF4002AAC34 /* RecruitItem.swift in Sources */,
+				629A614526545C57002AAC34 /* ArknightsNoteApp.swift in Sources */,
+				629A616126545CFC002AAC34 /* ViewModel.swift in Sources */,
+				629A615926545CF1002AAC34 /* RecruitTagSheet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		629A614E26545C58002AAC34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		629A614F26545C58002AAC34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		629A615126545C58002AAC34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ArknightsNote/Preview Content\"";
+				DEVELOPMENT_TEAM = 743R7M7GS9;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ArknightsNote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.ravencrow.ArknightsNote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		629A615226545C58002AAC34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ArknightsNote/Preview Content\"";
+				DEVELOPMENT_TEAM = 743R7M7GS9;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ArknightsNote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.ravencrow.ArknightsNote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		629A613C26545C57002AAC34 /* Build configuration list for PBXProject "ArknightsNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				629A614E26545C58002AAC34 /* Debug */,
+				629A614F26545C58002AAC34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		629A615026545C58002AAC34 /* Build configuration list for PBXNativeTarget "ArknightsNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				629A615126545C58002AAC34 /* Debug */,
+				629A615226545C58002AAC34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 629A613926545C57002AAC34 /* Project object */;
+}
