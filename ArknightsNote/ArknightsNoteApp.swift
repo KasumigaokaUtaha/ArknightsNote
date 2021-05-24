@@ -11,7 +11,6 @@ import SwiftUI
 struct ArknightsNoteApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView()
             RecruitHome()
                 .environmentObject(ViewModel())
         }

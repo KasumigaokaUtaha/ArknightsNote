@@ -16,22 +16,22 @@ struct RecruitTagSheet: View {
             VStack(alignment: .leading) {
                 RecruitTagCategory(
                     header: "资质",
-                    tags: viewModel.category.seniority,
+                    tags: RecruitCategory.seniority,
                     chosenTags: $chosenTags
                 )
                 RecruitTagCategory(
                     header: "位置",
-                    tags: viewModel.category.position,
+                    tags: RecruitCategory.position,
                     chosenTags: $chosenTags
                 )
                 RecruitTagCategory(
                     header: "职业",
-                    tags: viewModel.category.profession,
+                    tags: RecruitCategory.profession,
                     chosenTags: $chosenTags
                 )
                 RecruitTagCategory(
                     header: "特性",
-                    tags: viewModel.category.trait,
+                    tags: RecruitCategory.trait,
                     chosenTags: $chosenTags
                 )
                 Spacer()
@@ -68,46 +68,15 @@ struct RecruitTagCategory: View {
                 .onTapGesture {
                     if let index = chosenTags.firstIndex(of: tag) {
                         chosenTags.remove(at: index)
-                    } else {
+                    } else if chosenTags.count < 4 {
                         chosenTags.append(tag)
                     }
+                    viewModel.computeCharactersMatchedWith(tags: chosenTags)
                 }
             }
         }
     }
-    
-//    func tapTag(_ tag: String) {
-//        if viewModel.chosenTags.contains(tag) {
-//            guard let tagIndex = viewModel.chosenTags.firstIndex(of: tag) else { return }
-//            viewModel.chosenTags.remove(at: tagIndex)
-//        } else {
-//            viewModel.chosenTags.append(tag)
-//        }
-//    }
 }
-
-//struct RecruitmentTag: View {
-//    @EnvironmentObject var viewModel: ViewModel
-//
-//    let tag: String
-//    var isChosen: Bool {
-//        viewModel.chosenTags.contains(tag)
-//    }
-//
-//    var body: some View {
-//        Text(tag)
-//            .foregroundColor(.white)
-//            .padding(.vertical, 4)
-//            .padding(.horizontal, 8)
-//            .background(
-//                RoundedRectangle(cornerRadius: 8)
-//                    .fill()
-//                    .foregroundColor(
-//                        isChosen ? .blue : .gray
-//                    )
-//            )
-//    }
-//}
 
 struct RecruitmentTagSheet_Previews: PreviewProvider {
     @State static var tags = ["控场", "爆发", "治疗", "支援", "费用回复", "输出", "生存", "群攻", "防护", "减速", "削弱", "快速复活", "位移", "召唤", "支援机械"]

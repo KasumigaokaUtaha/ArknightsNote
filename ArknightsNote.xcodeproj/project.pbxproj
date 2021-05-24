@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6268F0F3265C20600067CD5D /* character_table.json in Resources */ = {isa = PBXBuildFile; fileRef = 6268F0F2265C20600067CD5D /* character_table.json */; };
+		6268F0F5265C20FC0067CD5D /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6268F0F4265C20FC0067CD5D /* Character.swift */; };
+		6268F0F7265C33F40067CD5D /* CharacterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6268F0F6265C33F40067CD5D /* CharacterStore.swift */; };
 		629A614526545C57002AAC34 /* ArknightsNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A614426545C57002AAC34 /* ArknightsNoteApp.swift */; };
 		629A614726545C57002AAC34 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A614626545C57002AAC34 /* ContentView.swift */; };
 		629A614926545C58002AAC34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 629A614826545C58002AAC34 /* Assets.xcassets */; };
@@ -15,7 +18,7 @@
 		629A615926545CF1002AAC34 /* RecruitTagSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A615826545CF1002AAC34 /* RecruitTagSheet.swift */; };
 		629A615B26545CF4002AAC34 /* RecruitItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A615A26545CF4002AAC34 /* RecruitItem.swift */; };
 		629A615D26545CF7002AAC34 /* RecruitRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A615C26545CF7002AAC34 /* RecruitRow.swift */; };
-		629A615F26545CF9002AAC34 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A615E26545CF9002AAC34 /* Model.swift */; };
+		629A615F26545CF9002AAC34 /* RecruitCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A615E26545CF9002AAC34 /* RecruitCategory.swift */; };
 		629A616126545CFC002AAC34 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A616026545CFC002AAC34 /* ViewModel.swift */; };
 		629A616626546052002AAC34 /* FlexibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A616526546052002AAC34 /* FlexibleView.swift */; };
 		629A616826546056002AAC34 /* _FlexibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629A616726546056002AAC34 /* _FlexibleView.swift */; };
@@ -24,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6268F0F2265C20600067CD5D /* character_table.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = character_table.json; sourceTree = "<group>"; };
+		6268F0F4265C20FC0067CD5D /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		6268F0F6265C33F40067CD5D /* CharacterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStore.swift; sourceTree = "<group>"; };
 		629A614126545C57002AAC34 /* ArknightsNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArknightsNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		629A614426545C57002AAC34 /* ArknightsNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArknightsNoteApp.swift; sourceTree = "<group>"; };
 		629A614626545C57002AAC34 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,7 +40,7 @@
 		629A615826545CF1002AAC34 /* RecruitTagSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecruitTagSheet.swift; sourceTree = "<group>"; };
 		629A615A26545CF4002AAC34 /* RecruitItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecruitItem.swift; sourceTree = "<group>"; };
 		629A615C26545CF7002AAC34 /* RecruitRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecruitRow.swift; sourceTree = "<group>"; };
-		629A615E26545CF9002AAC34 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		629A615E26545CF9002AAC34 /* RecruitCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecruitCategory.swift; sourceTree = "<group>"; };
 		629A616026545CFC002AAC34 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		629A616526546052002AAC34 /* FlexibleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlexibleView.swift; sourceTree = "<group>"; };
 		629A616726546056002AAC34 /* _FlexibleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _FlexibleView.swift; sourceTree = "<group>"; };
@@ -53,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6268F0F1265C201F0067CD5D /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				6268F0F2265C20600067CD5D /* character_table.json */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		629A613826545C57002AAC34 = {
 			isa = PBXGroup;
 			children = (
@@ -72,9 +86,10 @@
 		629A614326545C57002AAC34 /* ArknightsNote */ = {
 			isa = PBXGroup;
 			children = (
+				6268F0F1265C201F0067CD5D /* Resource */,
 				629A616426546046002AAC34 /* Flexible */,
-				629A616326545D0A002AAC34 /* ViewModel */,
 				629A616226545D06002AAC34 /* Model */,
+				629A616326545D0A002AAC34 /* ViewModel */,
 				629A615326545C9B002AAC34 /* View */,
 				629A614426545C57002AAC34 /* ArknightsNoteApp.swift */,
 				629A614626545C57002AAC34 /* ContentView.swift */,
@@ -124,7 +139,9 @@
 		629A616226545D06002AAC34 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				629A615E26545CF9002AAC34 /* Model.swift */,
+				6268F0F4265C20FC0067CD5D /* Character.swift */,
+				6268F0F6265C33F40067CD5D /* CharacterStore.swift */,
+				629A615E26545CF9002AAC34 /* RecruitCategory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -205,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				629A614C26545C58002AAC34 /* Preview Assets.xcassets in Resources */,
+				6268F0F3265C20600067CD5D /* character_table.json in Resources */,
 				629A614926545C58002AAC34 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,7 +234,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				629A615F26545CF9002AAC34 /* Model.swift in Sources */,
+				6268F0F5265C20FC0067CD5D /* Character.swift in Sources */,
+				629A615F26545CF9002AAC34 /* RecruitCategory.swift in Sources */,
 				629A615726545CBF002AAC34 /* RecruitHome.swift in Sources */,
 				629A615D26545CF7002AAC34 /* RecruitRow.swift in Sources */,
 				629A616826546056002AAC34 /* _FlexibleView.swift in Sources */,
@@ -224,6 +243,7 @@
 				629A616C2654631D002AAC34 /* RecruitTagCloud.swift in Sources */,
 				629A614726545C57002AAC34 /* ContentView.swift in Sources */,
 				629A616626546052002AAC34 /* FlexibleView.swift in Sources */,
+				6268F0F7265C33F40067CD5D /* CharacterStore.swift in Sources */,
 				629A615B26545CF4002AAC34 /* RecruitItem.swift in Sources */,
 				629A614526545C57002AAC34 /* ArknightsNoteApp.swift in Sources */,
 				629A616126545CFC002AAC34 /* ViewModel.swift in Sources */,

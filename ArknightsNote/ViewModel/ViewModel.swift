@@ -8,11 +8,18 @@
 import SwiftUI
 
 class ViewModel: ObservableObject {
-    let category: RecruitCategory = RecruitCategory()
-    
     @Published var chosenTags: [String] = []
+    @Published var recruitTagsToChars: [[String]:[Character]] = [:]
+    
+    let characterStore: CharacterStore = CharacterStore()
     
     func validate(tag: String) -> Bool {
-        return category.all.contains(tag)
+        return RecruitCategory.all.contains(tag)
+    }
+    
+    func computeCharactersMatchedWith(tags: [String], maxTagCombCnt: Int = 4) {
+        DispatchQueue.main.async {
+            self.recruitTagsToChars = self.characterStore.computeCharactersMatchedWith(tags: tags, maxTagCombCnt: maxTagCombCnt)
+        }
     }
 }
