@@ -40,6 +40,10 @@ struct RecruitmentStore {
         }
     }
     
+    func numberOfCategoryCases() -> Int {
+        return Category.allCases.count
+    }
+    
     func tagsWithCategory(_ category: Category) -> [String] {
         switch category {
         case .trait:
