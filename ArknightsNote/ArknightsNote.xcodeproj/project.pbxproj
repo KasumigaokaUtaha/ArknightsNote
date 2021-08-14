@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6258A0E826C6733300CDA04A /* RecruitmentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0E726C6733300CDA04A /* RecruitmentTableViewController.swift */; };
+		6258A0EA26C6734E00CDA04A /* RecruitmentLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0E926C6734E00CDA04A /* RecruitmentLogicController.swift */; };
+		6258A0EF26C674BB00CDA04A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0EE26C674BB00CDA04A /* Character.swift */; };
+		6258A0F126C674FD00CDA04A /* RecruitmentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0F026C674FD00CDA04A /* RecruitmentStore.swift */; };
+		6258A0F426C7C3EE00CDA04A /* character_table.json in Resources */ = {isa = PBXBuildFile; fileRef = 6258A0F326C7C3EE00CDA04A /* character_table.json */; };
+		6258A0F626C7CB5B00CDA04A /* CharacterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0F526C7CB5B00CDA04A /* CharacterStore.swift */; };
 		62AEF78326C310DA00086004 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEF78226C310DA00086004 /* AppDelegate.swift */; };
 		62AEF78526C310DA00086004 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEF78426C310DA00086004 /* SceneDelegate.swift */; };
 		62AEF78726C310DA00086004 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEF78626C310DA00086004 /* ViewController.swift */; };
@@ -35,6 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6258A0E726C6733300CDA04A /* RecruitmentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentTableViewController.swift; sourceTree = "<group>"; };
+		6258A0E926C6734E00CDA04A /* RecruitmentLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentLogicController.swift; sourceTree = "<group>"; };
+		6258A0EE26C674BB00CDA04A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		6258A0F026C674FD00CDA04A /* RecruitmentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentStore.swift; sourceTree = "<group>"; };
+		6258A0F326C7C3EE00CDA04A /* character_table.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = character_table.json; sourceTree = "<group>"; };
+		6258A0F526C7CB5B00CDA04A /* CharacterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStore.swift; sourceTree = "<group>"; };
 		62AEF77F26C310DA00086004 /* ArknightsNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArknightsNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62AEF78226C310DA00086004 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62AEF78426C310DA00086004 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +86,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6258A0E626C6730E00CDA04A /* Recruitment */ = {
+			isa = PBXGroup;
+			children = (
+				6258A0E726C6733300CDA04A /* RecruitmentTableViewController.swift */,
+				6258A0E926C6734E00CDA04A /* RecruitmentLogicController.swift */,
+			);
+			path = Recruitment;
+			sourceTree = "<group>";
+		};
+		6258A0EB26C6748200CDA04A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6258A0EE26C674BB00CDA04A /* Character.swift */,
+				6258A0F026C674FD00CDA04A /* RecruitmentStore.swift */,
+				6258A0F526C7CB5B00CDA04A /* CharacterStore.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6258A0EC26C6749D00CDA04A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6258A0E626C6730E00CDA04A /* Recruitment */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6258A0ED26C674A300CDA04A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6258A0F226C7C3C200CDA04A /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				6258A0F326C7C3EE00CDA04A /* character_table.json */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		62AEF77626C310DA00086004 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +151,10 @@
 		62AEF78126C310DA00086004 /* ArknightsNote */ = {
 			isa = PBXGroup;
 			children = (
+				6258A0F226C7C3C200CDA04A /* Resource */,
+				6258A0EB26C6748200CDA04A /* Model */,
+				6258A0ED26C674A300CDA04A /* View */,
+				6258A0EC26C6749D00CDA04A /* Controller */,
 				62AEF78226C310DA00086004 /* AppDelegate.swift */,
 				62AEF78426C310DA00086004 /* SceneDelegate.swift */,
 				62AEF78626C310DA00086004 /* ViewController.swift */,
@@ -228,6 +286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6258A0F426C7C3EE00CDA04A /* character_table.json in Resources */,
 				62AEF78F26C310DC00086004 /* LaunchScreen.storyboard in Resources */,
 				62AEF78C26C310DC00086004 /* Assets.xcassets in Resources */,
 				62AEF78A26C310DA00086004 /* Main.storyboard in Resources */,
@@ -255,8 +314,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6258A0E826C6733300CDA04A /* RecruitmentTableViewController.swift in Sources */,
+				6258A0F626C7CB5B00CDA04A /* CharacterStore.swift in Sources */,
 				62AEF78726C310DA00086004 /* ViewController.swift in Sources */,
+				6258A0F126C674FD00CDA04A /* RecruitmentStore.swift in Sources */,
 				62AEF78326C310DA00086004 /* AppDelegate.swift in Sources */,
+				6258A0EF26C674BB00CDA04A /* Character.swift in Sources */,
+				6258A0EA26C6734E00CDA04A /* RecruitmentLogicController.swift in Sources */,
 				62AEF78526C310DA00086004 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,17 +502,19 @@
 				DEVELOPMENT_TEAM = 743R7M7GS9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ArknightsNote/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "罗德岛笔记";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.ravencrow.ArknightsNote;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.ravencrow.experiment.ArknightsNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -466,17 +532,19 @@
 				DEVELOPMENT_TEAM = 743R7M7GS9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ArknightsNote/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "罗德岛笔记";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.ravencrow.ArknightsNote;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.ravencrow.experiment.ArknightsNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
