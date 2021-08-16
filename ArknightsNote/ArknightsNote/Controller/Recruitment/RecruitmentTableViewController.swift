@@ -8,6 +8,19 @@
 import UIKit
 
 class RecruitmentTableViewController: UITableViewController {
+    
+    enum Section: Int, CaseIterable {
+        case selectTags
+        case presentChosenTags
+        case recruitmentResults
+    }
+
+    private var numberOfSections: Int {
+        Section.allCases.count
+    }
+    private let logicController = RecruitmentLogicController()
+    private let recruitmentStore = RecruitmentStore()
+    private var recruitmentResults = [[String]: [Character]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,17 +31,30 @@ class RecruitmentTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    // MARK: - Internal
+    
+    func numberOfRows(in section: Int) -> Int {
+        switch Section(rawValue: section) {
+        case .selectTags:
+            return 1
+        case .presentChosenTags:
+            return 1
+        case .recruitmentResults:
+            return recruitmentResults.keys.count
+        case .none:
+            fatalError("Invalid section")
+        }
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return numberOfSections
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return numberOfRows(in: section)
     }
 
     /*

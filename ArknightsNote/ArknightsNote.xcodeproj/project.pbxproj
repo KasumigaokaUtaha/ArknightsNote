@@ -14,6 +14,8 @@
 		6258A0F426C7C3EE00CDA04A /* character_table.json in Resources */ = {isa = PBXBuildFile; fileRef = 6258A0F326C7C3EE00CDA04A /* character_table.json */; };
 		6258A0F626C7CB5B00CDA04A /* CharacterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0F526C7CB5B00CDA04A /* CharacterStore.swift */; };
 		6258A0F826C83DAF00CDA04A /* RecruitmentSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0F726C83DAF00CDA04A /* RecruitmentSelectionTableViewController.swift */; };
+		62607B0A26C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62607B0926C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift */; };
+		62607B0F26C9B4DA00112C90 /* RecruitmentTagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62607B0E26C9B4DA00112C90 /* RecruitmentTagCollectionView.swift */; };
 		62AEF78326C310DA00086004 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEF78226C310DA00086004 /* AppDelegate.swift */; };
 		62AEF78526C310DA00086004 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEF78426C310DA00086004 /* SceneDelegate.swift */; };
 		62AEF78726C310DA00086004 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEF78626C310DA00086004 /* ViewController.swift */; };
@@ -49,6 +51,8 @@
 		6258A0F326C7C3EE00CDA04A /* character_table.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = character_table.json; sourceTree = "<group>"; };
 		6258A0F526C7CB5B00CDA04A /* CharacterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStore.swift; sourceTree = "<group>"; };
 		6258A0F726C83DAF00CDA04A /* RecruitmentSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentSelectionTableViewController.swift; sourceTree = "<group>"; };
+		62607B0926C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		62607B0E26C9B4DA00112C90 /* RecruitmentTagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentTagCollectionView.swift; sourceTree = "<group>"; };
 		62AEF77F26C310DA00086004 /* ArknightsNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArknightsNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62AEF78226C310DA00086004 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62AEF78426C310DA00086004 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,9 +95,9 @@
 		6258A0E626C6730E00CDA04A /* Recruitment */ = {
 			isa = PBXGroup;
 			children = (
+				62607B0B26C9B11800112C90 /* Selection */,
 				6258A0E726C6733300CDA04A /* RecruitmentTableViewController.swift */,
 				6258A0E926C6734E00CDA04A /* RecruitmentLogicController.swift */,
-				6258A0F726C83DAF00CDA04A /* RecruitmentSelectionTableViewController.swift */,
 			);
 			path = Recruitment;
 			sourceTree = "<group>";
@@ -129,6 +133,24 @@
 				6258A0F326C7C3EE00CDA04A /* character_table.json */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		62607B0B26C9B11800112C90 /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				62607B0D26C9B44500112C90 /* TagCloud */,
+				62607B0926C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift */,
+				6258A0F726C83DAF00CDA04A /* RecruitmentSelectionTableViewController.swift */,
+			);
+			path = Selection;
+			sourceTree = "<group>";
+		};
+		62607B0D26C9B44500112C90 /* TagCloud */ = {
+			isa = PBXGroup;
+			children = (
+				62607B0E26C9B4DA00112C90 /* RecruitmentTagCollectionView.swift */,
+			);
+			path = TagCloud;
 			sourceTree = "<group>";
 		};
 		62AEF77626C310DA00086004 = {
@@ -326,6 +348,8 @@
 				6258A0F826C83DAF00CDA04A /* RecruitmentSelectionTableViewController.swift in Sources */,
 				6258A0EA26C6734E00CDA04A /* RecruitmentLogicController.swift in Sources */,
 				62AEF78526C310DA00086004 /* SceneDelegate.swift in Sources */,
+				62607B0F26C9B4DA00112C90 /* RecruitmentTagCollectionView.swift in Sources */,
+				62607B0A26C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
