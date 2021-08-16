@@ -8,7 +8,7 @@
 import Foundation
 
 struct RecruitmentStore {
-    enum Category: CaseIterable {
+    enum Category: Int, CaseIterable {
         case trait
         case position
         case seniority
@@ -36,7 +36,7 @@ struct RecruitmentStore {
     
     func allTags() -> [String] {
         return Category.allCases.flatMap { category in
-            return tagsWithCategory(category)
+            return tagsOfCategory(category)
         }
     }
     
@@ -44,7 +44,7 @@ struct RecruitmentStore {
         return Category.allCases.count
     }
     
-    func tagsWithCategory(_ category: Category) -> [String] {
+    func tagsOfCategory(_ category: Category) -> [String] {
         switch category {
         case .trait:
             return traitTags
@@ -57,7 +57,7 @@ struct RecruitmentStore {
         }
     }
     
-    func tagWithCategory(_ category: Category, value: Any) -> String {
+    func tagOfCategory(_ category: Category, value: Any) -> String {
         let valueString = String(describing: value)
         
         var categoryValueToTag: [String:String]

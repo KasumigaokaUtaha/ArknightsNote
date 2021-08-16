@@ -24,9 +24,9 @@ class RecruitmentLogicController {
         for character in recruitmentCharacters {
             var tagList = character.tagList
             tagList.append(contentsOf: [
-                recruitmentStore.tagWithCategory(.seniority, value: character.rarity),
-                recruitmentStore.tagWithCategory(.position, value: character.position),
-                recruitmentStore.tagWithCategory(.profession, value: character.profession)
+                recruitmentStore.tagOfCategory(.seniority, value: character.rarity),
+                recruitmentStore.tagOfCategory(.position, value: character.position),
+                recruitmentStore.tagOfCategory(.profession, value: character.profession)
             ])
 
             for tag in tagList {
@@ -48,7 +48,7 @@ class RecruitmentLogicController {
     
     // MARK: - Logic
 
-    func computeCharactersWithCombinationsOf(tags chosenTags: [String], maxTagsCount: Int = 4) -> [[String]:[Character]] {
+    func computeCharactersWithCombinationsOf(tags chosenTags: [String], maxTagsCount: Int = 4) -> [[String]: [Character]] {
         var result = [[String]: [Character]]()
         
         var currentTagsToChars = [[String]: [Character]]()
