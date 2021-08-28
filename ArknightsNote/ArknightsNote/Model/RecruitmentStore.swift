@@ -9,10 +9,10 @@ import Foundation
 
 struct RecruitmentStore {
     enum Category: Int, CaseIterable {
-        case trait
-        case position
-        case seniority
-        case profession
+        case trait = 3
+        case position = 1
+        case seniority = 0
+        case profession = 2
     }
     
     private let traitTags = ["控场", "爆发", "治疗", "支援", "费用回复", "输出", "生存", "群攻", "防护", "减速", "削弱", "快速复活", "位移", "召唤", "支援机械"]

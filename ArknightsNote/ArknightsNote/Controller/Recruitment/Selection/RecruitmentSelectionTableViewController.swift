@@ -12,8 +12,15 @@ class RecruitmentSelectionTableViewController: UITableViewController {
     // MARK: - Properties
 
     private var selectedTags: [String] = [] // store selected tags
-    private let recruitmentStore = RecruitmentStore()
+    private var recruitmentStore: RecruitmentStore! = nil
     private var collectionViewIndexPaths = [UICollectionView: IndexPath]()
+    private var collectionViewTags = [UICollectionView: [String]]()
+
+    // MARK: - Initializer
+    
+    func configure(recruitmentStore store: RecruitmentStore) {
+        recruitmentStore = store
+    }
 
     // MARK: - Actions
     
@@ -35,6 +42,13 @@ class RecruitmentSelectionTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        guard let parentVC = presentingViewController as? RecruitmentTableViewController else { return }
+        parentVC.setSelectedTags(selectedTags)
+    }
 
     
     /*
@@ -49,6 +63,7 @@ class RecruitmentSelectionTableViewController: UITableViewController {
 
 }
 
+// MARK: - Table View Data Source & Delegate
 extension RecruitmentSelectionTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         // Each category case occupies one section
@@ -63,46 +78,90 @@ extension RecruitmentSelectionTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recruitmentTagCategory", for: indexPath)
 
-        // Configure the cell...
-
         return cell
     }
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = cell as? RecruitmentSelectionTableViewCell else {
+        guard
+            let cell = cell as? RecruitmentSelectionTableViewCell,
+            let collectionView = cell.getCollectionView(),
+            let category = RecruitmentStore.Category(rawValue: indexPath.section)
+        else {
             return
         }
         
-        guard let collectionView = cell.getCollectionView() else {
-            return
-        }
+        let tags = recruitmentStore.tagsOfCategory(category)
         
+        collectionView.allowsMultipleSelection = true
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.reloadData()
         collectionViewIndexPaths.updateValue(indexPath, forKey: collectionView)
+        collectionViewTags.updateValue(tags, forKey: collectionView)
     }
 }
 
-extension RecruitmentSelectionTableViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+// MARK: - Collection View Data Source & Flow Layout Delegate
+extension RecruitmentSelectionTableViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let indexPath = collectionViewIndexPaths[collectionView] else {
+        guard
+            let indexPath = collectionViewIndexPaths[collectionView],
+            let tagCategory = RecruitmentStore.Category(rawValue: indexPath.section)
+        else {
             return 0
         }
         
-        if let tagCategory = RecruitmentStore.Category(rawValue: indexPath.section) {
-            return recruitmentStore.tagsOfCategory(tagCategory).count
-        } else {
-            return 0
-        }
+        return recruitmentStore.tagsOfCategory(tagCategory).count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recruitmentTag", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recruitmentTag", for: indexPath) as! RecruitmentTagCloudCollectionViewCell
         
-        cell.backgroundColor = UIColor.black
-        // TODO configure the recruitment tag
+        cell.backgroundColor = .lightGray
+        cell.tagLabel.textColor = .white
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard
+            let cell = cell as? RecruitmentTagCloudCollectionViewCell,
+            let tags = collectionViewTags[collectionView]
+        else {
+            return
+        }
+        
+        cell.tagLabel.text = tags[indexPath.row]
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? RecruitmentTagCloudCollectionViewCell else { return }
+        
+        cell.backgroundColor = .systemBlue
+        
+        guard let tag = cell.tagLabel.text, !selectedTags.contains(tag) else { return }
+        
+        selectedTags.append(tag)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? RecruitmentTagCloudCollectionViewCell else { return }
+        
+        cell.backgroundColor = .lightGray
+        
+        guard let tag = cell.tagLabel.text, let index = selectedTags.firstIndex(of: tag) else { return }
+        
+        selectedTags.remove(at: index)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let tags = collectionViewTags[collectionView] else { return .zero }
+        
+        let tag = tags[indexPath.row]
+        var contentSize = tag.size(withAttributes: [.font: UIFont.preferredFont(forTextStyle: .body)])
+        contentSize.width += contentSize.height
+        contentSize.height += contentSize.height / 2
+        
+        return contentSize
     }
 }
