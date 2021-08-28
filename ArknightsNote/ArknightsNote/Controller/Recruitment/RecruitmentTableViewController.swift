@@ -34,7 +34,6 @@ class RecruitmentTableViewController: UITableViewController {
     }
     
     // MARK: - Internal
-    
     func numberOfRows(in section: Int) -> Int {
         switch Section(rawValue: section) {
         case .selectTags:

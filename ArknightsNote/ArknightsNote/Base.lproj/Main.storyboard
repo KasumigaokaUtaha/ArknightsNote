@@ -98,7 +98,7 @@
         <!--公开招募-->
         <scene sceneID="t3M-NF-FQt">
             <objects>
-                <tableViewController id="ggy-fr-885" sceneMemberID="viewController">
+                <tableViewController id="ggy-fr-885" customClass="RecruitmentTableViewController" customModule="ArknightsNote" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="EHy-Cb-cIl">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,7 +218,7 @@
         <!--公开招募选择-->
         <scene sceneID="fnH-go-exl">
             <objects>
-                <tableViewController id="pGT-Bi-b6P" userLabel="公开招募选择" sceneMemberID="viewController">
+                <tableViewController id="pGT-Bi-b6P" userLabel="公开招募选择" customClass="RecruitmentSelectionTableViewController" customModule="ArknightsNote" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="bgK-pX-O7d">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
