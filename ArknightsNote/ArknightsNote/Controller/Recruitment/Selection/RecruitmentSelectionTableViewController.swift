@@ -119,6 +119,7 @@ extension RecruitmentSelectionTableViewController: UICollectionViewDataSource, U
         
         cell.backgroundColor = .lightGray
         cell.tagLabel.textColor = .white
+        cell.layer.cornerRadius = 6
         
         return cell
     }
