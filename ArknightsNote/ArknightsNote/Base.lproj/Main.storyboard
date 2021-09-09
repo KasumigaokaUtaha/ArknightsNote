@@ -24,7 +24,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HHX-AS-vK3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3820" y="-225"/>
+            <point key="canvasLocation" x="2885" y="-225"/>
         </scene>
         <!--角色-->
         <scene sceneID="sYo-h9-v69">
@@ -40,7 +40,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wfq-Y9-AYl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2123" y="-225"/>
+            <point key="canvasLocation" x="1186" y="-225"/>
         </scene>
         <!--工具-->
         <scene sceneID="6jq-Gy-NHh">
@@ -56,7 +56,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HmA-6y-ps3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2991" y="-225"/>
+            <point key="canvasLocation" x="2055" y="-225"/>
         </scene>
         <!--首页-->
         <scene sceneID="410-6F-Oox">
@@ -206,33 +206,33 @@
                     <navigationItem key="navigationItem" title="公开招募" id="AxN-7K-HCe">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="T9k-Q1-6yI">
                             <connections>
-                                <segue destination="pGT-Bi-b6P" kind="presentation" identifier="chooseRecruitmentTags" id="JCx-w6-fuZ"/>
+                                <segue destination="pGT-Bi-b6P" kind="show" identifier="chooseRecruitmentTags" id="lF2-PM-tOH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWW-jb-8Ml" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1224.6153846153845" y="-225.35545023696682"/>
+            <point key="canvasLocation" x="348" y="564"/>
         </scene>
         <!--公开招募选择-->
         <scene sceneID="fnH-go-exl">
             <objects>
                 <tableViewController id="pGT-Bi-b6P" userLabel="公开招募选择" customClass="RecruitmentSelectionTableViewController" customModule="ArknightsNote" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="bgK-pX-O7d">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="bgK-pX-O7d">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recruitmentTagCategory" rowHeight="100" id="Mak-p9-TNn" customClass="RecruitmentSelectionTableViewCell" customModule="ArknightsNote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="390" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recruitmentTagCategory" rowHeight="80" id="Mak-p9-TNn" customClass="RecruitmentSelectionTableViewCell" customModule="ArknightsNote" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="390" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mak-p9-TNn" id="DdF-pF-9JI">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m41-Is-ne3" customClass="RecruitmentTagCollectionView" customModule="ArknightsNote" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="0.0" width="374" height="100"/>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m41-Is-ne3" customClass="RecruitmentTagCollectionView" customModule="ArknightsNote" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="0.0" width="374" height="80"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Hj8-SC-uxx">
                                                 <size key="itemSize" width="64" height="64"/>
@@ -269,10 +269,11 @@
                             <outlet property="delegate" destination="pGT-Bi-b6P" id="Kss-qU-q61"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="招募需求" largeTitleDisplayMode="never" id="n3z-uG-Cvd"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ktv-a8-YuT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1224.6153846153845" y="454.26540284360186"/>
+            <point key="canvasLocation" x="1242" y="563"/>
         </scene>
         <!--招募导航-->
         <scene sceneID="0SG-Sn-b0D">
@@ -291,7 +292,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qma-OQ-SPf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1225" y="-962"/>
+            <point key="canvasLocation" x="-486" y="564"/>
         </scene>
     </scenes>
     <resources>

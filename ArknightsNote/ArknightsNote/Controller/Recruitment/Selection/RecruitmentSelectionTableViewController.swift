@@ -15,6 +15,7 @@ class RecruitmentSelectionTableViewController: UITableViewController {
     private var recruitmentStore: RecruitmentStore! = nil
     private var collectionViewIndexPaths = [UICollectionView: IndexPath]()
     private var collectionViewTags = [UICollectionView: [String]]()
+    private let maximumSelectedTagsCount = 4
 
     // MARK: - Initializer
     
@@ -36,6 +37,8 @@ class RecruitmentSelectionTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 200
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -49,18 +52,26 @@ class RecruitmentSelectionTableViewController: UITableViewController {
         guard let parentVC = presentingViewController as? RecruitmentTableViewController else { return }
         parentVC.setSelectedTags(selectedTags)
     }
-
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Layout actions
+    // See https://stackoverflow.com/a/64390373
+    private func updateRowHeight() {
+        // TODO disable animation
+        DispatchQueue.main.async {
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+        }
     }
-    */
-
+    
+    // MARK: - Utility functions
+    private func computeItemSize(_ item: String) -> CGSize {
+        var itemSize = item.size(withAttributes: [.font: UIFont.preferredFont(forTextStyle: .body)])
+        itemSize.width += itemSize.height
+        itemSize.height += itemSize.height / 2
+        
+        return itemSize
+    }
+    
 }
 
 // MARK: - Table View Data Source & Delegate
@@ -84,20 +95,23 @@ extension RecruitmentSelectionTableViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard
             let cell = cell as? RecruitmentSelectionTableViewCell,
-            let collectionView = cell.getCollectionView(),
+            let collectionView = cell.getCollectionView() as? RecruitmentTagCollectionView,
             let category = RecruitmentStore.Category(rawValue: indexPath.section)
         else {
             return
         }
         
         let tags = recruitmentStore.tagsOfCategory(category)
+        collectionViewIndexPaths.updateValue(indexPath, forKey: collectionView)
+        collectionViewTags.updateValue(tags, forKey: collectionView)
         
+//        collectionView.collectionViewLayout = RecruitmentTagCloudLayout(data: collectionViewTags[collectionView] ?? [], computeCellSize: self.computeItemSize(_:))
+        collectionView.didLayoutAction = updateRowHeight
         collectionView.allowsMultipleSelection = true
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.reloadData()
-        collectionViewIndexPaths.updateValue(indexPath, forKey: collectionView)
-        collectionViewTags.updateValue(tags, forKey: collectionView)
+        cell.layoutIfNeeded()
     }
 }
 
@@ -135,6 +149,10 @@ extension RecruitmentSelectionTableViewController: UICollectionViewDataSource, U
         cell.tagLabel.text = tags[indexPath.row]
     }
     
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return selectedTags.count < maximumSelectedTagsCount
+    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? RecruitmentTagCloudCollectionViewCell else { return }
         
@@ -159,10 +177,6 @@ extension RecruitmentSelectionTableViewController: UICollectionViewDataSource, U
         guard let tags = collectionViewTags[collectionView] else { return .zero }
         
         let tag = tags[indexPath.row]
-        var contentSize = tag.size(withAttributes: [.font: UIFont.preferredFont(forTextStyle: .body)])
-        contentSize.width += contentSize.height
-        contentSize.height += contentSize.height / 2
-        
-        return contentSize
+        return computeItemSize(tag)
     }
 }

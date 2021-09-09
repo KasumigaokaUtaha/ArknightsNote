@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6237F70426E9F12D0064A2DA /* RecruitmentTagCloudLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6237F70326E9F12D0064A2DA /* RecruitmentTagCloudLayout.swift */; };
 		6258A0E826C6733300CDA04A /* RecruitmentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0E726C6733300CDA04A /* RecruitmentTableViewController.swift */; };
 		6258A0EA26C6734E00CDA04A /* RecruitmentLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0E926C6734E00CDA04A /* RecruitmentLogicController.swift */; };
 		6258A0EF26C674BB00CDA04A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0EE26C674BB00CDA04A /* Character.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6237F70326E9F12D0064A2DA /* RecruitmentTagCloudLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentTagCloudLayout.swift; sourceTree = "<group>"; };
 		6258A0E726C6733300CDA04A /* RecruitmentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentTableViewController.swift; sourceTree = "<group>"; };
 		6258A0E926C6734E00CDA04A /* RecruitmentLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentLogicController.swift; sourceTree = "<group>"; };
 		6258A0EE26C674BB00CDA04A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				62607B0E26C9B4DA00112C90 /* RecruitmentTagCollectionView.swift */,
 				6294747C26D92DC4008EAC69 /* RecruitmentTagCloudCollectionViewCell.swift */,
+				6237F70326E9F12D0064A2DA /* RecruitmentTagCloudLayout.swift */,
 			);
 			path = TagCloud;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				6258A0F126C674FD00CDA04A /* RecruitmentStore.swift in Sources */,
 				62AEF78326C310DA00086004 /* AppDelegate.swift in Sources */,
 				6258A0EF26C674BB00CDA04A /* Character.swift in Sources */,
+				6237F70426E9F12D0064A2DA /* RecruitmentTagCloudLayout.swift in Sources */,
 				6258A0F826C83DAF00CDA04A /* RecruitmentSelectionTableViewController.swift in Sources */,
 				6258A0EA26C6734E00CDA04A /* RecruitmentLogicController.swift in Sources */,
 				62AEF78526C310DA00086004 /* SceneDelegate.swift in Sources */,

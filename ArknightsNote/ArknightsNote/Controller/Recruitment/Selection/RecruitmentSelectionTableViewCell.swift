@@ -25,4 +25,8 @@ class RecruitmentSelectionTableViewCell: UITableViewCell {
     func getCollectionView() -> UICollectionView? {
         return collectionView
     }
+    
+    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        return collectionView.contentSize
+    }
 }
