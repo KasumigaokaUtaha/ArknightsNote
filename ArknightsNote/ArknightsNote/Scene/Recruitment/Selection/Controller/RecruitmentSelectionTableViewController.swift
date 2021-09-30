@@ -12,10 +12,12 @@ class RecruitmentSelectionTableViewController: UITableViewController {
     // MARK: - Properties
 
     private var selectedTags: [String] = [] // store selected tags
-    private var recruitmentStore: RecruitmentStore! = nil
+    private var recruitmentStore: RecruitmentStore!
     private var collectionViewIndexPaths = [UICollectionView: IndexPath]()
     private var collectionViewTags = [UICollectionView: [String]]()
     private let maximumSelectedTagsCount = 4
+
+    var viewWillDisappearAction: (([String]) -> Void)?
 
     // MARK: - Initializer
     
@@ -48,9 +50,10 @@ class RecruitmentSelectionTableViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        guard let parentVC = presentingViewController as? RecruitmentTableViewController else { return }
-        parentVC.setSelectedTags(selectedTags)
+        print("viewWillDisappear")
+        viewWillDisappearAction?(selectedTags)
+//        guard let parentVC = presentingViewController as? RecruitmentTableViewController else { return }
+//        parentVC.setSelectedTags(selectedTags)
     }
     
     // MARK: - Layout actions
@@ -84,6 +87,22 @@ extension RecruitmentSelectionTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Each category case uses one row in each section
         return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch RecruitmentStore.Category(rawValue: section) {
+        case .seniority:
+            return "资质"
+        case .position:
+            return "位置"
+        case .profession:
+            return "职业"
+        case .trait:
+            return "特性"
+        default:
+            return nil
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

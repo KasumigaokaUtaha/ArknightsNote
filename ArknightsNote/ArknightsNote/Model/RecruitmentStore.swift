@@ -57,7 +57,7 @@ struct RecruitmentStore {
         }
     }
     
-    func tagOfCategory(_ category: Category, value: Any) -> String {
+    func tagOfCategory(_ category: Category, value: Any) -> String? {
         let valueString = String(describing: value)
         
         var categoryValueToTag: [String:String]
@@ -75,7 +75,8 @@ struct RecruitmentStore {
         if let tag = categoryValueToTag[valueString] {
             return tag
         } else {
-            fatalError("Error cannot find tag with category: \(category) and value: \(valueString)")
+            print("Warning cannot find tag with category: \(category) and value: \(valueString)")
+            return nil
         }
     }
     

@@ -22,6 +22,11 @@ class RecruitmentTableViewController: UITableViewController {
     private let recruitmentStore = RecruitmentStore()
     private var selectedTags: [String]! = nil
     private var recruitmentResults = [[String]: [Character]]()
+    private var recruitmentChars: [Character] {
+        recruitmentResults.values.flatMap { element in
+            return element
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +48,8 @@ class RecruitmentTableViewController: UITableViewController {
         case .presentChosenTags:
             return 1
         case .recruitmentResults:
-            return recruitmentResults.keys.count
+//            return recruitmentResults.keys.count
+            return recruitmentChars.count
         case .none:
             fatalError("Invalid section")
         }
@@ -55,7 +61,7 @@ class RecruitmentTableViewController: UITableViewController {
         
         DispatchQueue.global().async {
             self.recruitmentResults = self.logicController.computeCharactersWithCombinationsOf(tags: tags)
-            
+            print(self.recruitmentResults)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -75,6 +81,20 @@ extension RecruitmentTableViewController {
         return numberOfRows(in: section)
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch Section(rawValue: section) {
+        case .selectTags:
+//           return "选择招募需求"
+            return nil
+        case .presentChosenTags:
+            return "招募需求"
+        case .recruitmentResults:
+            return "招募结果"
+        case .none:
+            fatalError("Invalid section")
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch Section(rawValue: indexPath.section) {
         case .selectTags:
@@ -82,7 +102,11 @@ extension RecruitmentTableViewController {
         case .presentChosenTags:
             return tableView.dequeueReusableCell(withIdentifier: "displaySelectedTags", for: indexPath)
         case .recruitmentResults:
-            return tableView.dequeueReusableCell(withIdentifier: "recruitmentResultRow", for: indexPath)
+            let resultCell = tableView.dequeueReusableCell(withIdentifier: "recruitmentResultRow", for: indexPath)
+            resultCell.textLabel?.text = recruitmentChars[indexPath.row].name
+            resultCell.detailTextLabel?.text = String(describing: recruitmentChars[indexPath.row].rarity)
+            
+            return resultCell
         case .none:
             fatalError("Invalid section")
         }
@@ -97,6 +121,9 @@ extension RecruitmentTableViewController {
             guard let destination = segue.destination as? RecruitmentSelectionTableViewController else { return }
             
             destination.configure(recruitmentStore: recruitmentStore)
+            destination.viewWillDisappearAction = { data in
+                self.setSelectedTags(data)
+            }
         default:
             preconditionFailure("Unknown segue identifier: \(String(describing: segue.identifier))")
         }

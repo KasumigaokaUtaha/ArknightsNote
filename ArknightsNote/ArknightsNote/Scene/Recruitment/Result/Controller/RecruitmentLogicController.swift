@@ -23,11 +23,14 @@ class RecruitmentLogicController {
         
         for character in recruitmentCharacters {
             var tagList = character.tagList
-            tagList.append(contentsOf: [
-                recruitmentStore.tagOfCategory(.seniority, value: character.rarity),
-                recruitmentStore.tagOfCategory(.position, value: character.position),
-                recruitmentStore.tagOfCategory(.profession, value: character.profession)
-            ])
+            
+            [recruitmentStore.tagOfCategory(.seniority, value: character.rarity),
+             recruitmentStore.tagOfCategory(.position, value: character.position),
+             recruitmentStore.tagOfCategory(.profession, value: character.profession)].forEach { element in
+                if let element = element {
+                    tagList.append(element)
+                }
+            }
 
             for tag in tagList {
                 var chars = tagToChars[tag] ?? [Character]()
