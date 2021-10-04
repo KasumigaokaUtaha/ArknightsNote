@@ -7,13 +7,14 @@
 
 import UIKit
 
-class RecruitmentTableViewController: UITableViewController {
+class RecruitmentTableViewController: UIViewController {
     
     enum Section: Int, CaseIterable {
-        case selectTags
         case presentChosenTags
         case recruitmentResults
     }
+    
+    @IBOutlet weak var tableView: UITableView!
 
     private var numberOfSections: Int {
         Section.allCases.count
@@ -32,8 +33,8 @@ class RecruitmentTableViewController: UITableViewController {
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 150
         // Uncomment the following line to preserve selection between presentations
@@ -46,8 +47,6 @@ class RecruitmentTableViewController: UITableViewController {
     // MARK: - Internal
     func numberOfRows(in section: Int) -> Int {
         switch Section(rawValue: section) {
-        case .selectTags:
-            return 1
         case .presentChosenTags:
             return 1
         case .recruitmentResults:
@@ -73,22 +72,19 @@ class RecruitmentTableViewController: UITableViewController {
 
 }
 
-// MARK: - Table View Data Source & Delegate
-extension RecruitmentTableViewController {
+// MARK: - Table View Data Source
+extension RecruitmentTableViewController: UITableViewDataSource {
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return numberOfSections
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return numberOfRows(in: section)
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch Section(rawValue: section) {
-        case .selectTags:
-//           return "选择招募需求"
-            return nil
         case .presentChosenTags:
             return "招募需求"
         case .recruitmentResults:
@@ -97,11 +93,12 @@ extension RecruitmentTableViewController {
             fatalError("Invalid section")
         }
     }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+}
+
+// MARK: - Table View Delegate
+extension RecruitmentTableViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch Section(rawValue: indexPath.section) {
-        case .selectTags:
-            return tableView.dequeueReusableCell(withIdentifier: "selectRecruitmentTags", for: indexPath)
         case .presentChosenTags:
             return tableView.dequeueReusableCell(withIdentifier: "displaySelectedTags", for: indexPath)
         case .recruitmentResults:
@@ -117,7 +114,6 @@ extension RecruitmentTableViewController {
             fatalError("Invalid section")
         }
     }
-    
 }
 
 extension RecruitmentTableViewController {

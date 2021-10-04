@@ -99,7 +99,7 @@
         <scene sceneID="t3M-NF-FQt">
             <objects>
                 <tableViewController id="ggy-fr-885" customClass="RecruitmentTableViewController" customModule="ArknightsNote" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="EHy-Cb-cIl">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="EHy-Cb-cIl">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -111,16 +111,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择招募需求" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMv-zY-2eJ">
-                                            <rect key="frame" x="143" y="20" width="104" height="20.333333333333329"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZb-8D-RfI">
+                                            <rect key="frame" x="143" y="13.666666666666664" width="104" height="33"/>
+                                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="选择招募需求"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="HMv-zY-2eJ" firstAttribute="centerX" secondItem="shw-4L-kAu" secondAttribute="centerX" id="3kt-fq-5OI"/>
-                                        <constraint firstItem="HMv-zY-2eJ" firstAttribute="centerY" secondItem="shw-4L-kAu" secondAttribute="centerY" id="WfC-hV-WJ7"/>
+                                        <constraint firstItem="sZb-8D-RfI" firstAttribute="centerY" secondItem="shw-4L-kAu" secondAttribute="centerY" id="ecn-n9-uwj"/>
+                                        <constraint firstItem="sZb-8D-RfI" firstAttribute="centerX" secondItem="shw-4L-kAu" secondAttribute="centerX" id="zct-dM-R9d"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -161,10 +162,10 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="9" reuseIdentifier="recruitmentResultRow" textLabel="kdt-9J-C4N" detailTextLabel="Dq3-Kb-8YA" style="IBUITableViewCellStyleSubtitle" id="eLI-jD-qEl">
-                                <rect key="frame" x="0.0" y="196.66666603088379" width="390" height="53.666667938232422"/>
+                                <rect key="frame" x="0.0" y="196.66666603088379" width="390" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eLI-jD-qEl" id="v5F-db-pPu">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="53.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="53"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kdt-9J-C4N">
@@ -191,25 +192,113 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="公开招募" id="AxN-7K-HCe">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="T9k-Q1-6yI">
-                            <connections>
-                                <segue destination="pGT-Bi-b6P" kind="show" identifier="chooseRecruitmentTags" id="lF2-PM-tOH"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="T9k-Q1-6yI"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWW-jb-8Ml" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="348" y="564"/>
+            <point key="canvasLocation" x="1185" y="1265"/>
+        </scene>
+        <!--公开招募-->
+        <scene sceneID="RVf-ST-4cQ">
+            <objects>
+                <viewController id="yEN-la-i6X" customClass="RecruitmentTableViewController" customModule="ArknightsNote" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KJr-gT-LfO">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="i9B-BK-1f8">
+                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="displaySelectedTags" rowHeight="98" id="qgb-Bm-TP2">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="98"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qgb-Bm-TP2" id="T4Q-lO-FV1">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="98"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ssp-4d-FnC">
+                                                    <rect key="frame" x="20" y="11" width="350" height="76"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e8Y-6q-5Gw">
+                                                        <size key="itemSize" width="48" height="48"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0Aq-wF-soy">
+                                                            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="u3y-Yt-Ezf">
+                                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                            </collectionViewCellContentView>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recruitmentResultRow" textLabel="VyS-Ch-DYt" detailTextLabel="IQ6-7M-KNf" style="IBUITableViewCellStyleSubtitle" id="SYX-ge-3u4">
+                                        <rect key="frame" x="0.0" y="142.66666603088379" width="390" height="49.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SYX-ge-3u4" id="Rot-cl-3qy">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="49.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VyS-Ch-DYt">
+                                                    <rect key="frame" x="20" y="7.6666666666666643" width="30" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IQ6-7M-KNf">
+                                                    <rect key="frame" x="19.999999999999996" y="26.999999999999996" width="40.666666666666664" height="13.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZXf-Rc-26B"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="i9B-BK-1f8" firstAttribute="top" secondItem="KJr-gT-LfO" secondAttribute="topMargin" id="Fl0-j1-7ZL"/>
+                            <constraint firstItem="i9B-BK-1f8" firstAttribute="leading" secondItem="ZXf-Rc-26B" secondAttribute="leading" id="LAd-it-AoX"/>
+                            <constraint firstItem="ZXf-Rc-26B" firstAttribute="bottom" secondItem="i9B-BK-1f8" secondAttribute="bottom" id="YUS-iC-PYl"/>
+                            <constraint firstItem="i9B-BK-1f8" firstAttribute="trailing" secondItem="ZXf-Rc-26B" secondAttribute="trailing" id="x5v-xW-GrF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="公开招募" id="ydK-Pa-g12">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="MaG-c3-KrM">
+                            <connections>
+                                <segue destination="pGT-Bi-b6P" kind="show" identifier="chooseRecruitmentTags" id="gvz-VS-5m0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="i9B-BK-1f8" id="ltP-Vk-yZh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c0O-Ws-eL8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="400" y="564"/>
         </scene>
         <!--公开招募选择-->
         <scene sceneID="fnH-go-exl">
             <objects>
                 <tableViewController id="pGT-Bi-b6P" userLabel="公开招募选择" customClass="RecruitmentSelectionTableViewController" customModule="ArknightsNote" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="bgK-pX-O7d">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" id="bgK-pX-O7d">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recruitmentTagCategory" rowHeight="80" id="Mak-p9-TNn" customClass="RecruitmentSelectionTableViewCell" customModule="ArknightsNote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="80"/>
@@ -260,7 +349,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ktv-a8-YuT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1242" y="563"/>
+            <point key="canvasLocation" x="1258" y="564"/>
         </scene>
         <!--招募导航-->
         <scene sceneID="0SG-Sn-b0D">
@@ -274,7 +363,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ggy-fr-885" kind="relationship" relationship="rootViewController" id="uBm-FS-INp"/>
+                        <segue destination="yEN-la-i6X" kind="relationship" relationship="rootViewController" id="XZ3-xq-IuS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qma-OQ-SPf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -283,6 +372,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
