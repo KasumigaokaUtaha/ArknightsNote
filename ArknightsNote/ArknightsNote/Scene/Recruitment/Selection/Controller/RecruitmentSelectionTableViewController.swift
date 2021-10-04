@@ -19,19 +19,11 @@ class RecruitmentSelectionTableViewController: UITableViewController {
 
     var viewWillDisappearAction: (([String]) -> Void)?
 
-    // MARK: - Initializer
+    // MARK: - Configuration
     
-    func configure(recruitmentStore store: RecruitmentStore) {
+    func configure(recruitmentStore store: RecruitmentStore, selectedTags tags: [String]) {
         recruitmentStore = store
-    }
-
-    // MARK: - Actions
-    
-    func tagButtonTapped(_ sender: UIButton) {
-        // check if the tag of the tapped button can be found in the selectedTags variable
-        // if yes, then we can set the tapped button back to normal state instead of tapped state
-        // (indicated by another background color) and remove the represented tag from the variable selectedTags.
-        // otherwise, change button state to tapped and add the represented tag to selectedTags
+        selectedTags = tags
     }
 
     // MARK: - View life cycle
@@ -75,6 +67,20 @@ class RecruitmentSelectionTableViewController: UITableViewController {
         return itemSize
     }
     
+    private func toggleSelected(for cell: RecruitmentTagCloudCollectionViewCell) {
+        guard let tag = cell.tagLabel.text else { return }
+        
+        if !selectedTags.contains(tag) {
+            // didSelectItem
+            cell.backgroundColor = .systemBlue
+            selectedTags.append(tag)
+        } else {
+            // didDeselectItem
+            cell.backgroundColor = .lightGray
+            let index = selectedTags.firstIndex(of: tag)!
+            selectedTags.remove(at: index)
+        }
+    }
 }
 
 // MARK: - Table View Data Source & Delegate
@@ -102,7 +108,6 @@ extension RecruitmentSelectionTableViewController {
         default:
             return nil
         }
-        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -137,12 +142,9 @@ extension RecruitmentSelectionTableViewController {
 // MARK: - Collection View Data Source & Flow Layout Delegate
 extension RecruitmentSelectionTableViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard
-            let indexPath = collectionViewIndexPaths[collectionView],
-            let tagCategory = RecruitmentStore.Category(rawValue: indexPath.section)
-        else {
-            return 0
-        }
+        guard let indexPath = collectionViewIndexPaths[collectionView],
+              let tagCategory = RecruitmentStore.Category(rawValue: indexPath.section)
+        else { return 0 }
         
         return recruitmentStore.tagsOfCategory(tagCategory).count
     }
@@ -158,14 +160,19 @@ extension RecruitmentSelectionTableViewController: UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard
-            let cell = cell as? RecruitmentTagCloudCollectionViewCell,
-            let tags = collectionViewTags[collectionView]
-        else {
-            return
-        }
+        guard let cell = cell as? RecruitmentTagCloudCollectionViewCell,
+              let tags = collectionViewTags[collectionView]
+        else { return }
         
-        cell.tagLabel.text = tags[indexPath.row]
+        let tag = tags[indexPath.item]
+        cell.tagLabel.text = tag
+        // restore selected cell
+        guard let index = selectedTags.firstIndex(of: tag) else { return }
+        selectedTags.remove(at: index)
+        // necessary to enable the deselection, see https://stackoverflow.com/a/31387259
+        cell.isSelected = true
+        toggleSelected(for: cell)
+        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
@@ -174,28 +181,20 @@ extension RecruitmentSelectionTableViewController: UICollectionViewDataSource, U
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? RecruitmentTagCloudCollectionViewCell else { return }
-        
-        cell.backgroundColor = .systemBlue
-        
-        guard let tag = cell.tagLabel.text, !selectedTags.contains(tag) else { return }
-        
-        selectedTags.append(tag)
+
+        toggleSelected(for: cell)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? RecruitmentTagCloudCollectionViewCell else { return }
         
-        cell.backgroundColor = .lightGray
-        
-        guard let tag = cell.tagLabel.text, let index = selectedTags.firstIndex(of: tag) else { return }
-        
-        selectedTags.remove(at: index)
+        toggleSelected(for: cell)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let tags = collectionViewTags[collectionView] else { return .zero }
         
-        let tag = tags[indexPath.row]
+        let tag = tags[indexPath.item]
         return computeItemSize(tag)
     }
 }

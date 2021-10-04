@@ -20,8 +20,11 @@ class RecruitmentTableViewController: UITableViewController {
     }
     private let logicController = RecruitmentLogicController()
     private let recruitmentStore = RecruitmentStore()
-    private var selectedTags: [String]! = nil
+    private var selectedTags: [String] = []
     private var recruitmentResults = [[String]: [Character]]()
+    private var recruitmentResultTags: [[String]] {
+        return recruitmentResults.keys.map { $0 }
+    }
     private var recruitmentChars: [Character] {
         recruitmentResults.values.flatMap { element in
             return element
@@ -48,8 +51,8 @@ class RecruitmentTableViewController: UITableViewController {
         case .presentChosenTags:
             return 1
         case .recruitmentResults:
-//            return recruitmentResults.keys.count
-            return recruitmentChars.count
+            return recruitmentResults.keys.count
+//            return recruitmentChars.count
         case .none:
             fatalError("Invalid section")
         }
@@ -103,9 +106,12 @@ extension RecruitmentTableViewController {
             return tableView.dequeueReusableCell(withIdentifier: "displaySelectedTags", for: indexPath)
         case .recruitmentResults:
             let resultCell = tableView.dequeueReusableCell(withIdentifier: "recruitmentResultRow", for: indexPath)
-            resultCell.textLabel?.text = recruitmentChars[indexPath.row].name
-            resultCell.detailTextLabel?.text = String(describing: recruitmentChars[indexPath.row].rarity)
-            
+//            resultCell.textLabel?.text = recruitmentChars[indexPath.row].name
+//            resultCell.detailTextLabel?.text = String(describing: recruitmentChars[indexPath.row].rarity)
+            let resultTags = recruitmentResultTags[indexPath.row]
+            resultCell.textLabel?.text = resultTags.joined(separator: ", ")
+            let resultChars = recruitmentResults[resultTags]
+            resultCell.detailTextLabel?.text = (resultChars?.map { $0.name })?.joined(separator: ", ")
             return resultCell
         case .none:
             fatalError("Invalid section")
@@ -120,7 +126,7 @@ extension RecruitmentTableViewController {
         case "chooseRecruitmentTags":
             guard let destination = segue.destination as? RecruitmentSelectionTableViewController else { return }
             
-            destination.configure(recruitmentStore: recruitmentStore)
+            destination.configure(recruitmentStore: recruitmentStore, selectedTags: selectedTags)
             destination.viewWillDisappearAction = { data in
                 self.setSelectedTags(data)
             }
