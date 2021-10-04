@@ -34,7 +34,7 @@ class RecruitmentLogicController {
 
             for tag in tagList {
                 var chars = tagToChars[tag] ?? [Character]()
-                chars.append(character)
+                if !chars.contains(character) { chars.append(character) }
                 tagToChars.updateValue(chars, forKey: tag)
             }
         }
