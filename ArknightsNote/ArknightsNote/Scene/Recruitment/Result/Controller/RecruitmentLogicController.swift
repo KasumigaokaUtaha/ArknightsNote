@@ -51,7 +51,7 @@ class RecruitmentLogicController {
     
     // MARK: - Logic
 
-    func computeCharactersWithCombinationsOf(tags chosenTags: [String], maxTagsCount: Int = 4) -> [[String]: [Character]] {
+    func computeCharactersWith(tags chosenTags: [String], maxTagsCount: Int = 4) -> [[String]: [Character]] {
         var result = [[String]: [Character]]()
         
         var currentTagsToChars = [[String]: [Character]]()

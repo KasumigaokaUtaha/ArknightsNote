@@ -23,14 +23,10 @@ class RecruitmentTableViewController: UIViewController {
     private let recruitmentStore = RecruitmentStore()
     private var selectedTags: [String] = []
     private var recruitmentResults = [[String]: [Character]]()
-    private var recruitmentResultTags: [[String]] {
-        return recruitmentResults.keys.map { $0 }
-    }
-    private var recruitmentChars: [Character] {
-        recruitmentResults.values.flatMap { element in
-            return element
-        }
-    }
+    private var recruitmentResultTags = [[String]]()
+//    private var recruitmentChars: [Character] {
+//        recruitmentResults.values.flatMap { $0 }
+//    }
 
     override func viewDidLoad() {
         tableView.delegate = self
@@ -62,11 +58,49 @@ class RecruitmentTableViewController: UIViewController {
         selectedTags = tags
         
         DispatchQueue.global().async {
-            self.recruitmentResults = self.logicController.computeCharactersWithCombinationsOf(tags: tags)
-            print(self.recruitmentResults)
+            var results = self.logicController.computeCharactersWith(tags: tags)
+            results.keys.forEach { key in
+                results.updateValue(self.sortedCharacters(results[key]!), forKey: key)
+            }
+            self.recruitmentResults = results
+            self.recruitmentResultTags = self.sortedTags(results.keys.map({ $0 }))
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+        }
+    }
+    
+    // MARK: - Utilities
+    private func sortedCharacters(_ chars: [Character]) -> [Character] {
+        return chars.sorted(by: { $0.rarity >= $1.rarity })
+    }
+    
+    private func sortedTags(_ tags: [[String]]) -> [[String]] {
+        return tags.sorted(by: {
+            let maxTagRarityInFirst = $0.filter({ recruitmentStore.tagsOfCategory(.seniority).contains($0) }).map({ $0.count }).max()
+            let maxTagRarityInSecond = $1.filter({ recruitmentStore.tagsOfCategory(.seniority).contains($0) }).map({ $0.count }).max()
+            if maxTagRarityInFirst != nil && maxTagRarityInSecond == nil {
+                return true
+            } else if maxTagRarityInFirst == nil && maxTagRarityInSecond != nil {
+                return false
+            } else if maxTagRarityInFirst != nil && maxTagRarityInSecond != nil {
+                return maxTagRarityInFirst! >= maxTagRarityInSecond!
+            }
+            if $0.count != $1.count {
+                let less: [String] = $0.count < $1.count ? $0 : $1
+                let more: [String] = $0.count < $1.count ? $1 : $0
+                let maxRarityInLess = recruitmentResults[less]!.map({ $0.rarity }).max()!
+                let maxRarityInMore = recruitmentResults[more]!.map({ $0.rarity }).max()!
+                return maxRarityInLess >= maxRarityInMore
+            } else {
+                let maxRarityInFirst = recruitmentResults[$0]!.map({ $0.rarity }).max()!
+                let maxRarityInSecond = recruitmentResults[$1]!.map({ $0.rarity }).max()!
+                return maxRarityInFirst >= maxRarityInSecond
+            }
+        }).map {
+            $0.sorted(by: {
+                $0.count <= $1.count
+            })
         }
     }
 
