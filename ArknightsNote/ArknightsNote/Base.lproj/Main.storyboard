@@ -345,7 +345,7 @@
                             <outlet property="delegate" destination="pGT-Bi-b6P" id="Kss-qU-q61"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="招募需求" largeTitleDisplayMode="never" id="n3z-uG-Cvd"/>
+                    <navigationItem key="navigationItem" title="招募需求" id="n3z-uG-Cvd"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ktv-a8-YuT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
