@@ -7,8 +7,10 @@
 
 import UIKit
 
-class RecruitmentSelectionTableViewController: UITableViewController {
+class RecruitmentSelectionTableViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+
     // MARK: - Properties
 
     private var selectedTags: [String] = [] // store selected tags
@@ -31,6 +33,8 @@ class RecruitmentSelectionTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
         // Uncomment the following line to preserve selection between presentations
@@ -42,7 +46,6 @@ class RecruitmentSelectionTableViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        print("viewWillDisappear")
         viewWillDisappearAction?(selectedTags)
 //        guard let parentVC = presentingViewController as? RecruitmentTableViewController else { return }
 //        parentVC.setSelectedTags(selectedTags)
@@ -51,10 +54,12 @@ class RecruitmentSelectionTableViewController: UITableViewController {
     // MARK: - Layout actions
     // See https://stackoverflow.com/a/64390373
     private func updateRowHeight() {
-        // TODO disable animation
         DispatchQueue.main.async {
-            self.tableView.beginUpdates()
-            self.tableView.endUpdates()
+            // Disable animation
+            UIView.performWithoutAnimation {
+                self.tableView.beginUpdates()
+                self.tableView.endUpdates()
+            }
         }
     }
     
@@ -83,19 +88,19 @@ class RecruitmentSelectionTableViewController: UITableViewController {
     }
 }
 
-// MARK: - Table View Data Source & Delegate
-extension RecruitmentSelectionTableViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
+// MARK: - Table View Data Source
+extension RecruitmentSelectionTableViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // Each category case occupies one section
         return self.recruitmentStore.numberOfCategoryCases()
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Each category case uses one row in each section
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch RecruitmentStore.Category(rawValue: section) {
         case .seniority:
             return "资质"
@@ -110,13 +115,16 @@ extension RecruitmentSelectionTableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recruitmentTagCategory", for: indexPath)
 
         return cell
     }
+}
 
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+// MARK: - Table View Delegate
+extension RecruitmentSelectionTableViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard
             let cell = cell as? RecruitmentSelectionTableViewCell,
             let collectionView = cell.getCollectionView() as? RecruitmentTagCollectionView,
