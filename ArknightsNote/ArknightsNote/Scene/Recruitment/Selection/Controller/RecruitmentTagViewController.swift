@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecruitmentSelectionTableViewController: UIViewController {
+class RecruitmentTagViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -63,7 +63,7 @@ class RecruitmentSelectionTableViewController: UIViewController {
         }
     }
     
-    // MARK: - Utility functions
+    // MARK: - Utilities
     private func computeItemSize(_ item: String) -> CGSize {
         var itemSize = item.size(withAttributes: [.font: UIFont.preferredFont(forTextStyle: .body)])
         itemSize.width += itemSize.height
@@ -89,7 +89,7 @@ class RecruitmentSelectionTableViewController: UIViewController {
 }
 
 // MARK: - Table View Data Source
-extension RecruitmentSelectionTableViewController: UITableViewDataSource {
+extension RecruitmentTagViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         // Each category case occupies one section
         return self.recruitmentStore.numberOfCategoryCases()
@@ -123,7 +123,7 @@ extension RecruitmentSelectionTableViewController: UITableViewDataSource {
 }
 
 // MARK: - Table View Delegate
-extension RecruitmentSelectionTableViewController: UITableViewDelegate {
+extension RecruitmentTagViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard
             let cell = cell as? RecruitmentSelectionTableViewCell,
@@ -148,7 +148,7 @@ extension RecruitmentSelectionTableViewController: UITableViewDelegate {
 }
 
 // MARK: - Collection View Data Source & Flow Layout Delegate
-extension RecruitmentSelectionTableViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension RecruitmentTagViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let indexPath = collectionViewIndexPaths[collectionView],
               let tagCategory = RecruitmentStore.Category(rawValue: indexPath.section)

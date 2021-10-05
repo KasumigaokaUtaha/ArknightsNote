@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecruitmentTableViewController: UIViewController {
+class RecruitmentViewController: UIViewController {
     
     enum Section: Int, CaseIterable {
         case presentChosenTags
@@ -15,6 +15,7 @@ class RecruitmentTableViewController: UIViewController {
     }
     
     @IBOutlet weak var tableView: UITableView!
+    weak var collectionView: UICollectionView!
 
     private var numberOfSections: Int {
         Section.allCases.count
@@ -73,7 +74,24 @@ class RecruitmentTableViewController: UIViewController {
         }
     }
     
+    // MARK: - Layout Actions
+    private func updateRowHeight() {
+        DispatchQueue.main.async {
+            UIView.performWithoutAnimation {
+                self.tableView.beginUpdates()
+                self.tableView.endUpdates()
+            }
+        }
+    }
+    
     // MARK: - Utilities
+    private func computeItemSize(_ item: String) -> CGSize {
+        var itemSize = item.size(withAttributes: [.font: UIFont.preferredFont(forTextStyle: .body)])
+        itemSize.width += itemSize.height
+        itemSize.height += itemSize.height / 2
+        
+        return itemSize
+    }
     private func sortedCharacters(_ chars: [Character]) -> [Character] {
         return chars.sorted(by: { $0.rarity >= $1.rarity })
     }
@@ -110,7 +128,7 @@ class RecruitmentTableViewController: UIViewController {
 }
 
 // MARK: - Table View Data Source
-extension RecruitmentTableViewController: UITableViewDataSource {
+extension RecruitmentViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return numberOfSections
@@ -133,7 +151,7 @@ extension RecruitmentTableViewController: UITableViewDataSource {
 }
 
 // MARK: - Table View Delegate
-extension RecruitmentTableViewController: UITableViewDelegate {
+extension RecruitmentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch Section(rawValue: indexPath.section) {
         case .presentChosenTags:
@@ -151,13 +169,58 @@ extension RecruitmentTableViewController: UITableViewDelegate {
             fatalError("Invalid section")
         }
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? RecruitmentResultTableViewCell,
+              let collectionView = cell.collectionView as? RecruitmentTagCollectionView
+        else { return }
+        
+        collectionView.didLayoutAction = updateRowHeight
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.reloadData()
+        cell.layoutIfNeeded()
+        self.collectionView = collectionView
+    }
 }
 
-extension RecruitmentTableViewController {
+extension RecruitmentViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return selectedTags.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recruitmentTag", for: indexPath) as! RecruitmentTagCloudCollectionViewCell
+        
+        cell.backgroundColor = .systemBlue
+        cell.tagLabel.textColor = .white
+        cell.layer.cornerRadius = 6
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? RecruitmentTagCloudCollectionViewCell,
+              indexPath.item < selectedTags.count
+        else { return }
+        
+        cell.tagLabel.text = selectedTags[indexPath.item]
+    }
+}
+
+extension RecruitmentViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard indexPath.item < selectedTags.count else { return .zero }
+        
+        return computeItemSize(selectedTags[indexPath.item])
+    }
+}
+
+extension RecruitmentViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "chooseRecruitmentTags":
-            guard let destination = segue.destination as? RecruitmentSelectionTableViewController else { return }
+            guard let destination = segue.destination as? RecruitmentTagViewController else { return }
             
             destination.configure(recruitmentStore: recruitmentStore, selectedTags: selectedTags)
             destination.viewWillDisappearAction = { data in

@@ -98,7 +98,7 @@
         <!--公开招募-->
         <scene sceneID="RVf-ST-4cQ">
             <objects>
-                <viewController id="yEN-la-i6X" customClass="RecruitmentTableViewController" customModule="ArknightsNote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yEN-la-i6X" customClass="RecruitmentViewController" customModule="ArknightsNote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KJr-gT-LfO">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,16 +106,15 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="i9B-BK-1f8">
                                 <rect key="frame" x="0.0" y="88" width="390" height="673"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="displaySelectedTags" rowHeight="98" id="qgb-Bm-TP2">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="displaySelectedTags" rowHeight="98" id="qgb-Bm-TP2" customClass="RecruitmentResultTableViewCell" customModule="ArknightsNote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qgb-Bm-TP2" id="T4Q-lO-FV1">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ssp-4d-FnC">
-                                                    <rect key="frame" x="20" y="11" width="350" height="76"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ssp-4d-FnC" customClass="RecruitmentTagCollectionView" customModule="ArknightsNote" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="0.0" width="374" height="98"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e8Y-6q-5Gw">
                                                         <size key="itemSize" width="48" height="48"/>
@@ -124,7 +123,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0Aq-wF-soy">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recruitmentTag" id="0Aq-wF-soy" customClass="RecruitmentTagCloudCollectionViewCell" customModule="ArknightsNote" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="u3y-Yt-Ezf">
@@ -135,7 +134,16 @@
                                                     </cells>
                                                 </collectionView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ssp-4d-FnC" firstAttribute="top" secondItem="T4Q-lO-FV1" secondAttribute="top" id="43N-Os-ZTL"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ssp-4d-FnC" secondAttribute="trailing" constant="8" id="CF3-rk-RF1"/>
+                                                <constraint firstItem="Ssp-4d-FnC" firstAttribute="leading" secondItem="T4Q-lO-FV1" secondAttribute="leading" constant="8" id="OJK-4z-dWd"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ssp-4d-FnC" secondAttribute="bottom" id="pBE-DV-8vc"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="collectionView" destination="Ssp-4d-FnC" id="K85-aq-hxS"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recruitmentResultRow" textLabel="VyS-Ch-DYt" detailTextLabel="IQ6-7M-KNf" style="IBUITableViewCellStyleSubtitle" id="SYX-ge-3u4">
                                         <rect key="frame" x="0.0" y="142.66666603088379" width="390" height="49.666667938232422"/>
@@ -188,16 +196,16 @@
             </objects>
             <point key="canvasLocation" x="378" y="564"/>
         </scene>
-        <!--Recruitment Selection Table View Controller-->
+        <!--Recruitment Tag View Controller-->
         <scene sceneID="kYj-wC-VhX">
             <objects>
-                <viewController id="VQl-Vf-crg" customClass="RecruitmentSelectionTableViewController" customModule="ArknightsNote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VQl-Vf-crg" customClass="RecruitmentTagViewController" customModule="ArknightsNote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AFT-tD-IrT">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8jZ-SX-ZR3">
-                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
+                                <rect key="frame" x="0.0" y="140" width="390" height="621"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recruitmentTagCategory" rowHeight="80" id="7hU-cj-htj" customClass="RecruitmentSelectionTableViewCell" customModule="ArknightsNote" customModuleProvider="target">
@@ -251,7 +259,7 @@
                             <constraint firstItem="lSn-ZV-8zw" firstAttribute="trailing" secondItem="8jZ-SX-ZR3" secondAttribute="trailing" id="rs9-Ul-ebI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Z1k-6h-9MM"/>
+                    <navigationItem key="navigationItem" id="Z1k-6h-9MM"/>
                     <connections>
                         <outlet property="tableView" destination="8jZ-SX-ZR3" id="Wuu-J4-wGW"/>
                     </connections>
