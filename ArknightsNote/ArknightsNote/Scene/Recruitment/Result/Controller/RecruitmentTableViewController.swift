@@ -58,9 +58,12 @@ class RecruitmentTableViewController: UIViewController {
         selectedTags = tags
         
         DispatchQueue.global().async {
-            var results = self.logicController.computeCharactersWith(tags: tags)
-            results.keys.forEach { key in
-                results.updateValue(self.sortedCharacters(results[key]!), forKey: key)
+            var results = [[String] : [Character]]()
+            for (key, value) in self.logicController.computeCharactersWith(tags: tags) {
+                results.updateValue(
+                    self.sortedCharacters(value),
+                    forKey: key.sorted(by: { $0 <= $1 })
+                )
             }
             self.recruitmentResults = results
             self.recruitmentResultTags = self.sortedTags(results.keys.map({ $0 }))
@@ -99,7 +102,7 @@ class RecruitmentTableViewController: UIViewController {
             }
         }).map {
             $0.sorted(by: {
-                $0.count <= $1.count
+                $0 <= $1
             })
         }
     }
