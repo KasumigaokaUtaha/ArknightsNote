@@ -30,6 +30,8 @@ class RecruitmentViewController: UIViewController {
 //    }
 
     override func viewDidLoad() {
+        super.viewDidLoad()
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
@@ -39,6 +41,10 @@ class RecruitmentViewController: UIViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        if #available(iOS 14, *) {} else {
+            preventLargeTitleCollapsing()
+        }
     }
     
     // MARK: - Internal
@@ -82,6 +88,13 @@ class RecruitmentViewController: UIViewController {
                 self.tableView.endUpdates()
             }
         }
+    }
+    
+    // See https://stackoverflow.com/a/66504612
+    private func preventLargeTitleCollapsing() {
+        let dummyView = UIView()
+        view.addSubview(dummyView)
+        view.sendSubviewToBack(dummyView)
     }
     
     // MARK: - Utilities
