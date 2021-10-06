@@ -9,25 +9,36 @@ import UIKit
 
 class RecruitmentViewController: UIViewController {
     
-    enum Section: Int, CaseIterable {
-        case presentChosenTags
-        case recruitmentResults
+    struct Section {
+        let name: String
+        let numberOfRows: Int?
+        let cellIdentifier: String?
+    }
+    
+    enum State {
+        case initial
+        case showResults
     }
     
     @IBOutlet weak var tableView: UITableView!
     weak var collectionView: UICollectionView!
 
-    private var numberOfSections: Int {
-        Section.allCases.count
+    private var state: State = .initial
+    private var selectedTags: [String] = [] {
+        didSet {
+            self.state = self.selectedTags.count == 0 ? .initial : .showResults
+//            DispatchQueue.main.async {
+//                self.tableView.beginUpdates()
+//                self.state = self.selectedTags.count == 0 ? .initial : .showResults
+//                self.tableView.endUpdates()
+//            }
+        }
     }
+    
     private let logicController = RecruitmentLogicController()
     private let recruitmentStore = RecruitmentStore()
-    private var selectedTags: [String] = []
     private var recruitmentResults = [[String]: [Character]]()
     private var recruitmentResultTags = [[String]]()
-//    private var recruitmentChars: [Character] {
-//        recruitmentResults.values.flatMap { $0 }
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,19 +58,6 @@ class RecruitmentViewController: UIViewController {
         }
     }
     
-    // MARK: - Internal
-    func numberOfRows(in section: Int) -> Int {
-        switch Section(rawValue: section) {
-        case .presentChosenTags:
-            return 1
-        case .recruitmentResults:
-            return recruitmentResults.keys.count
-//            return recruitmentChars.count
-        case .none:
-            fatalError("Invalid section")
-        }
-    }
-
     // MARK: - Actions
     func setSelectedTags(_ tags: [String]) {
         selectedTags = tags
@@ -105,6 +103,7 @@ class RecruitmentViewController: UIViewController {
         
         return itemSize
     }
+
     private func sortedCharacters(_ chars: [Character]) -> [Character] {
         return chars.sorted(by: { $0.rarity >= $1.rarity })
     }
@@ -142,58 +141,61 @@ class RecruitmentViewController: UIViewController {
 
 // MARK: - Table View Data Source
 extension RecruitmentViewController: UITableViewDataSource {
+    func sections(for state: State) -> [Section] {
+        switch state {
+        case .initial:
+            return [Section(name: "招募结果", numberOfRows: nil, cellIdentifier: "recruitmentResultRow")]
+        case .showResults:
+            return [Section(name: "招募需求", numberOfRows: 1, cellIdentifier: "displaySelectedTags"), Section(name: "招募结果", numberOfRows: nil, cellIdentifier: "recruitmentResultRow")]
+        }
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return numberOfSections
+        return sections(for: state).count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfRows(in: section)
+        guard sections(for: state).count > section else { return 0 }
+        
+        return sections(for: state)[section].numberOfRows ?? recruitmentResults.keys.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch Section(rawValue: section) {
-        case .presentChosenTags:
-            return "招募需求"
-        case .recruitmentResults:
-            return "招募结果"
-        case .none:
-            fatalError("Invalid section")
-        }
+        return sections(for: state)[section].name
     }
 }
 
 // MARK: - Table View Delegate
 extension RecruitmentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch Section(rawValue: indexPath.section) {
-        case .presentChosenTags:
-            return tableView.dequeueReusableCell(withIdentifier: "displaySelectedTags", for: indexPath)
-        case .recruitmentResults:
-            let resultCell = tableView.dequeueReusableCell(withIdentifier: "recruitmentResultRow", for: indexPath)
-//            resultCell.textLabel?.text = recruitmentChars[indexPath.row].name
-//            resultCell.detailTextLabel?.text = String(describing: recruitmentChars[indexPath.row].rarity)
-            let resultTags = recruitmentResultTags[indexPath.row]
-            resultCell.textLabel?.text = resultTags.joined(separator: ", ")
-            let resultChars = recruitmentResults[resultTags]
-            resultCell.detailTextLabel?.text = (resultChars?.map { $0.name })?.joined(separator: ", ")
-            return resultCell
-        case .none:
-            fatalError("Invalid section")
+        guard let cellIdentifier = sections(for: state)[indexPath.section].cellIdentifier else {
+            return UITableViewCell()
         }
+        
+        return tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = cell as? RecruitmentResultTableViewCell,
-              let collectionView = cell.collectionView as? RecruitmentTagCollectionView
-        else { return }
-        
-        collectionView.didLayoutAction = updateRowHeight
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.reloadData()
-        cell.layoutIfNeeded()
-        self.collectionView = collectionView
+        switch sections(for: state)[indexPath.section].cellIdentifier {
+        case "displaySelectedTags":
+            guard let cell = cell as? RecruitmentResultTableViewCell,
+                  let collectionView = cell.collectionView as? RecruitmentTagCollectionView
+            else { return }
+            
+            collectionView.didLayoutAction = updateRowHeight
+            collectionView.delegate = self
+            collectionView.dataSource = self
+            collectionView.reloadData()
+            cell.layoutIfNeeded()
+            self.collectionView = collectionView
+        case "recruitmentResultRow":
+            let resultTags = recruitmentResultTags[indexPath.row]
+            cell.textLabel?.text = resultTags.joined(separator: ", ")
+            let resultChars = recruitmentResults[resultTags]
+            cell.detailTextLabel?.text = (resultChars?.map { $0.name })?.joined(separator: ", ")
+        default:
+            fatalError("tableView(_:willDisplay:forRowAt:) - Unknown cell identifier")
+        }
     }
 }
 
