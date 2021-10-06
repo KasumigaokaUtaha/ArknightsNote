@@ -53,7 +53,7 @@ class RecruitmentViewController: UIViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        if #available(iOS 14, *) {} else {
+        if #available(iOS 15, *) {} else {
             preventLargeTitleCollapsing()
         }
     }
