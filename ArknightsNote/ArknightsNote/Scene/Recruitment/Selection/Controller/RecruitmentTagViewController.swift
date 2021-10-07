@@ -37,6 +37,8 @@ class RecruitmentTagViewController: UIViewController {
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
+
+        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -137,6 +139,19 @@ extension RecruitmentTagViewController: UITableViewDelegate {
         collectionView.allowsMultipleSelection = true
         collectionView.dataSource = self
         collectionView.delegate = self
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "sectionHeader")
+        var content = header?.defaultContentConfiguration()
+        content?.text = self.tableView(tableView, titleForHeaderInSection: section)
+        
+        var backgroundConfig = UIBackgroundConfiguration.listPlainHeaderFooter()
+        backgroundConfig.backgroundColor = .white
+        
+        header?.contentConfiguration = content
+        header?.backgroundConfiguration = backgroundConfig
+        return header
     }
 }
 

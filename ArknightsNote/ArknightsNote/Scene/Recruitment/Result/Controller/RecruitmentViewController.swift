@@ -48,6 +48,8 @@ class RecruitmentViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 150
 
+        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
+
         if #available(iOS 15, *) {} else {
             preventLargeTitleCollapsing()
         }
@@ -190,6 +192,19 @@ extension RecruitmentViewController: UITableViewDelegate {
         default:
             fatalError("tableView(_:willDisplay:forRowAt:) - Unknown cell identifier")
         }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "sectionHeader")
+        var content = header?.defaultContentConfiguration()
+        content?.text = self.tableView(tableView, titleForHeaderInSection: section)
+
+        var backgroundConfig = UIBackgroundConfiguration.listPlainHeaderFooter()
+        backgroundConfig.backgroundColor = .white
+
+        header?.contentConfiguration = content
+        header?.backgroundConfiguration = backgroundConfig
+        return header
     }
 }
 
