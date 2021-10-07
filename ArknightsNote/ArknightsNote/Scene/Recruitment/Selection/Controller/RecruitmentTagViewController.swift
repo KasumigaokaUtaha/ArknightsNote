@@ -37,11 +37,6 @@ class RecruitmentTagViewController: UIViewController {
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -142,8 +137,6 @@ extension RecruitmentTagViewController: UITableViewDelegate {
         collectionView.allowsMultipleSelection = true
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.reloadData()
-        cell.layoutIfNeeded()
     }
 }
 

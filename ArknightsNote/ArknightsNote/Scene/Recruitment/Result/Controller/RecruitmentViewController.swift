@@ -47,12 +47,7 @@ class RecruitmentViewController: UIViewController {
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 150
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
         if #available(iOS 15, *) {} else {
             preventLargeTitleCollapsing()
         }
@@ -185,8 +180,7 @@ extension RecruitmentViewController: UITableViewDelegate {
             collectionView.didLayoutAction = updateRowHeight
             collectionView.delegate = self
             collectionView.dataSource = self
-            collectionView.reloadData()
-            cell.layoutIfNeeded()
+
             self.collectionView = collectionView
         case "recruitmentResultRow":
             let resultTags = recruitmentResultTags[indexPath.row]
