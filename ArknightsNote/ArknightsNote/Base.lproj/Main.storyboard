@@ -114,7 +114,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ssp-4d-FnC" customClass="RecruitmentTagCollectionView" customModule="ArknightsNote" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="0.0" width="374" height="98"/>
+                                                    <rect key="frame" x="20" y="0.0" width="362" height="98"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e8Y-6q-5Gw">
                                                         <size key="itemSize" width="48" height="48"/>
@@ -136,8 +136,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Ssp-4d-FnC" firstAttribute="top" secondItem="T4Q-lO-FV1" secondAttribute="top" id="43N-Os-ZTL"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ssp-4d-FnC" secondAttribute="trailing" constant="8" id="CF3-rk-RF1"/>
-                                                <constraint firstItem="Ssp-4d-FnC" firstAttribute="leading" secondItem="T4Q-lO-FV1" secondAttribute="leading" constant="8" id="OJK-4z-dWd"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ssp-4d-FnC" secondAttribute="trailingMargin" constant="16" id="CF3-rk-RF1"/>
+                                                <constraint firstItem="Ssp-4d-FnC" firstAttribute="leading" secondItem="T4Q-lO-FV1" secondAttribute="leadingMargin" id="OJK-4z-dWd"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ssp-4d-FnC" secondAttribute="bottom" id="pBE-DV-8vc"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -164,6 +164,23 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sectionHeader" textLabel="JBa-cZ-5w3" style="IBUITableViewCellStyleDefault" id="ZYV-5W-u2i">
+                                        <rect key="frame" x="0.0" y="192.33333396911621" width="390" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZYV-5W-u2i" id="cHJ-OR-1c9">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JBa-cZ-5w3">
+                                                    <rect key="frame" x="20" y="0.0" width="350" height="43.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <color key="textColor" red="0.54106599089999996" green="0.54091459509999995" blue="0.55742758510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -216,7 +233,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gfz-Yk-Kbo" customClass="RecruitmentTagCollectionView" customModule="ArknightsNote" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="0.0" width="374" height="80"/>
+                                                    <rect key="frame" x="20" y="0.0" width="362" height="80"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pDv-Ze-Hi5">
                                                         <size key="itemSize" width="48" height="48"/>
@@ -237,10 +254,10 @@
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Gfz-Yk-Kbo" secondAttribute="trailing" constant="8" id="DRj-wn-jBY"/>
+                                                <constraint firstAttribute="trailing" secondItem="Gfz-Yk-Kbo" secondAttribute="trailingMargin" constant="16" id="DRj-wn-jBY"/>
                                                 <constraint firstAttribute="bottom" secondItem="Gfz-Yk-Kbo" secondAttribute="bottom" id="Pbc-Li-6lC"/>
                                                 <constraint firstItem="Gfz-Yk-Kbo" firstAttribute="top" secondItem="CaF-gQ-OcX" secondAttribute="top" id="igo-fV-Rcz"/>
-                                                <constraint firstItem="Gfz-Yk-Kbo" firstAttribute="leading" secondItem="CaF-gQ-OcX" secondAttribute="leading" constant="8" id="uqK-1v-XKL"/>
+                                                <constraint firstItem="Gfz-Yk-Kbo" firstAttribute="leading" secondItem="CaF-gQ-OcX" secondAttribute="leadingMargin" id="uqK-1v-XKL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
