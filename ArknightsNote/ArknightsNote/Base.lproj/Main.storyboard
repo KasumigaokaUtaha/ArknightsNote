@@ -20,7 +20,7 @@
                         <viewLayoutGuide key="safeArea" id="22n-tY-n8v"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="设置" id="eE8-Ac-pKh"/>
+                    <tabBarItem key="tabBarItem" title="设置" image="gear" catalog="system" id="eE8-Ac-pKh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HHX-AS-vK3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -36,7 +36,7 @@
                         <viewLayoutGuide key="safeArea" id="k16-nl-1Nj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="角色" id="aks-jC-39K"/>
+                    <tabBarItem key="tabBarItem" title="角色" image="rectangle.stack.person.crop" catalog="system" id="aks-jC-39K"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wfq-Y9-AYl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -52,7 +52,7 @@
                         <viewLayoutGuide key="safeArea" id="IGV-sg-bIL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="工具" id="fzK-Kf-AEr"/>
+                    <tabBarItem key="tabBarItem" title="工具" image="archivebox" catalog="system" id="fzK-Kf-AEr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HmA-6y-ps3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -68,7 +68,7 @@
                         <viewLayoutGuide key="safeArea" id="xId-4U-HJb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="首页" id="vaS-fF-8uB"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="mail" catalog="system" id="vaS-fF-8uB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0sM-4P-mET" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -153,14 +153,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VyS-Ch-DYt">
-                                                    <rect key="frame" x="20" y="7.6666666666666643" width="30" height="17"/>
+                                                    <rect key="frame" x="20" y="7.9999999999999982" width="35" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IQ6-7M-KNf">
-                                                    <rect key="frame" x="19.999999999999996" y="26.999999999999996" width="40.666666666666664" height="13.333333333333334"/>
+                                                    <rect key="frame" x="19.999999999999996" y="28.333333333333332" width="43.666666666666664" height="14.333333333333334"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <nil key="textColor"/>
@@ -272,7 +272,7 @@
         <scene sceneID="0SG-Sn-b0D">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DEA-oU-wIO" userLabel="招募导航" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="招募" id="tV7-Nf-WdA"/>
+                    <tabBarItem key="tabBarItem" title="招募" image="shippingbox" catalog="system" id="tV7-Nf-WdA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="maL-Bp-yJr">
                         <rect key="frame" x="0.0" y="44" width="390" height="96"/>
@@ -289,6 +289,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="archivebox" catalog="system" width="128" height="106"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="mail" catalog="system" width="128" height="93"/>
+        <image name="rectangle.stack.person.crop" catalog="system" width="128" height="122"/>
+        <image name="shippingbox" catalog="system" width="128" height="124"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
