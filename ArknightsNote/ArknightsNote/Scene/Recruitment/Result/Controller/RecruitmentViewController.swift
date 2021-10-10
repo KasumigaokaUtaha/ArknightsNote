@@ -182,6 +182,7 @@ extension RecruitmentViewController: UITableViewDelegate {
             collectionView.didLayoutAction = updateRowHeight
             collectionView.delegate = self
             collectionView.dataSource = self
+            collectionView.reloadData()
 
             self.collectionView = collectionView
         case "recruitmentResultRow":
