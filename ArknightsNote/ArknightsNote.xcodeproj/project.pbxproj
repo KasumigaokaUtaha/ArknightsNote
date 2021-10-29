@@ -7,7 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		620D69D1271349830018F117 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 620D69D0271349830018F117 /* Logging */; };
+		620D69D3271349BB0018F117 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620D69D2271349BB0018F117 /* Log.swift */; };
+		620D69D6271429370018F117 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620D69D5271429370018F117 /* HomeViewController.swift */; };
+		620D69DB27142CB80018F117 /* HomeMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620D69DA27142CB80018F117 /* HomeMessageCell.swift */; };
+		620D69DD27146BEF0018F117 /* MessageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620D69DC27146BEF0018F117 /* MessageStore.swift */; };
+		620D69DF27146CE30018F117 /* WeiboMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620D69DE27146CE30018F117 /* WeiboMessage.swift */; };
+		623645E127155B13000EA644 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623645E027155B13000EA644 /* Network.swift */; };
+		623645E32717748C000EA644 /* WeiboService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623645E22717748C000EA644 /* WeiboService.swift */; };
 		6237F70426E9F12D0064A2DA /* RecruitmentTagCloudLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6237F70326E9F12D0064A2DA /* RecruitmentTagCloudLayout.swift */; };
+		624ED2132718BE8E00BF2D9F /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 624ED2122718BE8E00BF2D9F /* Kanna */; };
 		6258A0E826C6733300CDA04A /* RecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0E726C6733300CDA04A /* RecruitmentViewController.swift */; };
 		6258A0EA26C6734E00CDA04A /* RecruitmentLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0E926C6734E00CDA04A /* RecruitmentLogicController.swift */; };
 		6258A0EF26C674BB00CDA04A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0EE26C674BB00CDA04A /* Character.swift */; };
@@ -17,6 +26,7 @@
 		6258A0F826C83DAF00CDA04A /* RecruitmentTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0F726C83DAF00CDA04A /* RecruitmentTagViewController.swift */; };
 		62607B0A26C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62607B0926C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift */; };
 		62607B0F26C9B4DA00112C90 /* RecruitmentTagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62607B0E26C9B4DA00112C90 /* RecruitmentTagCollectionView.swift */; };
+		627A3D8C2714944000D56876 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627A3D8B2714944000D56876 /* Defaults.swift */; };
 		6294747D26D92DC4008EAC69 /* RecruitmentTagCloudCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6294747C26D92DC4008EAC69 /* RecruitmentTagCloudCollectionViewCell.swift */; };
 		62A2D60B270CEE3900E89A6D /* RecruitmentResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2D60A270CEE3900E89A6D /* RecruitmentResultTableViewCell.swift */; };
 		62AEF78326C310DA00086004 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEF78226C310DA00086004 /* AppDelegate.swift */; };
@@ -47,6 +57,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		620D69D2271349BB0018F117 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		620D69D5271429370018F117 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		620D69DA27142CB80018F117 /* HomeMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMessageCell.swift; sourceTree = "<group>"; };
+		620D69DC27146BEF0018F117 /* MessageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStore.swift; sourceTree = "<group>"; };
+		620D69DE27146CE30018F117 /* WeiboMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboMessage.swift; sourceTree = "<group>"; };
+		623645E027155B13000EA644 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		623645E22717748C000EA644 /* WeiboService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboService.swift; sourceTree = "<group>"; };
 		6237F70326E9F12D0064A2DA /* RecruitmentTagCloudLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentTagCloudLayout.swift; sourceTree = "<group>"; };
 		6258A0E726C6733300CDA04A /* RecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentViewController.swift; sourceTree = "<group>"; };
 		6258A0E926C6734E00CDA04A /* RecruitmentLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentLogicController.swift; sourceTree = "<group>"; };
@@ -57,6 +74,7 @@
 		6258A0F726C83DAF00CDA04A /* RecruitmentTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentTagViewController.swift; sourceTree = "<group>"; };
 		62607B0926C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		62607B0E26C9B4DA00112C90 /* RecruitmentTagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentTagCollectionView.swift; sourceTree = "<group>"; };
+		627A3D8B2714944000D56876 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		6294747C26D92DC4008EAC69 /* RecruitmentTagCloudCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentTagCloudCollectionViewCell.swift; sourceTree = "<group>"; };
 		62A2D60A270CEE3900E89A6D /* RecruitmentResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentResultTableViewCell.swift; sourceTree = "<group>"; };
 		62AEF77F26C310DA00086004 /* ArknightsNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArknightsNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				624ED2132718BE8E00BF2D9F /* Kanna in Frameworks */,
+				620D69D1271349830018F117 /* Logging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,12 +118,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		620D69D42714291D0018F117 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				620D69D827142C960018F117 /* View */,
+				620D69D927142C9D0018F117 /* Controller */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		620D69D727142A600018F117 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				620D69D2271349BB0018F117 /* Log.swift */,
+				627A3D8B2714944000D56876 /* Defaults.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		620D69D827142C960018F117 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				620D69DA27142CB80018F117 /* HomeMessageCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		620D69D927142C9D0018F117 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				620D69D5271429370018F117 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		623645E427181A08000EA644 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				623645E027155B13000EA644 /* Network.swift */,
+				623645E22717748C000EA644 /* WeiboService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		6258A0EB26C6748200CDA04A /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				6258A0EE26C674BB00CDA04A /* Character.swift */,
 				6258A0F526C7CB5B00CDA04A /* CharacterStore.swift */,
 				6258A0F026C674FD00CDA04A /* RecruitmentStore.swift */,
+				620D69DC27146BEF0018F117 /* MessageStore.swift */,
+				620D69DE27146CE30018F117 /* WeiboMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,9 +222,11 @@
 		62AEF78126C310DA00086004 /* ArknightsNote */ = {
 			isa = PBXGroup;
 			children = (
-				6258A0F226C7C3C200CDA04A /* Resource */,
-				6258A0EB26C6748200CDA04A /* Model */,
 				62E3D557270599F200A3E412 /* Scene */,
+				6258A0EB26C6748200CDA04A /* Model */,
+				620D69D727142A600018F117 /* Utility */,
+				6258A0F226C7C3C200CDA04A /* Resource */,
+				623645E427181A08000EA644 /* Networking */,
 				62AEF78226C310DA00086004 /* AppDelegate.swift */,
 				62AEF78426C310DA00086004 /* SceneDelegate.swift */,
 				62AEF78626C310DA00086004 /* ViewController.swift */,
@@ -190,6 +257,7 @@
 		62E3D557270599F200A3E412 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				620D69D42714291D0018F117 /* Home */,
 				62E3D55827059A0D00A3E412 /* Recruitment */,
 			);
 			path = Scene;
@@ -272,6 +340,10 @@
 			dependencies = (
 			);
 			name = ArknightsNote;
+			packageProductDependencies = (
+				620D69D0271349830018F117 /* Logging */,
+				624ED2122718BE8E00BF2D9F /* Kanna */,
+			);
 			productName = ArknightsNote;
 			productReference = 62AEF77F26C310DA00086004 /* ArknightsNote.app */;
 			productType = "com.apple.product-type.application";
@@ -344,6 +416,10 @@
 				Base,
 			);
 			mainGroup = 62AEF77626C310DA00086004;
+			packageReferences = (
+				620D69CF271349830018F117 /* XCRemoteSwiftPackageReference "swift-log" */,
+				624ED2112718BE8E00BF2D9F /* XCRemoteSwiftPackageReference "Kanna" */,
+			);
 			productRefGroup = 62AEF78026C310DA00086004 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -393,13 +469,21 @@
 				6294747D26D92DC4008EAC69 /* RecruitmentTagCloudCollectionViewCell.swift in Sources */,
 				62AEF78726C310DA00086004 /* ViewController.swift in Sources */,
 				6258A0F126C674FD00CDA04A /* RecruitmentStore.swift in Sources */,
+				623645E127155B13000EA644 /* Network.swift in Sources */,
+				620D69D3271349BB0018F117 /* Log.swift in Sources */,
+				620D69DD27146BEF0018F117 /* MessageStore.swift in Sources */,
 				62AEF78326C310DA00086004 /* AppDelegate.swift in Sources */,
+				620D69DB27142CB80018F117 /* HomeMessageCell.swift in Sources */,
 				6258A0EF26C674BB00CDA04A /* Character.swift in Sources */,
 				6237F70426E9F12D0064A2DA /* RecruitmentTagCloudLayout.swift in Sources */,
+				623645E32717748C000EA644 /* WeiboService.swift in Sources */,
 				6258A0F826C83DAF00CDA04A /* RecruitmentTagViewController.swift in Sources */,
 				62A2D60B270CEE3900E89A6D /* RecruitmentResultTableViewCell.swift in Sources */,
+				620D69D6271429370018F117 /* HomeViewController.swift in Sources */,
 				6258A0EA26C6734E00CDA04A /* RecruitmentLogicController.swift in Sources */,
+				620D69DF27146CE30018F117 /* WeiboMessage.swift in Sources */,
 				62AEF78526C310DA00086004 /* SceneDelegate.swift in Sources */,
+				627A3D8C2714944000D56876 /* Defaults.swift in Sources */,
 				62607B0F26C9B4DA00112C90 /* RecruitmentTagCollectionView.swift in Sources */,
 				62607B0A26C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift in Sources */,
 			);
@@ -768,6 +852,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		620D69CF271349830018F117 /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		624ED2112718BE8E00BF2D9F /* XCRemoteSwiftPackageReference "Kanna" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tid-kijyun/Kanna";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		620D69D0271349830018F117 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 620D69CF271349830018F117 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+		624ED2122718BE8E00BF2D9F /* Kanna */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624ED2112718BE8E00BF2D9F /* XCRemoteSwiftPackageReference "Kanna" */;
+			productName = Kanna;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 62AEF77726C310DA00086004 /* Project object */;
 }

@@ -45,8 +45,8 @@ class RecruitmentViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 150
+        tableView.rowHeight = UITableView.automaticDimension
 
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
 
@@ -157,13 +157,6 @@ extension RecruitmentViewController: UITableViewDataSource {
         return sections(for: state)[section].numberOfRows ?? recruitmentResults.keys.count
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections(for: state)[section].name
-    }
-}
-
-// MARK: - Table View Delegate
-extension RecruitmentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cellIdentifier = sections(for: state)[indexPath.section].cellIdentifier else {
             return UITableViewCell()
@@ -172,6 +165,13 @@ extension RecruitmentViewController: UITableViewDelegate {
         return tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections(for: state)[section].name
+    }
+}
+
+// MARK: - Table View Delegate
+extension RecruitmentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         switch sections(for: state)[indexPath.section].cellIdentifier {
         case "displaySelectedTags":
