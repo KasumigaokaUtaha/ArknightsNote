@@ -113,7 +113,23 @@ extension RecruitmentTagViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recruitmentTagCategory", for: indexPath)
+        guard
+            let cell = tableView.dequeueReusableCell(withIdentifier: "recruitmentTagCategory", for: indexPath) as? RecruitmentSelectionTableViewCell,
+            let collectionView = cell.getCollectionView() as? RecruitmentTagCollectionView,
+            let category = RecruitmentStore.Category(rawValue: indexPath.section)
+        else {
+            return UITableViewCell()
+        }
+        
+        let tags = recruitmentStore.tagsOfCategory(category)
+        collectionViewTags.updateValue(tags, forKey: collectionView)
+        collectionViewIndexPaths.updateValue(indexPath, forKey: collectionView)
+        
+//        collectionView.collectionViewLayout = RecruitmentTagCloudLayout(data: collectionViewTags[collectionView] ?? [], computeCellSize: self.computeItemSize(_:))
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.allowsMultipleSelection = true
+        collectionView.didLayoutAction = updateRowHeight
 
         return cell
     }
@@ -121,26 +137,6 @@ extension RecruitmentTagViewController: UITableViewDataSource {
 
 // MARK: - Table View Delegate
 extension RecruitmentTagViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard
-            let cell = cell as? RecruitmentSelectionTableViewCell,
-            let collectionView = cell.getCollectionView() as? RecruitmentTagCollectionView,
-            let category = RecruitmentStore.Category(rawValue: indexPath.section)
-        else {
-            return
-        }
-        
-        let tags = recruitmentStore.tagsOfCategory(category)
-        collectionViewIndexPaths.updateValue(indexPath, forKey: collectionView)
-        collectionViewTags.updateValue(tags, forKey: collectionView)
-        
-//        collectionView.collectionViewLayout = RecruitmentTagCloudLayout(data: collectionViewTags[collectionView] ?? [], computeCellSize: self.computeItemSize(_:))
-        collectionView.didLayoutAction = updateRowHeight
-        collectionView.allowsMultipleSelection = true
-        collectionView.dataSource = self
-        collectionView.delegate = self
-    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "sectionHeader")
         var content = header?.defaultContentConfiguration()
@@ -166,31 +162,27 @@ extension RecruitmentTagViewController: UICollectionViewDataSource, UICollection
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recruitmentTag", for: indexPath) as! RecruitmentTagCloudCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recruitmentTag", for: indexPath) as? RecruitmentTagCloudCollectionViewCell,
+              let tags = collectionViewTags[collectionView]
+        else { return UICollectionViewCell() }
         
+        cell.layer.cornerRadius = 6
         cell.backgroundColor = .lightGray
         cell.tagLabel.textColor = .white
-        cell.layer.cornerRadius = 6
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let cell = cell as? RecruitmentTagCloudCollectionViewCell,
-              let tags = collectionViewTags[collectionView]
-        else { return }
         
         let tag = tags[indexPath.item]
         cell.tagLabel.text = tag
         // restore selected cell
-        guard let index = selectedTags.firstIndex(of: tag) else { return }
+        guard let index = selectedTags.firstIndex(of: tag) else { return cell }
         selectedTags.remove(at: index)
         // necessary to enable the deselection, see https://stackoverflow.com/a/31387259
         cell.isSelected = true
         toggleSelected(for: cell)
         collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+
+        return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return selectedTags.count < maximumSelectedTagsCount
     }

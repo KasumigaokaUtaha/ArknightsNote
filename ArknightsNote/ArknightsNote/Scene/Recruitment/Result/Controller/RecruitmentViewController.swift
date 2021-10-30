@@ -161,23 +161,13 @@ extension RecruitmentViewController: UITableViewDataSource {
         guard let cellIdentifier = sections(for: state)[indexPath.section].cellIdentifier else {
             return UITableViewCell()
         }
-        
-        return tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections(for: state)[section].name
-    }
-}
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
 
-// MARK: - Table View Delegate
-extension RecruitmentViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        switch sections(for: state)[indexPath.section].cellIdentifier {
+        switch cellIdentifier {
         case "displaySelectedTags":
             guard let cell = cell as? RecruitmentResultTableViewCell,
                   let collectionView = cell.collectionView as? RecruitmentTagCollectionView
-            else { return }
+            else { return cell }
             
             collectionView.didLayoutAction = updateRowHeight
             collectionView.delegate = self
@@ -187,14 +177,23 @@ extension RecruitmentViewController: UITableViewDelegate {
             self.collectionView = collectionView
         case "recruitmentResultRow":
             let resultTags = recruitmentResultTags[indexPath.row]
-            cell.textLabel?.text = resultTags.joined(separator: ", ")
             let resultChars = recruitmentResults[resultTags]
+            cell.textLabel?.text = resultTags.joined(separator: ", ")
             cell.detailTextLabel?.text = (resultChars?.map { $0.name })?.joined(separator: ", ")
         default:
             fatalError("tableView(_:willDisplay:forRowAt:) - Unknown cell identifier")
         }
+        
+        return cell
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections(for: state)[section].name
+    }
+}
+
+// MARK: - Table View Delegate
+extension RecruitmentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "sectionHeader")
         var content = header?.defaultContentConfiguration()
@@ -216,20 +215,14 @@ extension RecruitmentViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recruitmentTag", for: indexPath) as! RecruitmentTagCloudCollectionViewCell
-        
+        guard indexPath.item < selectedTags.count else { return cell }
+
+        cell.layer.cornerRadius = 6
         cell.backgroundColor = .systemBlue
         cell.tagLabel.textColor = .white
-        cell.layer.cornerRadius = 6
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let cell = cell as? RecruitmentTagCloudCollectionViewCell,
-              indexPath.item < selectedTags.count
-        else { return }
-        
         cell.tagLabel.text = selectedTags[indexPath.item]
+
+        return cell
     }
 }
 

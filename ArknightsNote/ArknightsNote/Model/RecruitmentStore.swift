@@ -75,7 +75,7 @@ struct RecruitmentStore {
         if let tag = categoryValueToTag[valueString] {
             return tag
         } else {
-            print("Warning cannot find tag with category: \(category) and value: \(valueString)")
+            logger.debug("Warning cannot find tag with category: \(category) and value: \(valueString)", metadata: nil, source: "RecruitmentStore")
             return nil
         }
     }

@@ -32,7 +32,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableView.automaticDimension
@@ -104,14 +103,6 @@ extension HomeViewController: UITableViewDataSource {
             }
         }
         
-//        cell.layoutIfNeeded()
-
         return cell
-    }
-}
-
-// MARK: - UITableView Delegate
-extension HomeViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     }
 }
