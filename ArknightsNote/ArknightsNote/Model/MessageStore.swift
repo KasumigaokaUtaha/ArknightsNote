@@ -24,11 +24,22 @@ enum Platform {
 struct MessageStore {
     static let shared = MessageStore()
     
+    /// Stores cached messages
+    ///
+    /// It tries to first load locally cached messages.
+    /// When new messages are fetched via network requests, they are merged with existing ones.
+    ///
+    /// Besides, it automatically saves the cached content in local storage.
+    var cachedMessages = [Message]()
+
     func fetchMessages(of platform: Platform, for user: String, completionHandler: @escaping ([Message]?) -> Void) {
         switch platform {
         case .Weibo:
             var messages: [Message]?
 
+            // TODO:
+            // Load locally cached messages and merge these messages with
+            // new messages fetched via network requests
             WeiboService.shared.getIndexData(uid: user) { data, error in
                 guard error == nil else {
                     print("\(error!)")

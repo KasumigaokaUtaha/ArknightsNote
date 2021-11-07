@@ -46,9 +46,6 @@ class HomeViewController: UIViewController {
         
         MessageStore.shared.fetchMessages(of: .Weibo, for: Defaults.UID.Weibo.arknights) {
             if let messages = $0 {
-                messages.forEach {
-                    print("\(String(describing: $0.date))")
-                }
                 DispatchQueue.main.async {
                     let dates = messages.compactMap({ $0.date }).sorted(by: { $0 < $1 })
                     if let lastUpdateDate = dates.last {
