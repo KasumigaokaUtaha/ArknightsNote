@@ -9,6 +9,7 @@ import UIKit
 
 class HomeMessageCell: UITableViewCell {
 
+    @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var platformLabel: UILabel!
     @IBOutlet weak var publisherLabel: UILabel!
@@ -18,10 +19,14 @@ class HomeMessageCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        bgView.layer.cornerRadius = 8
+        bgView.layer.shadowColor = UIColor.lightGray.cgColor
+        bgView.layer.shadowOffset = CGSize(width: 3, height: 3)
+        bgView.layer.shadowOpacity = 0.5
+        bgView.layer.shadowRadius = 4.0
+
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
-        contentView.layer.cornerRadius = 12
-//        contentView.backgroundColor = .systemGray
     }
 
 }

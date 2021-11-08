@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     private var lastUpdateDate: Date! {
         didSet {
             guard let lastUpdateDate = lastUpdateDate else { return }
+            UserDefaults.standard.set(lastUpdateDate, forKey: "lastUpdateDate")
             let seconds = lastUpdateDate.distance(to: Date())
             let days = seconds / 86400.0
             lastUpdateLabel.text = String(format: "距离鹰角上一次更新已经 %.2f 天了", days)
@@ -31,6 +32,10 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let data = UserDefaults.standard.value(forKey: "lastUpdateDate") as? Date? {
+            self.lastUpdateDate = data
+        }
         
         tableView.dataSource = self
         tableView.estimatedRowHeight = 200
