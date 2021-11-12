@@ -15,6 +15,7 @@ class RecruitmentTagCloudCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
         
         tagLabel = UILabel(frame: .zero)
+        tagLabel.textColor = .label
         contentView.addSubview(tagLabel)
         
         // Autolayout

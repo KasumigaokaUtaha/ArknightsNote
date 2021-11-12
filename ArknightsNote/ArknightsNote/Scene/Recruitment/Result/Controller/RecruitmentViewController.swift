@@ -196,14 +196,15 @@ extension RecruitmentViewController: UITableViewDataSource {
 extension RecruitmentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "sectionHeader")
-        var content = header?.defaultContentConfiguration()
-        content?.text = self.tableView(tableView, titleForHeaderInSection: section)
+        var configuration = header?.defaultContentConfiguration()
+        configuration?.text = self.tableView(tableView, titleForHeaderInSection: section)
+        configuration?.textProperties.color = .label
 
-        var backgroundConfig = UIBackgroundConfiguration.listPlainHeaderFooter()
-        backgroundConfig.backgroundColor = .white
+        var backgroundConfiguration = UIBackgroundConfiguration.listPlainHeaderFooter()
+        backgroundConfiguration.backgroundColor = .systemBackground
 
-        header?.contentConfiguration = content
-        header?.backgroundConfiguration = backgroundConfig
+        header?.contentConfiguration = configuration
+        header?.backgroundConfiguration = backgroundConfiguration
         return header
     }
 }
