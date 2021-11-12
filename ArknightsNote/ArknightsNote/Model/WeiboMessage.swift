@@ -7,15 +7,6 @@
 
 import Foundation
 
-// MARK: - WeiboMessage
-struct WeiboMessage: Message {
-    var date: Date?
-    var profile: Data
-    var content: String
-    var username: String
-    var platform: String
-}
-
 // MARK: - WeiboIndex
 struct WeiboIndex: Codable {
     var data: WeiboIndexData

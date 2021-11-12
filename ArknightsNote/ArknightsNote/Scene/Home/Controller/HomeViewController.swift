@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     
     private var progressView: UIActivityIndicatorView!
     
+    private var messages: [Message]?
     private var lastUpdateDate: Date! {
         didSet {
             guard let lastUpdateDate = lastUpdateDate else { return }
@@ -23,7 +24,6 @@ class HomeViewController: UIViewController {
             lastUpdateLabel.text = String(format: "距离鹰角上一次更新已经 %.2f 天了", days)
         }
     }
-    private var messages: [Message]?
     private var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMM d"
@@ -49,33 +49,32 @@ class HomeViewController: UIViewController {
             progressView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         
+        // Load cached messages
+        MessageStore.shared.messageCache.sort(by: { !($0.date < $1.date) })
+        let messages = MessageStore.shared.messageCache.getElements()
+        self.lastUpdateDate = messages.first?.date
+        self.messages = messages
+        
+    }
+    
+    // TODO: Pull to refresh
+    func refresh() {
         MessageStore.shared.fetchMessages(of: .Weibo, for: Defaults.UID.Weibo.arknights) {
-            if let messages = $0 {
-                DispatchQueue.main.async {
-                    let dates = messages.compactMap({ $0.date }).sorted(by: { $0 < $1 })
-                    if let lastUpdateDate = dates.last {
-                        self.lastUpdateDate = lastUpdateDate
-                    }
-                    self.messages = messages
-                    self.progressView.stopAnimating()
-                    self.progressView.removeFromSuperview()
-                    self.tableView.reloadData()
-                    // animating table view changes
-                    self.tableView.beginUpdates()
-                    self.tableView.endUpdates()
-                }
-            } else {
-                print("fetch messages failed")
+            DispatchQueue.main.async {
+                MessageStore.shared.messageCache.sort(by: { !($0.date < $1.date) })
+                let messages = MessageStore.shared.messageCache.getElements()
+
+                self.lastUpdateDate = messages.first?.date
+                self.messages = messages
+                self.progressView.stopAnimating()
+                self.progressView.removeFromSuperview()
+                self.tableView.reloadData()
+                // animating table view changes
+                self.tableView.beginUpdates()
+                self.tableView.endUpdates()
             }
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        progressView.startAnimating()
-    }
-
 }
 
 // MARK: - UITableView Data Source
@@ -100,9 +99,7 @@ extension HomeViewController: UITableViewDataSource {
             cell.contentLabel.text = message.content
             cell.platformLabel.text = message.platform
             cell.publisherLabel.text = message.username
-            if let date = message.date {
-                cell.dateLabel.text = dateFormatter.string(from: date)
-            }
+            cell.dateLabel.text = dateFormatter.string(from: message.date)
         }
         
         return cell

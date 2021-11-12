@@ -21,6 +21,10 @@ struct Defaults {
             static let arknights = "6279793937"
         }
     }
+    
+    enum Cache: String {
+        case Message = "MessageCache.json"
+    }
 }
 
 extension Defaults.URL {
