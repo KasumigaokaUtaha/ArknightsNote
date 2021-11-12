@@ -39,6 +39,7 @@
 		62AEF78F26C310DC00086004 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62AEF78D26C310DC00086004 /* LaunchScreen.storyboard */; };
 		62AEF79A26C310DC00086004 /* ArknightsNoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEF79926C310DC00086004 /* ArknightsNoteTests.swift */; };
 		62AEF7A426C310DC00086004 /* ArknightsNoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEF7A326C310DC00086004 /* ArknightsNoteUITests.swift */; };
+		62EE4096273EB4D7003F3BE5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EE4095273EB4D6003F3BE5 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		62AEF79926C310DC00086004 /* ArknightsNoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArknightsNoteTests.swift; sourceTree = "<group>"; };
 		62AEF79F26C310DC00086004 /* ArknightsNoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArknightsNoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62AEF7A326C310DC00086004 /* ArknightsNoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArknightsNoteUITests.swift; sourceTree = "<group>"; };
+		62EE4095273EB4D6003F3BE5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				620D69D42714291D0018F117 /* Home */,
+				62EE4093273EB49C003F3BE5 /* Settings */,
 				62E3D55827059A0D00A3E412 /* Recruitment */,
 			);
 			path = Scene;
@@ -328,6 +331,14 @@
 				62607B0926C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		62EE4093273EB49C003F3BE5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				62EE4095273EB4D6003F3BE5 /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -478,6 +489,7 @@
 				623645E127155B13000EA644 /* Network.swift in Sources */,
 				620D69D3271349BB0018F117 /* Log.swift in Sources */,
 				620D69DD27146BEF0018F117 /* MessageStore.swift in Sources */,
+				62EE4096273EB4D7003F3BE5 /* SettingsViewController.swift in Sources */,
 				62AEF78326C310DA00086004 /* AppDelegate.swift in Sources */,
 				620D69DB27142CB80018F117 /* HomeMessageCell.swift in Sources */,
 				6258A0EF26C674BB00CDA04A /* Character.swift in Sources */,

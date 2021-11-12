@@ -38,6 +38,10 @@ class MessageCache {
         try elements.sort(by: areInIncreasingOrder)
     }
     
+    func removeAll() {
+        elements.removeAll()
+    }
+    
     func writeCache(to directory: FileManager.SearchPathDirectory, fileName: String) {
         do {
             try FileHelper.writeJSON(elements, to: directory, fileName: fileName)

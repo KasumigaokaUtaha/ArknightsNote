@@ -33,9 +33,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let data = UserDefaults.standard.value(forKey: "lastUpdateDate") as? Date? {
-            self.lastUpdateDate = data
-        }
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         tableView.dataSource = self
         tableView.estimatedRowHeight = 200
@@ -54,11 +53,9 @@ class HomeViewController: UIViewController {
         let messages = MessageStore.shared.messageCache.getElements()
         self.lastUpdateDate = messages.first?.date
         self.messages = messages
-        
     }
     
-    // TODO: Pull to refresh
-    func refresh() {
+    @objc func refresh() {
         MessageStore.shared.fetchMessages(of: .Weibo, for: Defaults.UID.Weibo.arknights) {
             DispatchQueue.main.async {
                 MessageStore.shared.messageCache.sort(by: { !($0.date < $1.date) })
@@ -72,6 +69,8 @@ class HomeViewController: UIViewController {
                 // animating table view changes
                 self.tableView.beginUpdates()
                 self.tableView.endUpdates()
+                // update refresh control
+                self.tableView.refreshControl?.endRefreshing()
             }
         }
     }
