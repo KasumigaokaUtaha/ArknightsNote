@@ -9,7 +9,7 @@ import UIKit
 
 class RecruitmentTagCloudCollectionViewCell: UICollectionViewCell {
     
-    var tagLabel: UILabel!
+    var tagLabel: UILabel! // TODO: Maybe replace UILabel with UIButton for better UX
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
