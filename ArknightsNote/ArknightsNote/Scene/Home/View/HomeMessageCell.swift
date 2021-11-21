@@ -21,11 +21,6 @@ class HomeMessageCell: UITableViewCell {
         super.awakeFromNib()
 
         bgView.layer.cornerRadius = 8
-//        bgView.layer.shadowColor = UIColor.lightGray.cgColor
-//        bgView.layer.shadowOffset = CGSize(width: 3, height: 3)
-//        bgView.layer.shadowOpacity = 0.5
-//        bgView.layer.shadowRadius = 4.0
-
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
     }
 

@@ -15,6 +15,7 @@ struct Message: Codable {
     var content: String
     var username: String
     var platform: String
+    var detailLink: String
 }
 
 enum Platform {

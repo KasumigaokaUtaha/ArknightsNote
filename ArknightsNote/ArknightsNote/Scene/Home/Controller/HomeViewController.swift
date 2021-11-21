@@ -79,6 +79,14 @@ class HomeViewController: UIViewController {
             self.tableView.refreshControl?.endRefreshing()
         }
     }
+    
+    // MARK: - Actions
+    @objc func openDetailURL(sender: UIButton) {
+        let selectedRow = sender.tag
+        guard let message = self.messages?[selectedRow], let detailURL = URL(string: message.detailLink) else { return }
+
+        UIApplication.shared.open(detailURL, options: [:])
+    }
 }
 
 // MARK: - UITableView Data Source
@@ -104,6 +112,8 @@ extension HomeViewController: UITableViewDataSource {
             cell.platformLabel.text = message.platform
             cell.publisherLabel.text = message.username
             cell.dateLabel.text = dateFormatter.string(from: message.date)
+            cell.moreButton.tag = indexPath.row
+            cell.moreButton.addTarget(self, action: #selector(openDetailURL(sender:)), for: .touchUpInside)
         }
         
         return cell

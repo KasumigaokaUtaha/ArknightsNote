@@ -55,10 +55,12 @@ struct WeiboContainerData: Codable {
 
 struct WeiboCard: Codable {
     var mBlog: MBlog
+    var scheme: String
     var cardType: Int
     
     enum CodingKeys: String, CodingKey {
         case mBlog = "mblog"
+        case scheme = "scheme"
         case cardType = "card_type"
     }
 }

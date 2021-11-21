@@ -79,14 +79,15 @@ struct WeiboService {
             }
             .map { element -> [Message] in
                 let (userName, imageData, containerData) = element
-                let mBlogs = containerData.value.data.cards
+                let cards = containerData.value.data.cards
                     .filter({ $0.cardType == 9 })
-                    .map({ $0.mBlog })
-                let messages = mBlogs
-                    .map { mBlog -> Message in
+                let messages = cards
+                    .map { card -> Message in
+                        let mBlog = card.mBlog
+                        let detailLink = card.scheme
                         let date = dateFormatter.date(from: mBlog.createdAt)!
                         let content = Util.extractText(from: mBlog.text.replacingOccurrences(of: "<br />", with: "\n")) ?? ""
-                        let message = Message(date: date, profile: imageData.value, content: content, username: userName, platform: "微博")
+                        let message = Message(date: date, profile: imageData.value, content: content, username: userName, platform: "微博", detailLink: detailLink)
                         return message
                     }
                 return messages
