@@ -181,8 +181,8 @@
 				6258A0EE26C674BB00CDA04A /* Character.swift */,
 				6258A0F526C7CB5B00CDA04A /* CharacterStore.swift */,
 				6258A0F026C674FD00CDA04A /* RecruitmentStore.swift */,
-				620D69DC27146BEF0018F117 /* MessageStore.swift */,
 				620D69DE27146CE30018F117 /* WeiboMessage.swift */,
+				620D69DC27146BEF0018F117 /* MessageStore.swift */,
 				6245706E273DD53C00C89F83 /* MessageCache.swift */,
 			);
 			path = Model;

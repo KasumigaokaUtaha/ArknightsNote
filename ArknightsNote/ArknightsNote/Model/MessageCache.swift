@@ -8,7 +8,7 @@
 import Foundation
 
 class MessageCache {
-    private var elements: [Message]
+    @Published private(set) var elements: [Message]
     
     init() {
         self.elements = []
@@ -17,31 +17,52 @@ class MessageCache {
     init(elements: [Message]) {
         self.elements = elements
     }
-    
-    func append(_ element: Message) {
-        elements.append(element)
-    }
+
+    // MARK: - Getters
     
     func getElements() -> [Message] {
         return elements
     }
     
-    func merge(with newElements: [Message]) {
-        // TODO add another parameter: on key: KeyPath<...>
+    // MARK: - Setters
+    
+    func setElements(_ newElements: [Message]) {
+        self.elements = newElements
+    }
+    
+    // MARK: - Operators
+
+    func append(_ element: Message) {
+        elements.append(element)
+    }
+    
+    private func computeMergedElements(with newElements: [Message]) -> [Message] {
         var dict: [Date : Message] = [:]
         newElements.forEach { dict.updateValue($0, forKey: $0.date) }
         elements.forEach { dict.updateValue($0, forKey: $0.date) }
-        elements = Array(dict.values)
+        return Array(dict.values)
+    }
+    
+    func merge(with newElements: [Message]) {
+        // TODO add another parameter: on key: KeyPath<...>
+        elements = computeMergedElements(with: newElements)
     }
     
     func sort(by areInIncreasingOrder: (Message, Message) throws -> Bool) rethrows {
         try elements.sort(by: areInIncreasingOrder)
     }
     
+    func merge(with newElements: [Message], sortBy areInIncreasingOrder: (Message, Message) throws -> Bool) rethrows {
+        let mergedElements = computeMergedElements(with: newElements)
+        elements = try mergedElements.sorted(by: areInIncreasingOrder)
+    }
+    
     func removeAll() {
         elements.removeAll()
     }
     
+    // MARK: - Storage Operators
+
     func writeCache(to directory: FileManager.SearchPathDirectory, fileName: String) {
         do {
             try FileHelper.writeJSON(elements, to: directory, fileName: fileName)

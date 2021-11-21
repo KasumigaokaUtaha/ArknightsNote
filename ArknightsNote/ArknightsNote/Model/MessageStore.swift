@@ -34,37 +34,34 @@ struct MessageStore {
     var messageCache: MessageCache
 
     init() {
+        messageCache = MessageCache()
+        loadCachedMessages()
+    }
+    
+    func loadCachedMessages() {
         do {
             let messages: [Message] = try FileHelper.loadJSON(from: .documentDirectory, fileName: Defaults.Cache.Message.rawValue)
-            messageCache = MessageCache(elements: messages)
+            messageCache.setElements(messages)
         } catch {
             logger.debug("\(error.localizedDescription)", metadata: nil, source: "\(#file).\(#function)")
-            messageCache = MessageCache()
         }
     }
     
-    func fetchMessages(of platform: Platform, for user: String, completionHandler: @escaping () -> Void) {
+    func fetchMessages(of platform: Platform, for user: String) {
         switch platform {
         case .Weibo:
             let token = SubscriptionToken()
             let messagePublisher = WeiboService.shared.messageDataRequest(uid: user)
             messagePublisher
                 .sink(receiveCompletion: { _ in
-//                    print("MessagePublisher completes: \($0)")
                     token.unseal() // break the reference cycle here
-                    completionHandler() // TODO check if this is necessary
                 }, receiveValue: { messages in
-                    messageCache.merge(with: messages)
-                    completionHandler()
+                    messageCache.merge(with: messages, sortBy: { $0.date > $1.date })
                 })
                 .seal(in: token)
             
         case .Bilibili:
             return
         }
-    }
-    
-    private func extractText(from html: String) -> String? {
-        return (try? Kanna.HTML(html: html, encoding: .utf8))?.text
     }
 }

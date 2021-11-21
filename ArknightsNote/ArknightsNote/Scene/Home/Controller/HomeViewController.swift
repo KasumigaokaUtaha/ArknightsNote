@@ -6,18 +6,21 @@
 //
 
 import UIKit
+import Combine
 
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var lastUpdateLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    private var progressView: UIActivityIndicatorView!
-    
     private var messages: [Message]?
-    private var lastUpdateDate: Date! {
+    private var cancellable: AnyCancellable?
+    private var lastUpdateDate: Date? {
         didSet {
-            guard let lastUpdateDate = lastUpdateDate else { return }
+            guard let lastUpdateDate = lastUpdateDate else {
+                lastUpdateLabel.text = "距离鹰角上一次更新已经 ?? 天了"
+                return
+            }
             UserDefaults.standard.set(lastUpdateDate, forKey: "lastUpdateDate")
             let seconds = lastUpdateDate.distance(to: Date())
             let days = seconds / 86400.0
@@ -39,39 +42,41 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableView.automaticDimension
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
-        progressView = UIActivityIndicatorView()
-        view.addSubview(progressView)
-        progressView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            progressView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            progressView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        // subscribe to the message cache
+        self.cancellable = MessageStore.shared.messageCache.$elements.sink(receiveValue: { value in
+            self.render(with: value)
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
-        // Load cached messages
-        MessageStore.shared.messageCache.sort(by: { !($0.date < $1.date) })
-        let messages = MessageStore.shared.messageCache.getElements()
-        self.lastUpdateDate = messages.first?.date
-        self.messages = messages
+        // cancel the subscription to message cache
+        self.cancellable = nil
     }
     
     @objc func refresh() {
-        MessageStore.shared.fetchMessages(of: .Weibo, for: Defaults.UID.Weibo.arknights) {
-            DispatchQueue.main.async {
-                MessageStore.shared.messageCache.sort(by: { !($0.date < $1.date) })
-                let messages = MessageStore.shared.messageCache.getElements()
+        MessageStore.shared.fetchMessages(of: .Weibo, for: Defaults.UID.Weibo.arknights)
+    }
+    
+    func render(with value: [Message]) {
+        DispatchQueue.main.async {
+            self.messages = value
+            self.lastUpdateDate = value.first?.date
 
-                self.lastUpdateDate = messages.first?.date
-                self.messages = messages
-                self.progressView.stopAnimating()
-                self.progressView.removeFromSuperview()
-                self.tableView.reloadData()
-                // animating table view changes
+            self.tableView.reloadData()
+            // do not animate table view changes
+            UIView.performWithoutAnimation {
                 self.tableView.beginUpdates()
                 self.tableView.endUpdates()
-                // update refresh control
-                self.tableView.refreshControl?.endRefreshing()
             }
+            // update refresh control
+            self.tableView.refreshControl?.endRefreshing()
         }
     }
 }

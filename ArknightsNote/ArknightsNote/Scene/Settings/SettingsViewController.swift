@@ -13,7 +13,7 @@ class SettingsViewController: UIViewController {
     let removeMessagesAlert: UIAlertController = {
         let alert = UIAlertController(title: nil, message: "Are you sure you want to remove all messages", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Remove Messages", style: .destructive, handler: {_ in
+        alert.addAction(UIAlertAction(title: "Remove", style: .destructive, handler: {_ in
             do {
                 MessageStore.shared.messageCache.removeAll()
                 try FileHelper.delete(from: .documentDirectory, fileName: Defaults.Cache.Message.rawValue)
