@@ -74,6 +74,8 @@ extension SettingsViewController: UITableViewDataSource {
 // MARK: - TableView Delegate
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
         if indexPath.section == 0 && indexPath.row == 0 {
             // Present an alert view
             self.present(removeMessagesAlert, animated: true, completion: nil)
