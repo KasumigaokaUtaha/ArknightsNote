@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct Defaults {
-    struct URL {
-        struct Weibo {
+enum Defaults {
+    enum URL {
+        enum Weibo {
             // domains
             static let host = "https://m.weibo.cn"
             static let index = "/api/container/getIndex"
         }
     }
     
-    struct UID {
-        struct Weibo {
+    enum UID {
+        enum Weibo {
             static let arknights = "6279793937"
         }
     }

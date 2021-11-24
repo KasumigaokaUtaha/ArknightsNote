@@ -10,7 +10,7 @@ import Foundation
 let appDecoder = JSONDecoder()
 let appEncoder = JSONEncoder()
 
-struct FileHelper {
+enum FileHelper {
     static func loadJSON<T: Decodable>(from url: URL) throws -> T {
         let data = try Data(contentsOf: url)
         return try appDecoder.decode(T.self, from: data)
