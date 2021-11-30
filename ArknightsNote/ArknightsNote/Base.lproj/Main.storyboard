@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oHF-vV-09F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oHF-vV-09F">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -65,18 +65,33 @@
         <!--角色-->
         <scene sceneID="sYo-h9-v69">
             <objects>
-                <viewController id="FGd-eX-TyS" sceneMemberID="viewController">
+                <viewController id="FGd-eX-TyS" customClass="CharacterViewController" customModule="ArknightsNote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CAf-JQ-p34">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FBX-af-5Ke">
+                                <rect key="frame" x="0.0" y="44" width="390" height="717"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="k16-nl-1Nj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FBX-af-5Ke" firstAttribute="top" secondItem="k16-nl-1Nj" secondAttribute="top" id="Iu6-ZD-KqG"/>
+                            <constraint firstItem="FBX-af-5Ke" firstAttribute="leading" secondItem="k16-nl-1Nj" secondAttribute="leading" id="hCs-q8-1RC"/>
+                            <constraint firstItem="k16-nl-1Nj" firstAttribute="trailing" secondItem="FBX-af-5Ke" secondAttribute="trailing" id="ign-RI-1w0"/>
+                            <constraint firstItem="k16-nl-1Nj" firstAttribute="bottom" secondItem="FBX-af-5Ke" secondAttribute="bottom" id="p6w-tJ-0G2"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="角色" image="rectangle.stack.person.crop" catalog="system" id="aks-jC-39K"/>
+                    <connections>
+                        <outlet property="tableView" destination="FBX-af-5Ke" id="fyr-EY-joL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wfq-Y9-AYl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2113.8461538461538" y="-225.35545023696682"/>
+            <point key="canvasLocation" x="-486" y="1421"/>
         </scene>
         <!--工具-->
         <scene sceneID="6jq-Gy-NHh">

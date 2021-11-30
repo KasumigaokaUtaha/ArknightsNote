@@ -38,6 +38,9 @@
 		62AEF78F26C310DC00086004 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62AEF78D26C310DC00086004 /* LaunchScreen.storyboard */; };
 		62AEF79A26C310DC00086004 /* ArknightsNoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEF79926C310DC00086004 /* ArknightsNoteTests.swift */; };
 		62AEF7A426C310DC00086004 /* ArknightsNoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEF7A326C310DC00086004 /* ArknightsNoteUITests.swift */; };
+		62C121C327558BC800F00B66 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C121C227558BC800F00B66 /* CharacterViewController.swift */; };
+		62C121C827558C4000F00B66 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C121C627558C4000F00B66 /* CharacterTableViewCell.swift */; };
+		62C121C927558C4000F00B66 /* CharacterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62C121C727558C4000F00B66 /* CharacterTableViewCell.xib */; };
 		62D9ADC7274A678900EC9C3B /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D9ADC6274A678900EC9C3B /* Agent.swift */; };
 		62D9ADC9274A6EEA00EC9C3B /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D9ADC8274A6EEA00EC9C3B /* AppError.swift */; };
 		62D9ADCB274A91D400EC9C3B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D9ADCA274A91D400EC9C3B /* Util.swift */; };
@@ -96,6 +99,9 @@
 		62AEF79926C310DC00086004 /* ArknightsNoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArknightsNoteTests.swift; sourceTree = "<group>"; };
 		62AEF79F26C310DC00086004 /* ArknightsNoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArknightsNoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62AEF7A326C310DC00086004 /* ArknightsNoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArknightsNoteUITests.swift; sourceTree = "<group>"; };
+		62C121C227558BC800F00B66 /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
+		62C121C627558C4000F00B66 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
+		62C121C727558C4000F00B66 /* CharacterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterTableViewCell.xib; sourceTree = "<group>"; };
 		62D9ADC6274A678900EC9C3B /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		62D9ADC8274A6EEA00EC9C3B /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		62D9ADCA274A91D400EC9C3B /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -271,9 +277,36 @@
 			path = ArknightsNoteUITests;
 			sourceTree = "<group>";
 		};
+		62C121C127558B9500F00B66 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				62C121C427558C1B00F00B66 /* View */,
+				62C121C527558C2000F00B66 /* Controller */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		62C121C427558C1B00F00B66 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				62C121C627558C4000F00B66 /* CharacterTableViewCell.swift */,
+				62C121C727558C4000F00B66 /* CharacterTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		62C121C527558C2000F00B66 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				62C121C227558BC800F00B66 /* CharacterViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		62E3D557270599F200A3E412 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				62C121C127558B9500F00B66 /* Character */,
 				620D69D42714291D0018F117 /* Home */,
 				62EE4093273EB49C003F3BE5 /* Settings */,
 				62E3D55827059A0D00A3E412 /* Recruitment */,
@@ -464,6 +497,7 @@
 			files = (
 				6258A0F426C7C3EE00CDA04A /* character_table.json in Resources */,
 				62AEF78F26C310DC00086004 /* LaunchScreen.storyboard in Resources */,
+				62C121C927558C4000F00B66 /* CharacterTableViewCell.xib in Resources */,
 				62AEF78C26C310DC00086004 /* Assets.xcassets in Resources */,
 				62AEF78A26C310DA00086004 /* Main.storyboard in Resources */,
 			);
@@ -492,6 +526,7 @@
 			files = (
 				6258A0E826C6733300CDA04A /* RecruitmentViewController.swift in Sources */,
 				6258A0F626C7CB5B00CDA04A /* CharacterStore.swift in Sources */,
+				62C121C327558BC800F00B66 /* CharacterViewController.swift in Sources */,
 				6294747D26D92DC4008EAC69 /* RecruitmentTagCloudCollectionViewCell.swift in Sources */,
 				62AEF78726C310DA00086004 /* ViewController.swift in Sources */,
 				6258A0F126C674FD00CDA04A /* RecruitmentStore.swift in Sources */,
@@ -506,6 +541,7 @@
 				6258A0EF26C674BB00CDA04A /* Character.swift in Sources */,
 				62457071273E6B2300C89F83 /* FileHelper.swift in Sources */,
 				6237F70426E9F12D0064A2DA /* RecruitmentTagCloudLayout.swift in Sources */,
+				62C121C827558C4000F00B66 /* CharacterTableViewCell.swift in Sources */,
 				623645E32717748C000EA644 /* WeiboService.swift in Sources */,
 				6245706F273DD53C00C89F83 /* MessageCache.swift in Sources */,
 				6258A0F826C83DAF00CDA04A /* RecruitmentTagViewController.swift in Sources */,

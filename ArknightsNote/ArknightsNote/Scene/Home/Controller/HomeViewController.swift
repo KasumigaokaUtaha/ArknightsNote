@@ -18,13 +18,20 @@ class HomeViewController: UIViewController {
     private var lastUpdateDate: Date? {
         didSet {
             guard let lastUpdateDate = lastUpdateDate else {
-                lastUpdateLabel.text = "距离鹰角上一次更新已经 ?? 天了"
+                lastUpdateLabel.text = "上次更新: ??"
                 return
             }
             UserDefaults.standard.set(lastUpdateDate, forKey: "lastUpdateDate")
             let seconds = lastUpdateDate.distance(to: Date())
             let days = seconds / 86400.0
-            lastUpdateLabel.text = String(format: "距离鹰角上一次更新已经 %.2f 天了", days)
+            var text: String
+            if days < 1.0 {
+                let hours = seconds / 3600.0
+                text = String(format: "%.1f 小时前", hours)
+            } else {
+                text = String(format: "%d 天前", Int(days))
+            }
+            lastUpdateLabel.text = "上次更新：\(text)"
         }
     }
     private var dateFormatter: DateFormatter = {
