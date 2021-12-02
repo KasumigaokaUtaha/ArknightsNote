@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecruitmentTagCloudLayout: UICollectionViewFlowLayout {
+class TagCloudLayout: UICollectionViewFlowLayout {
 
     let data: [String]
     let computeCellSize: ((String) -> CGSize)

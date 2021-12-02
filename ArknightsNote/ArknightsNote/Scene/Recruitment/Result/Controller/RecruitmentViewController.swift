@@ -166,7 +166,7 @@ extension RecruitmentViewController: UITableViewDataSource {
         switch cellIdentifier {
         case "displaySelectedTags":
             guard let cell = cell as? RecruitmentResultTableViewCell,
-                  let collectionView = cell.collectionView as? RecruitmentTagCollectionView
+                  let collectionView = cell.collectionView as? TagCollectionView
             else { return cell }
             
             collectionView.didLayoutAction = updateRowHeight
@@ -215,7 +215,7 @@ extension RecruitmentViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recruitmentTag", for: indexPath) as! RecruitmentTagCloudCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recruitmentTag", for: indexPath) as! TagCloudCollectionViewCell
         guard indexPath.item < selectedTags.count else { return cell }
 
         cell.layer.cornerRadius = 6

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecruitmentTagCollectionView: UICollectionView {
+class TagCollectionView: UICollectionView {
     
     // See https://stackoverflow.com/a/64390373
     var didLayoutAction: (() -> Void)?

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecruitmentTagCloudCollectionViewCell: UICollectionViewCell {
+class TagCloudCollectionViewCell: UICollectionViewCell {
     
     var tagLabel: UILabel! // TODO: Maybe replace UILabel with UIButton for better UX
     

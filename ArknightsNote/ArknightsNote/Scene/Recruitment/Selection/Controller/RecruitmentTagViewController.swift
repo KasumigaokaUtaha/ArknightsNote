@@ -69,7 +69,7 @@ class RecruitmentTagViewController: UIViewController {
         return itemSize
     }
     
-    private func toggleSelected(for cell: RecruitmentTagCloudCollectionViewCell) {
+    private func toggleSelected(for cell: TagCloudCollectionViewCell) {
         guard let tag = cell.tagLabel.text else { return }
         
         if !selectedTags.contains(tag) {
@@ -117,7 +117,7 @@ extension RecruitmentTagViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(withIdentifier: "recruitmentTagCategory", for: indexPath) as? RecruitmentSelectionTableViewCell,
-            let collectionView = cell.getCollectionView() as? RecruitmentTagCollectionView,
+            let collectionView = cell.getCollectionView() as? TagCollectionView,
             let category = RecruitmentStore.Category(rawValue: indexPath.section)
         else {
             return UITableViewCell()
@@ -165,7 +165,7 @@ extension RecruitmentTagViewController: UICollectionViewDataSource, UICollection
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recruitmentTag", for: indexPath) as? RecruitmentTagCloudCollectionViewCell,
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recruitmentTag", for: indexPath) as? TagCloudCollectionViewCell,
               let tags = collectionViewTags[collectionView]
         else { return UICollectionViewCell() }
         
@@ -191,13 +191,13 @@ extension RecruitmentTagViewController: UICollectionViewDataSource, UICollection
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? RecruitmentTagCloudCollectionViewCell else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? TagCloudCollectionViewCell else { return }
 
         toggleSelected(for: cell)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? RecruitmentTagCloudCollectionViewCell else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? TagCloudCollectionViewCell else { return }
         
         toggleSelected(for: cell)
     }
