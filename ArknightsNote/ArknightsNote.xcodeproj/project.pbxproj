@@ -22,7 +22,6 @@
 		6258A0EA26C6734E00CDA04A /* RecruitmentLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0E926C6734E00CDA04A /* RecruitmentLogicController.swift */; };
 		6258A0EF26C674BB00CDA04A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0EE26C674BB00CDA04A /* Character.swift */; };
 		6258A0F126C674FD00CDA04A /* RecruitmentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0F026C674FD00CDA04A /* RecruitmentStore.swift */; };
-		6258A0F426C7C3EE00CDA04A /* character_table.json in Resources */ = {isa = PBXBuildFile; fileRef = 6258A0F326C7C3EE00CDA04A /* character_table.json */; };
 		6258A0F626C7CB5B00CDA04A /* CharacterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0F526C7CB5B00CDA04A /* CharacterStore.swift */; };
 		6258A0F826C83DAF00CDA04A /* RecruitmentTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0F726C83DAF00CDA04A /* RecruitmentTagViewController.swift */; };
 		62607B0A26C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62607B0926C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift */; };
@@ -79,7 +78,6 @@
 		6258A0E926C6734E00CDA04A /* RecruitmentLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentLogicController.swift; sourceTree = "<group>"; };
 		6258A0EE26C674BB00CDA04A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		6258A0F026C674FD00CDA04A /* RecruitmentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentStore.swift; sourceTree = "<group>"; };
-		6258A0F326C7C3EE00CDA04A /* character_table.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = character_table.json; sourceTree = "<group>"; };
 		6258A0F526C7CB5B00CDA04A /* CharacterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStore.swift; sourceTree = "<group>"; };
 		6258A0F726C83DAF00CDA04A /* RecruitmentTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentTagViewController.swift; sourceTree = "<group>"; };
 		62607B0926C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentSelectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -197,7 +195,6 @@
 		6258A0F226C7C3C200CDA04A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				6258A0F326C7C3EE00CDA04A /* character_table.json */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -495,7 +492,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6258A0F426C7C3EE00CDA04A /* character_table.json in Resources */,
 				62AEF78F26C310DC00086004 /* LaunchScreen.storyboard in Resources */,
 				62C121C927558C4000F00B66 /* CharacterTableViewCell.xib in Resources */,
 				62AEF78C26C310DC00086004 /* Assets.xcassets in Resources */,
