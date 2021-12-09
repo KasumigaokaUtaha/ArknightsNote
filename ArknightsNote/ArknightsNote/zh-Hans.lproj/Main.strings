@@ -1,0 +1,57 @@
+
+/* Class = "UILabel"; text = "Last update %d days/hours ago"; ObjectID = "9DZ-45-DOa"; */
+"9DZ-45-DOa.text" = "上次更新 %d 天/小时 前";
+
+/* Class = "UILabel"; text = "Platform"; ObjectID = "AFe-6R-e4i"; */
+"AFe-6R-e4i.text" = "平台";
+
+/* Class = "UILabel"; text = "Publisher"; ObjectID = "DKs-t1-9RK"; */
+"DKs-t1-9RK.text" = "发布者";
+
+/* Class = "UILabel"; text = "Content"; ObjectID = "Eg5-fz-Rb9"; */
+"Eg5-fz-Rb9.text" = "内容";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "IQ6-7M-KNf"; */
+"IQ6-7M-KNf.text" = "子标题";
+
+/* Class = "UIButton"; configuration.title = "See More"; ObjectID = "RJx-fs-1kk"; */
+"RJx-fs-1kk.configuration.title" = "更多";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "RJx-fs-1kk"; */
+"RJx-fs-1kk.normalTitle" = "按钮";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "VyS-Ch-DYt"; */
+"VyS-Ch-DYt.text" = "标题";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "YZr-Bi-4bQ"; */
+"YZr-Bi-4bQ.title" = "设置";
+
+/* Class = "UITabBarItem"; title = "Recruitment"; ObjectID = "ZnF-It-Oea"; */
+"ZnF-It-Oea.title" = "公开招募";
+
+/* Class = "UITabBarItem"; title = "Character Table"; ObjectID = "aks-jC-39K"; */
+"aks-jC-39K.title" = "角色图鉴";
+
+/* Class = "UILabel"; text = "DateLabel"; ObjectID = "d9L-85-Sry"; */
+"d9L-85-Sry.text" = "日期";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "dUu-rU-udY"; */
+"dUu-rU-udY.text" = "标题";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "eE8-Ac-pKh"; */
+"eE8-Ac-pKh.title" = "设置";
+
+/* Class = "UITabBarItem"; title = "Utility"; ObjectID = "fzK-Kf-AEr"; */
+"fzK-Kf-AEr.title" = "工具";
+
+/* Class = "UINavigationItem"; title = "Home"; ObjectID = "nYM-uJ-d2b"; */
+"nYM-uJ-d2b.title" = "首页";
+
+/* Class = "UINavigationItem"; title = "Character Table"; ObjectID = "pYO-aP-hU4"; */
+"pYO-aP-hU4.title" = "干员图鉴";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "vaS-fF-8uB"; */
+"vaS-fF-8uB.title" = "首页";
+
+/* Class = "UINavigationItem"; title = "Recruitment"; ObjectID = "ydK-Pa-g12"; */
+"ydK-Pa-g12.title" = "公开招募";

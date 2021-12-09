@@ -1,0 +1,57 @@
+
+/* Class = "UILabel"; text = "Last update %d days/hours ago"; ObjectID = "9DZ-45-DOa"; */
+"9DZ-45-DOa.text" = "Last update %d days/hours ago";
+
+/* Class = "UILabel"; text = "Platform"; ObjectID = "AFe-6R-e4i"; */
+"AFe-6R-e4i.text" = "Platform";
+
+/* Class = "UILabel"; text = "Publisher"; ObjectID = "DKs-t1-9RK"; */
+"DKs-t1-9RK.text" = "Publisher";
+
+/* Class = "UILabel"; text = "Content"; ObjectID = "Eg5-fz-Rb9"; */
+"Eg5-fz-Rb9.text" = "Content";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "IQ6-7M-KNf"; */
+"IQ6-7M-KNf.text" = "Subtitle";
+
+/* Class = "UIButton"; configuration.title = "See More"; ObjectID = "RJx-fs-1kk"; */
+"RJx-fs-1kk.configuration.title" = "See More";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "RJx-fs-1kk"; */
+"RJx-fs-1kk.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "VyS-Ch-DYt"; */
+"VyS-Ch-DYt.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "YZr-Bi-4bQ"; */
+"YZr-Bi-4bQ.title" = "Settings";
+
+/* Class = "UITabBarItem"; title = "Recruitment"; ObjectID = "ZnF-It-Oea"; */
+"ZnF-It-Oea.title" = "Recruitment";
+
+/* Class = "UITabBarItem"; title = "Character Table"; ObjectID = "aks-jC-39K"; */
+"aks-jC-39K.title" = "Character Table";
+
+/* Class = "UILabel"; text = "DateLabel"; ObjectID = "d9L-85-Sry"; */
+"d9L-85-Sry.text" = "DateLabel";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "dUu-rU-udY"; */
+"dUu-rU-udY.text" = "Title";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "eE8-Ac-pKh"; */
+"eE8-Ac-pKh.title" = "Settings";
+
+/* Class = "UITabBarItem"; title = "Utility"; ObjectID = "fzK-Kf-AEr"; */
+"fzK-Kf-AEr.title" = "Utility";
+
+/* Class = "UINavigationItem"; title = "Home"; ObjectID = "nYM-uJ-d2b"; */
+"nYM-uJ-d2b.title" = "Home";
+
+/* Class = "UINavigationItem"; title = "Character Table"; ObjectID = "pYO-aP-hU4"; */
+"pYO-aP-hU4.title" = "Character Table";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "vaS-fF-8uB"; */
+"vaS-fF-8uB.title" = "Home";
+
+/* Class = "UINavigationItem"; title = "Recruitment"; ObjectID = "ydK-Pa-g12"; */
+"ydK-Pa-g12.title" = "Recruitment";
