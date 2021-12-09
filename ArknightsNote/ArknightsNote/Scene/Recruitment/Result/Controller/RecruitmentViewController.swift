@@ -166,7 +166,7 @@ extension RecruitmentViewController: UITableViewDataSource {
         switch cellIdentifier {
         case "displaySelectedTags":
             guard let cell = cell as? RecruitmentResultTableViewCell,
-                  let collectionView = cell.collectionView as? TagCollectionView
+                  let collectionView = cell.collectionView as? TagCloudCollectionView
             else { return cell }
             
             collectionView.didLayoutAction = updateRowHeight

@@ -19,6 +19,7 @@ class CharacterTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.characterTagCollectionView.register(TagCloudCollectionViewCell.self, forCellWithReuseIdentifier: "characterTag")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

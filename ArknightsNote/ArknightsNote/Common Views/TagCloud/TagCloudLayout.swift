@@ -1,6 +1,6 @@
 //
-//  RecruitmentTagCloudLayout.swift
-//  RecruitmentTagCloudLayout
+//  TagCloudLayout.swift
+//  TagCloudLayout
 //
 //  Created by Kasumigaoka Utaha on 09.09.21.
 //

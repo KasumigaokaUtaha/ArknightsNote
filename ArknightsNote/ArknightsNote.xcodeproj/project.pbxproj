@@ -26,7 +26,7 @@
 		6258A0F626C7CB5B00CDA04A /* CharacterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0F526C7CB5B00CDA04A /* CharacterStore.swift */; };
 		6258A0F826C83DAF00CDA04A /* RecruitmentTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0F726C83DAF00CDA04A /* RecruitmentTagViewController.swift */; };
 		62607B0A26C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62607B0926C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift */; };
-		62607B0F26C9B4DA00112C90 /* TagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62607B0E26C9B4DA00112C90 /* TagCollectionView.swift */; };
+		62607B0F26C9B4DA00112C90 /* TagCloudCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62607B0E26C9B4DA00112C90 /* TagCloudCollectionView.swift */; };
 		627A3D8C2714944000D56876 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627A3D8B2714944000D56876 /* Defaults.swift */; };
 		6294747D26D92DC4008EAC69 /* TagCloudCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6294747C26D92DC4008EAC69 /* TagCloudCollectionViewCell.swift */; };
 		62A2D60B270CEE3900E89A6D /* RecruitmentResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2D60A270CEE3900E89A6D /* RecruitmentResultTableViewCell.swift */; };
@@ -83,7 +83,7 @@
 		6258A0F526C7CB5B00CDA04A /* CharacterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStore.swift; sourceTree = "<group>"; };
 		6258A0F726C83DAF00CDA04A /* RecruitmentTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentTagViewController.swift; sourceTree = "<group>"; };
 		62607B0926C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentSelectionTableViewCell.swift; sourceTree = "<group>"; };
-		62607B0E26C9B4DA00112C90 /* TagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionView.swift; sourceTree = "<group>"; };
+		62607B0E26C9B4DA00112C90 /* TagCloudCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCloudCollectionView.swift; sourceTree = "<group>"; };
 		627A3D8B2714944000D56876 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		6294747C26D92DC4008EAC69 /* TagCloudCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCloudCollectionViewCell.swift; sourceTree = "<group>"; };
 		62A2D60A270CEE3900E89A6D /* RecruitmentResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				6237F70326E9F12D0064A2DA /* TagCloudLayout.swift */,
-				62607B0E26C9B4DA00112C90 /* TagCollectionView.swift */,
+				62607B0E26C9B4DA00112C90 /* TagCloudCollectionView.swift */,
 				6294747C26D92DC4008EAC69 /* TagCloudCollectionViewCell.swift */,
 			);
 			path = TagCloud;
@@ -552,7 +552,7 @@
 				620D69DF27146CE30018F117 /* WeiboMessage.swift in Sources */,
 				62AEF78526C310DA00086004 /* SceneDelegate.swift in Sources */,
 				627A3D8C2714944000D56876 /* Defaults.swift in Sources */,
-				62607B0F26C9B4DA00112C90 /* TagCollectionView.swift in Sources */,
+				62607B0F26C9B4DA00112C90 /* TagCloudCollectionView.swift in Sources */,
 				62607B0A26C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

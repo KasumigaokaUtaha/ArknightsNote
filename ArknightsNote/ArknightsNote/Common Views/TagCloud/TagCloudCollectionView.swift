@@ -1,13 +1,13 @@
 //
-//  RecruitmentTagCollectionView.swift
-//  RecruitmentTagCollectionView
+//  TagCloudCollectionView.swift
+//  TagCloudCollectionView
 //
 //  Created by Kasumigaoka Utaha on 15.08.21.
 //
 
 import UIKit
 
-class TagCollectionView: UICollectionView {
+class TagCloudCollectionView: UICollectionView {
     
     // See https://stackoverflow.com/a/64390373
     var didLayoutAction: (() -> Void)?

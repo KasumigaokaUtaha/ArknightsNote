@@ -1,6 +1,6 @@
 //
-//  RecruitmentTagCloudCollectionViewCell.swift
-//  RecruitmentTagCloudCollectionViewCell
+//  TagCloudCollectionViewCell.swift
+//  TagCloudCollectionViewCell
 //
 //  Created by Kasumigaoka Utaha on 27.08.21.
 //

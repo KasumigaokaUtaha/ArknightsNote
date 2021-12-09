@@ -117,7 +117,7 @@ extension RecruitmentTagViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(withIdentifier: "recruitmentTagCategory", for: indexPath) as? RecruitmentSelectionTableViewCell,
-            let collectionView = cell.getCollectionView() as? TagCollectionView,
+            let collectionView = cell.getCollectionView() as? TagCloudCollectionView,
             let category = RecruitmentStore.Category(rawValue: indexPath.section)
         else {
             return UITableViewCell()
