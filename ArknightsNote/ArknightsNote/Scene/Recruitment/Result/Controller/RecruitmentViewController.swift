@@ -27,11 +27,6 @@ class RecruitmentViewController: UIViewController {
     private var selectedTags: [String] = [] {
         didSet {
             self.state = self.selectedTags.count == 0 ? .initial : .showResults
-//            DispatchQueue.main.async {
-//                self.tableView.beginUpdates()
-//                self.state = self.selectedTags.count == 0 ? .initial : .showResults
-//                self.tableView.endUpdates()
-//            }
         }
     }
     
@@ -139,11 +134,14 @@ class RecruitmentViewController: UIViewController {
 // MARK: - Table View Data Source
 extension RecruitmentViewController: UITableViewDataSource {
     func sections(for state: State) -> [Section] {
+        let recruitmentResultSectionName = NSLocalizedString("Recruitment Result", comment: "recruitment result")
+        let recruitmentRequirementSectionName = NSLocalizedString("Recruitment Requirement", comment: "recruitment requirement")
+
         switch state {
         case .initial:
-            return [Section(name: "招募结果", numberOfRows: nil, cellIdentifier: "recruitmentResultRow")]
+            return [Section(name: recruitmentResultSectionName, numberOfRows: nil, cellIdentifier: "recruitmentResultRow")]
         case .showResults:
-            return [Section(name: "招募需求", numberOfRows: 1, cellIdentifier: "displaySelectedTags"), Section(name: "招募结果", numberOfRows: nil, cellIdentifier: "recruitmentResultRow")]
+            return [Section(name: recruitmentRequirementSectionName, numberOfRows: 1, cellIdentifier: "displaySelectedTags"), Section(name: recruitmentResultSectionName, numberOfRows: nil, cellIdentifier: "recruitmentResultRow")]
         }
     }
     

@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     private var lastUpdateDate: Date? {
         didSet {
             guard let lastUpdateDate = lastUpdateDate else {
-                lastUpdateLabel.text = "上次更新: ??"
+                lastUpdateLabel.text = NSLocalizedString("Last update: unknown", comment: "Text of unknown last update date in home screen")
                 return
             }
             UserDefaults.standard.set(lastUpdateDate, forKey: "lastUpdateDate")
@@ -27,11 +27,14 @@ class HomeViewController: UIViewController {
             var text: String
             if days < 1.0 {
                 let hours = seconds / 3600.0
-                text = String(format: "%.1f 小时前", hours)
+                let hoursAgoText = NSLocalizedString("%.1f hours ago", comment: "Hours ago template text in home screen")
+                text = String(format: hoursAgoText, hours)
             } else {
-                text = String(format: "%d 天前", Int(days))
+                let daysAgoText = NSLocalizedString("%d days ago", comment: "Days ago template text in home screen")
+                text = String(format: daysAgoText, Int(days))
             }
-            lastUpdateLabel.text = "上次更新：\(text)"
+            let lastUpdateText = NSLocalizedString("Last update: %@", comment: "Last update template text in home screen")
+            lastUpdateLabel.text = String(format: lastUpdateText, text)
         }
     }
     private var dateFormatter: DateFormatter = {

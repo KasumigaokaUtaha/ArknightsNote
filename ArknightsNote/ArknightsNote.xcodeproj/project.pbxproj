@@ -40,6 +40,7 @@
 		62C121C327558BC800F00B66 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C121C227558BC800F00B66 /* CharacterViewController.swift */; };
 		62C121C827558C4000F00B66 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C121C627558C4000F00B66 /* CharacterTableViewCell.swift */; };
 		62C121C927558C4000F00B66 /* CharacterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62C121C727558C4000F00B66 /* CharacterTableViewCell.xib */; };
+		62CFF447276293E6004918BB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62CFF449276293E6004918BB /* Localizable.strings */; };
 		62D9ADC7274A678900EC9C3B /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D9ADC6274A678900EC9C3B /* Agent.swift */; };
 		62D9ADC9274A6EEA00EC9C3B /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D9ADC8274A6EEA00EC9C3B /* AppError.swift */; };
 		62D9ADCB274A91D400EC9C3B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D9ADCA274A91D400EC9C3B /* Util.swift */; };
@@ -102,6 +103,8 @@
 		62C121C727558C4000F00B66 /* CharacterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterTableViewCell.xib; sourceTree = "<group>"; };
 		62CFF44227628624004918BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		62CFF44427628656004918BB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		62CFF448276293E6004918BB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		62CFF44A276293EE004918BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		62D9ADC6274A678900EC9C3B /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		62D9ADC8274A6EEA00EC9C3B /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		62D9ADCA274A91D400EC9C3B /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -255,6 +258,7 @@
 				62AEF78B26C310DC00086004 /* Assets.xcassets */,
 				62AEF78D26C310DC00086004 /* LaunchScreen.storyboard */,
 				62AEF79026C310DC00086004 /* Info.plist */,
+				62CFF449276293E6004918BB /* Localizable.strings */,
 				62D9ADC8274A6EEA00EC9C3B /* AppError.swift */,
 				62D9ADCC274A976600EC9C3B /* Extensions.swift */,
 			);
@@ -495,6 +499,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62CFF447276293E6004918BB /* Localizable.strings in Resources */,
 				62AEF78F26C310DC00086004 /* LaunchScreen.storyboard in Resources */,
 				62C121C927558C4000F00B66 /* CharacterTableViewCell.xib in Resources */,
 				62AEF78C26C310DC00086004 /* Assets.xcassets in Resources */,
@@ -604,6 +609,15 @@
 				62AEF78E26C310DC00086004 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		62CFF449276293E6004918BB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62CFF448276293E6004918BB /* zh-Hans */,
+				62CFF44A276293EE004918BB /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

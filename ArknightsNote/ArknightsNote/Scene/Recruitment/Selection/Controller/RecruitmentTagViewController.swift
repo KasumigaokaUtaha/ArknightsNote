@@ -102,13 +102,13 @@ extension RecruitmentTagViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch RecruitmentStore.Category(rawValue: section) {
         case .seniority:
-            return "资质"
+            return NSLocalizedString("Seniority", comment: "Character Seniority")//"资质"
         case .position:
-            return "位置"
+            return NSLocalizedString("Position", comment: "Character Position")//"位置"
         case .profession:
-            return "职业"
+            return NSLocalizedString("Profession", comment: "Character Profession")//"职业"
         case .trait:
-            return "特性"
+            return NSLocalizedString("Tag", comment: "Character Tag")//"特性"
         default:
             return nil
         }

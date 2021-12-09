@@ -11,11 +11,10 @@ class RecruitmentLogicController {
     
     // MARK: - Properties
 
-    private let characterStore: CharacterStore
     private let recruitmentStore: RecruitmentStore
     private lazy var tagToChars: [String: [Character]] = {
         let recruitmentCharacterNames = recruitmentStore.getRecruitmentCharacterNames()
-        let recruitmentCharacters = characterStore.getCharacters().filter { character in
+        let recruitmentCharacters = CharacterStore.shared.getCharacters().filter { character in
             return recruitmentCharacterNames.contains(character.name)
         }
         
@@ -45,7 +44,6 @@ class RecruitmentLogicController {
     // MARK: - Initializers
 
     init() {
-        characterStore = CharacterStore()
         recruitmentStore = RecruitmentStore()
     }
     

@@ -14,6 +14,8 @@ struct WeiboService {
     let agent = Agent()
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
         formatter.dateFormat = "E MMM d HH:mm:ss Z yyyy"
         return formatter
     }()
