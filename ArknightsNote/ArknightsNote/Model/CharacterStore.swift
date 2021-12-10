@@ -9,6 +9,7 @@ import UIKit
 import Foundation
 
 struct CharacterStore {
+    static let shared = CharacterStore()
     
     private var characters: [Character]
 

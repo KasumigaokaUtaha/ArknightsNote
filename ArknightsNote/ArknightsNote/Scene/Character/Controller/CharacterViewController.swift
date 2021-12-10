@@ -12,6 +12,16 @@ class CharacterViewController: UIViewController {
     
     private var collectionViewIndexPaths: [UICollectionView : IndexPath] = [:]
     
+    private lazy var characters: [Character] = {
+        let characters = CharacterStore.shared.getCharacters().sorted { lhs, rhs in
+            if lhs.rarity != rhs.rarity {
+                return lhs.rarity > rhs.rarity
+            }
+            return lhs.name < rhs.name
+        }
+        return characters
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,7 +55,7 @@ extension CharacterViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        self.characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,7 +68,14 @@ extension CharacterViewController: UITableViewDataSource {
         
         collectionViewIndexPaths.updateValue(indexPath, forKey: collectionView)
 
+        let character = self.characters[indexPath.row]
         cell.characterImageView.image = UIImage(named: "假日威龙陈")
+        cell.characterNameLabel.text = character.name
+        cell.characterDescriptionLabel.text = character.description
+        cell.characterProfessionLabel.text = character.profession
+        cell.characterSubProfessionLabel.text = character.subProfessionId
+        cell.characterObtainApproachLabel.text = character.itemObtainApproach ?? NSLocalizedString("Unknown", comment: "Unknown character obtain approach")
+
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.didLayoutAction = updateRowHeight

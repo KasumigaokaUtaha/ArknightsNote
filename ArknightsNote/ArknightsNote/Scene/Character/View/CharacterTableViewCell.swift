@@ -10,10 +10,10 @@ import UIKit
 class CharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var characterImageView: UIImageView!
     @IBOutlet weak var characterNameLabel: UILabel!
-    @IBOutlet weak var characterTraitLabel: UILabel!
-    @IBOutlet weak var characterModuleLabel: UILabel!
-    @IBOutlet weak var characterAcquirementLabel: UILabel!
-    @IBOutlet weak var characterSkillLabel: UILabel!
+    @IBOutlet weak var characterProfessionLabel: UILabel!
+    @IBOutlet weak var characterSubProfessionLabel: UILabel!
+    @IBOutlet weak var characterObtainApproachLabel: UILabel!
+    @IBOutlet weak var characterDescriptionLabel: UILabel!
     @IBOutlet weak var characterTagCollectionView: UICollectionView!
     
     override func awakeFromNib() {

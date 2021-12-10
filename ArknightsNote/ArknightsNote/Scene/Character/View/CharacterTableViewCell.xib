@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -119,13 +121,13 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="characterAcquirementLabel" destination="BMO-Q8-NAb" id="Gvi-ih-J8B"/>
+                <outlet property="characterDescriptionLabel" destination="fp0-a6-op3" id="HzG-y2-F8P"/>
                 <outlet property="characterImageView" destination="wBx-CC-U1c" id="maX-OY-y2r"/>
-                <outlet property="characterModuleLabel" destination="A6B-9e-mot" id="whe-XY-sA0"/>
                 <outlet property="characterNameLabel" destination="brK-GK-SeY" id="eqb-Zx-P77"/>
-                <outlet property="characterSkillLabel" destination="fp0-a6-op3" id="HzG-y2-F8P"/>
+                <outlet property="characterObtainApproachLabel" destination="BMO-Q8-NAb" id="Gvi-ih-J8B"/>
+                <outlet property="characterProfessionLabel" destination="6yE-Fd-tZm" id="9DG-QM-KiD"/>
+                <outlet property="characterSubProfessionLabel" destination="A6B-9e-mot" id="whe-XY-sA0"/>
                 <outlet property="characterTagCollectionView" destination="bRt-p9-EkE" id="2R3-47-ICk"/>
-                <outlet property="characterTraitLabel" destination="6yE-Fd-tZm" id="9DG-QM-KiD"/>
             </connections>
             <point key="canvasLocation" x="239.85507246376812" y="111.83035714285714"/>
         </tableViewCell>
