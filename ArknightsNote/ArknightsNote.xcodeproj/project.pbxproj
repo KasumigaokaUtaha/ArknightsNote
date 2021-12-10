@@ -18,6 +18,7 @@
 		6245706F273DD53C00C89F83 /* MessageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6245706E273DD53C00C89F83 /* MessageCache.swift */; };
 		62457071273E6B2300C89F83 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62457070273E6B2300C89F83 /* FileHelper.swift */; };
 		624ED2132718BE8E00BF2D9F /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 624ED2122718BE8E00BF2D9F /* Kanna */; };
+		624FB1232763EB4C0057EE0E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 624FB1252763EB4C0057EE0E /* Localizable.strings */; };
 		6258A0E826C6733300CDA04A /* RecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0E726C6733300CDA04A /* RecruitmentViewController.swift */; };
 		6258A0EA26C6734E00CDA04A /* RecruitmentLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0E926C6734E00CDA04A /* RecruitmentLogicController.swift */; };
 		6258A0EF26C674BB00CDA04A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0EE26C674BB00CDA04A /* Character.swift */; };
@@ -74,6 +75,8 @@
 		6237F70326E9F12D0064A2DA /* TagCloudLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCloudLayout.swift; sourceTree = "<group>"; };
 		6245706E273DD53C00C89F83 /* MessageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCache.swift; sourceTree = "<group>"; };
 		62457070273E6B2300C89F83 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
+		624FB1242763EB4C0057EE0E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		624FB1262763EB4F0057EE0E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6258A0E726C6733300CDA04A /* RecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentViewController.swift; sourceTree = "<group>"; };
 		6258A0E926C6734E00CDA04A /* RecruitmentLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentLogicController.swift; sourceTree = "<group>"; };
 		6258A0EE26C674BB00CDA04A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -249,6 +252,7 @@
 				62AEF79026C310DC00086004 /* Info.plist */,
 				62D9ADC8274A6EEA00EC9C3B /* AppError.swift */,
 				62D9ADCC274A976600EC9C3B /* Extensions.swift */,
+				624FB1252763EB4C0057EE0E /* Localizable.strings */,
 			);
 			path = ArknightsNote;
 			sourceTree = "<group>";
@@ -487,6 +491,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				624FB1232763EB4C0057EE0E /* Localizable.strings in Resources */,
 				62AEF78F26C310DC00086004 /* LaunchScreen.storyboard in Resources */,
 				62C121C927558C4000F00B66 /* CharacterTableViewCell.xib in Resources */,
 				62AEF78C26C310DC00086004 /* Assets.xcassets in Resources */,
@@ -580,6 +585,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		624FB1252763EB4C0057EE0E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				624FB1242763EB4C0057EE0E /* en */,
+				624FB1262763EB4F0057EE0E /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		62AEF78826C310DA00086004 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

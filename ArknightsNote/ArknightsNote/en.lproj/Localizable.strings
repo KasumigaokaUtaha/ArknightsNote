@@ -1,0 +1,55 @@
+/* 
+  Localizable.strings
+  ArknightsNote
+
+  Created by Kasumigaoka Utaha on 10.12.21.
+  
+*/
+
+/* Hours ago template text in home screen */
+"%.1f hours ago" = "%.1f hours ago";
+
+/* Days ago template text in home screen */
+"%d days ago" = "%d days ago";
+
+/* Text of about option in settings screen */
+"About" = "About";
+
+/* Alert message in settings screen */
+"Are you sure you want to remove all messages" = "Are you sure you want to remove all messages";
+
+/* Title of cancel action in settings screen */
+"Cancel" = "Cancel";
+
+/* Last update template text in home screen */
+"Last update: %@" = "Last update: %@";
+
+/* Text of unknown last update date in home screen */
+"Last update: unknown" = "Last update: unknown";
+
+/* Character Position */
+"Position" = "Position";
+
+/* Character Profession */
+"Profession" = "Profession";
+
+/* recruitment requirement */
+"Recruitment Requirement" = "Recruitment Requirement";
+
+/* recruitment result */
+"Recruitment Result" = "Recruitment Result";
+
+/* Title of remove action in settings screen */
+"Remove" = "Remove";
+
+/* Text of remove messages option in settings screen */
+"Remove Messages" = "Remove Messages";
+
+/* Character Seniority */
+"Seniority" = "Seniority";
+
+/* Character Tag */
+"Tag" = "Tag";
+
+/* Unknown character obtain approach */
+"Unknown" = "Unknown";
