@@ -13,6 +13,7 @@
 		620D69DB27142CB80018F117 /* HomeMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620D69DA27142CB80018F117 /* HomeMessageCell.swift */; };
 		620D69DD27146BEF0018F117 /* MessageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620D69DC27146BEF0018F117 /* MessageStore.swift */; };
 		620D69DF27146CE30018F117 /* WeiboMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620D69DE27146CE30018F117 /* WeiboMessage.swift */; };
+		6229FFCB27680C0E00365A64 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 6229FFCA27680C0E00365A64 /* Nuke */; };
 		623645E32717748C000EA644 /* WeiboService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623645E22717748C000EA644 /* WeiboService.swift */; };
 		6237F70426E9F12D0064A2DA /* TagCloudLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6237F70326E9F12D0064A2DA /* TagCloudLayout.swift */; };
 		6245706F273DD53C00C89F83 /* MessageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6245706E273DD53C00C89F83 /* MessageCache.swift */; };
@@ -117,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6229FFCB27680C0E00365A64 /* Nuke in Frameworks */,
 				624ED2132718BE8E00BF2D9F /* Kanna in Frameworks */,
 				620D69D1271349830018F117 /* Logging in Frameworks */,
 			);
@@ -397,6 +399,7 @@
 			packageProductDependencies = (
 				620D69D0271349830018F117 /* Logging */,
 				624ED2122718BE8E00BF2D9F /* Kanna */,
+				6229FFCA27680C0E00365A64 /* Nuke */,
 			);
 			productName = ArknightsNote;
 			productReference = 62AEF77F26C310DA00086004 /* ArknightsNote.app */;
@@ -474,6 +477,7 @@
 			packageReferences = (
 				620D69CF271349830018F117 /* XCRemoteSwiftPackageReference "swift-log" */,
 				624ED2112718BE8E00BF2D9F /* XCRemoteSwiftPackageReference "Kanna" */,
+				6229FFC927680C0E00365A64 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = 62AEF78026C310DA00086004 /* Products */;
 			projectDirPath = "";
@@ -939,6 +943,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		6229FFC927680C0E00365A64 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 		624ED2112718BE8E00BF2D9F /* XCRemoteSwiftPackageReference "Kanna" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tid-kijyun/Kanna";
@@ -954,6 +966,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 620D69CF271349830018F117 /* XCRemoteSwiftPackageReference "swift-log" */;
 			productName = Logging;
+		};
+		6229FFCA27680C0E00365A64 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6229FFC927680C0E00365A64 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
 		};
 		624ED2122718BE8E00BF2D9F /* Kanna */ = {
 			isa = XCSwiftPackageProductDependency;

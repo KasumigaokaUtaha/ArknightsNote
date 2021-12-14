@@ -14,6 +14,11 @@ enum Defaults {
             static let host = "https://m.weibo.cn"
             static let index = "/api/container/getIndex"
         }
+        
+        enum Character {
+            static let host = "https://cdn.jsdelivr.net"
+            static let path = "/gh/godofhuaye/arknight-assets@master/cg"
+        }
     }
     
     enum UID {
@@ -49,5 +54,15 @@ extension Defaults.URL.Weibo {
             "value": uid,
             "containerid": containerId
         ])
+    }
+}
+
+extension Defaults.URL.Character {
+    static func avatar(of name: String) -> URL? {
+        let url = URL(string: host)?
+            .appendingPathComponent(path, isDirectory: true)
+            .appendingPathComponent(name, isDirectory: true)
+            .appendingPathComponent("\(name).png", isDirectory: false)
+        return url
     }
 }

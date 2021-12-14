@@ -5,6 +5,7 @@
 //  Created by Kasumigaoka Utaha on 29.11.21.
 //
 
+import Nuke
 import UIKit
 
 class CharacterViewController: UIViewController {
@@ -69,13 +70,15 @@ extension CharacterViewController: UITableViewDataSource {
         collectionViewIndexPaths.updateValue(indexPath, forKey: collectionView)
 
         let character = self.characters[indexPath.row]
-        cell.characterImageView.image = UIImage(named: "假日威龙陈")
+        Nuke.loadImage(with: Defaults.URL.Character.avatar(of: character.name), into: cell.characterImageView)
         cell.characterNameLabel.text = character.name
         cell.characterDescriptionLabel.text = character.description
         cell.characterProfessionLabel.text = character.profession
         cell.characterSubProfessionLabel.text = character.subProfessionId
         cell.characterObtainApproachLabel.text = character.itemObtainApproach ?? NSLocalizedString("Unknown", comment: "Unknown character obtain approach")
-
+//        cell.cancellable = ImagePipeline.shared.imagePublisher(with: Defaults.URL.Character.avatar(of: character.name))
+//            .sink(receiveCompletion: { print("ImagePipeline receives completion \($0)") }, receiveValue: { cell.characterImageView.image = $0.image })
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.didLayoutAction = updateRowHeight
