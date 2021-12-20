@@ -53,3 +53,183 @@
 
 /* Unknown character obtain approach */
 "Unknown" = "Unknown";
+
+/* Profession CASTER */
+"CASTER" = "CASTER";
+
+/* Profession TANK */
+"TANK" = "TANK";
+
+/* Profession WARRIOR */
+"WARRIOR" = "WARRIOR";
+
+/* Profession SNIPER */
+"SNIPER" = "SNIPER";
+
+/* Profession PIONEER */
+"PIONEER" = "PIONEER";
+
+/* Profession SUPPORT */
+"SUPPORT" = "SUPPORT";
+
+/* Profession MEDIC */
+"MEDIC" = "MEDIC";
+
+/* Profession SPECIAL */
+"SPECIAL" = "SPECIAL";
+
+/* Subprofession geek */
+"geek" = "geek";
+
+/* Subprofession unyield */
+"unyield" = "unyield";
+
+/* Subprofession fortress */
+"fortress" = "fortress";
+
+/* Subprofession siegesniper */
+"siegesniper" = "siegesniper";
+
+/* Subprofession guardian */
+"guardian" = "guardian";
+
+/* Subprofession musha */
+"musha" = "musha";
+
+/* Subprofession physician */
+"physician" = "physician";
+
+/* Subprofession stalker */
+"stalker" = "stalker";
+
+/* Subprofession splashcaster */
+"splashcaster" = "splashcaster";
+
+/* Subprofession healer */
+"healer" = "healer";
+
+/* Subprofession bard */
+"bard" = "bard";
+
+/* Subprofession tactician */
+"tactician" = "tactician";
+
+/* Subprofession reaper */
+"reaper" = "reaper";
+
+/* Subprofession centurion */
+"centurion" = "centurion";
+
+/* Subprofession librator */
+"librator" = "librator";
+
+/* Subprofession mystic */
+"mystic" = "mystic";
+
+/* Subprofession executor */
+"executor" = "executor";
+
+/* Subprofession ringhealer */
+"ringhealer" = "ringhealer";
+
+/* Subprofession pioneer */
+"pioneer" = "pioneer";
+
+/* Subprofession bombarder */
+"bombarder" = "bombarder";
+
+/* Subprofession traper */
+"traper" = "traper";
+
+/* Subprofession duelist */
+"duelist" = "duelist";
+
+/* Subprofession charger */
+"charger" = "charger";
+
+/* Subprofession lord */
+"lord" = "lord";
+
+/* Subprofession pusher */
+"pusher" = "pusher";
+
+/* Subprofession reaperrange */
+"reaperrange" = "reaperrange";
+
+/* Subprofession blessing */
+"blessing" = "blessing";
+
+/* Subprofession hookmaster */
+"hookmaster" = "hookmaster";
+
+/* Subprofession aoesniper */
+"aoesniper" = "aoesniper";
+
+/* Subprofession bearer */
+"bearer" = "bearer";
+
+/* Subprofession underminer */
+"underminer" = "underminer";
+
+/* Subprofession merchant */
+"merchant" = "merchant";
+
+/* Subprofession longrange */
+"longrange" = "longrange";
+
+/* Subprofession fastshot */
+"fastshot" = "fastshot";
+
+/* Subprofession chain */
+"chain" = "chain";
+
+/* Subprofession artsfghter */
+"artsfghter" = "artsfghter";
+
+/* Subprofession summoner */
+"summoner" = "summoner";
+
+/* Subprofession wandermedic */
+"wandermedic" = "wandermedic";
+
+/* Subprofession protector */
+"protector" = "protector";
+
+/* Subprofession fighter */
+"fighter" = "fighter";
+
+/* Subprofession instructor */
+"instructor" = "instructor";
+
+/* Subprofession sword */
+"sword" = "sword";
+
+/* Subprofession closerange */
+"closerange" = "closerange";
+
+/* Subprofession funnel */
+"funnel" = "funnel";
+
+/* Subprofession dollkeeper */
+"dollkeeper" = "dollkeeper";
+
+/* Subprofession phalanx */
+"phalanx" = "phalanx";
+
+/* Subprofession slower */
+"slower" = "slower";
+
+/* Subprofession craftsman */
+"craftsman" = "craftsman";
+
+/* Subprofession blastcaster */
+"blastcaster" = "blastcaster";
+
+/* Subprofession artsprotector */
+"artsprotector" = "artsprotector";
+
+/* Subprofession corecaster */
+"corecaster" = "corecaster";
+
+/* Subprofession fearless */
+"fearless" = "fearless";

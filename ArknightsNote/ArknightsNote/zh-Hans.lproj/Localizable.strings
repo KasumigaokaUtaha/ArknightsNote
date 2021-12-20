@@ -53,3 +53,185 @@
 
 /* Unknown character obtain approach */
 "Unknown" = "未知";
+
+/* Profession CASTER */
+"CASTER" = "术师";
+
+/* Profession TANK */
+"TANK" = "重装";
+
+/* Profession WARRIOR */
+"WARRIOR" = "近卫";
+
+/* Profession SNIPER */
+"SNIPER" = "狙击";
+
+/* Profession PIONEER */
+"PIONEER" = "先锋";
+
+/* Profession SUPPORT */
+"SUPPORT" = "辅助";
+
+/* Profession MEDIC */
+"MEDIC" = "医疗";
+
+/* Profession SPECIAL */
+"SPECIAL" = "特种";
+
+/* Translation source: https://arknightscommunity.drblack-system.com/11448.html */
+
+/* Subprofession geek */
+"geek" = "怪杰";
+
+/* Subprofession unyield */
+"unyield" = "不屈者";
+
+/* Subprofession fortress */
+"fortress" = "要塞";
+
+/* Subprofession siegesniper */
+"siegesniper" = "攻城手";
+
+/* Subprofession guardian */
+"guardian" = "守护者";
+
+/* Subprofession musha */
+"musha" = "武者";
+
+/* Subprofession physician */
+"physician" = "医师";
+
+/* Subprofession stalker */
+"stalker" = "伏击客";
+
+/* Subprofession splashcaster */
+"splashcaster" = "扩散术师";
+
+/* Subprofession healer */
+"healer" = "疗养师";
+
+/* Subprofession bard */
+"bard" = "吟游者";
+
+/* Subprofession tactician */
+"tactician" = "战术家";
+
+/* Subprofession reaper */
+"reaper" = "收割者";
+
+/* Subprofession centurion */
+"centurion" = "强攻手";
+
+/* Subprofession librator */
+"librator" = "解放者";
+
+/* Subprofession mystic */
+"mystic" = "秘术师";
+
+/* Subprofession executor */
+"executor" = "处决者";
+
+/* Subprofession ringhealer */
+"ringhealer" = "群愈师";
+
+/* Subprofession pioneer */
+"pioneer" = "尖兵";
+
+/* Subprofession bombarder */
+"bombarder" = "投掷手";
+
+/* Subprofession traper */
+"traper" = "陷阱师";
+
+/* Subprofession duelist */
+"duelist" = "决战者";
+
+/* Subprofession charger */
+"charger" = "冲锋手";
+
+/* Subprofession lord */
+"lord" = "领主";
+
+/* Subprofession pusher */
+"pusher" = "推击手";
+
+/* Subprofession reaperrange */
+"reaperrange" = "散射手";
+
+/* Subprofession blessing */
+"blessing" = "护佑者";
+
+/* Subprofession hookmaster */
+"hookmaster" = "钩索师";
+
+/* Subprofession aoesniper */
+"aoesniper" = "炮手";
+
+/* Subprofession bearer */
+"bearer" = "执旗手";
+
+/* Subprofession underminer */
+"underminer" = "吟游者";
+
+/* Subprofession merchant */
+"merchant" = "行商";
+
+/* Subprofession longrange */
+"longrange" = "神射手";
+
+/* Subprofession fastshot */
+"fastshot" = "速射手";
+
+/* Subprofession chain */
+"chain" = "链术师";
+
+/* Subprofession artsfghter */
+"artsfghter" = "术战者";
+
+/* Subprofession summoner */
+"summoner" = "召唤师";
+
+/* Subprofession wandermedic */
+"wandermedic" = "流浪医师";
+
+/* Subprofession protector */
+"protector" = "铁卫";
+
+/* Subprofession fighter */
+"fighter" = "斗士";
+
+/* Subprofession instructor */
+"instructor" = "教官";
+
+/* Subprofession sword */
+"sword" = "剑豪";
+
+/* Subprofession closerange */
+"closerange" = "重射手";
+
+/* Subprofession funnel */
+"funnel" = "驭械术师";
+
+/* Subprofession dollkeeper */
+"dollkeeper" = "傀儡师";
+
+/* Subprofession phalanx */
+"phalanx" = "阵法术师";
+
+/* Subprofession slower */
+"slower" = "凝滞师";
+
+/* Subprofession craftsman */
+"craftsman" = "手工艺者";
+
+/* Subprofession blastcaster */
+"blastcaster" = "轰击术师";
+
+/* Subprofession artsprotector */
+"artsprotector" = "驭法铁卫";
+
+/* Subprofession corecaster */
+"corecaster" = "中坚术师";
+
+/* Subprofession fearless */
+"fearless" = "无畏者";

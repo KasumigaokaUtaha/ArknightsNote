@@ -52,4 +52,12 @@ struct CharacterStore {
     func getCharacters() -> [Character] {
         return characters
     }
+    
+    func getAllProfessions() -> [String] {
+        return Array(Set(characters.map({ $0.profession })))
+    }
+    
+    func getAllSubProfessions() -> [String] {
+        return Array(Set(characters.map( {$0.subProfessionId} )))
+    }
 }

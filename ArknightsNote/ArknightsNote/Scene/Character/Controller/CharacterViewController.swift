@@ -73,8 +73,8 @@ extension CharacterViewController: UITableViewDataSource {
         Nuke.loadImage(with: Defaults.URL.Character.avatar(of: character.name), into: cell.characterImageView)
         cell.characterNameLabel.text = character.name
         cell.characterDescriptionLabel.text = character.description
-        cell.characterProfessionLabel.text = character.profession
-        cell.characterSubProfessionLabel.text = character.subProfessionId
+        cell.characterProfessionLabel.text = NSLocalizedString(character.profession, comment: "Character Profession")
+        cell.characterSubProfessionLabel.text = NSLocalizedString(character.subProfessionId, comment: "Character Subprofession")
         cell.characterObtainApproachLabel.text = character.itemObtainApproach ?? NSLocalizedString("Unknown", comment: "Unknown character obtain approach")
 //        cell.cancellable = ImagePipeline.shared.imagePublisher(with: Defaults.URL.Character.avatar(of: character.name))
 //            .sink(receiveCompletion: { print("ImagePipeline receives completion \($0)") }, receiveValue: { cell.characterImageView.image = $0.image })
