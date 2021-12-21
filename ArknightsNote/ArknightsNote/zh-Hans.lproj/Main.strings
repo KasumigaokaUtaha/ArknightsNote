@@ -30,7 +30,7 @@
 "ZnF-It-Oea.title" = "公开招募";
 
 /* Class = "UITabBarItem"; title = "Character Table"; ObjectID = "aks-jC-39K"; */
-"aks-jC-39K.title" = "角色图鉴";
+"aks-jC-39K.title" = "干员图鉴";
 
 /* Class = "UILabel"; text = "DateLabel"; ObjectID = "d9L-85-Sry"; */
 "d9L-85-Sry.text" = "日期";
