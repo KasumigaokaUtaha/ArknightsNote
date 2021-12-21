@@ -30,6 +30,10 @@ enum Defaults {
     enum Cache: String {
         case Message = "MessageCache.json"
     }
+    
+    enum Pattern {
+        static let characterDescription = #"(<.*?>(.*?)<.*?\/>)"#
+    }
 }
 
 extension Defaults.URL {

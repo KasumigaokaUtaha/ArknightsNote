@@ -47,6 +47,17 @@ class CharacterViewController: UIViewController {
             }
         }
     }
+    
+    private func makeXMLElementContentAttributedString(of text: String) -> NSAttributedString {
+        let (extractedText, contentRanges) = Util.extractXMLContent(from: text, with: Defaults.Pattern.characterDescription)
+        
+        let attributedText = NSMutableAttributedString(string: extractedText)
+        for contentRange in contentRanges {
+            attributedText.addAttribute(.foregroundColor, value: UIColor.systemBlue, range: NSRange(contentRange, in: extractedText))
+        }
+
+        return attributedText
+    }
 }
 
 // MARK: - Table View Data Source
@@ -72,7 +83,7 @@ extension CharacterViewController: UITableViewDataSource {
         let character = self.characters[indexPath.row]
         Nuke.loadImage(with: Defaults.URL.Character.avatar(of: character.name), into: cell.characterImageView)
         cell.characterNameLabel.text = character.name
-        cell.characterDescriptionLabel.text = character.description
+        cell.characterDescriptionLabel.attributedText = self.makeXMLElementContentAttributedString(of: character.description)
         cell.characterProfessionLabel.text = NSLocalizedString(character.profession, comment: "Character Profession")
         cell.characterSubProfessionLabel.text = NSLocalizedString(character.subProfessionId, comment: "Character Subprofession")
         cell.characterObtainApproachLabel.text = character.itemObtainApproach ?? NSLocalizedString("Unknown", comment: "Unknown character obtain approach")
