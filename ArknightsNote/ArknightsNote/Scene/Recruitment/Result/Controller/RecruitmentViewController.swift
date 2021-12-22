@@ -40,8 +40,8 @@ class RecruitmentViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
 
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
 

@@ -22,6 +22,7 @@ class RecruitmentResultTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    // See https://stackoverflow.com/a/64390373
     override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
         return collectionView.contentSize
     }
