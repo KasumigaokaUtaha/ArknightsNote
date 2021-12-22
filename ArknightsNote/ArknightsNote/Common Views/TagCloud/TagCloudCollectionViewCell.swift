@@ -11,9 +11,19 @@ class TagCloudCollectionViewCell: UICollectionViewCell {
     
     var tagLabel: UILabel! // TODO: Maybe replace UILabel with UIButton for better UX
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.setup()
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
+        self.setup()
+    }
+    
+    func setup() {
         tagLabel = UILabel(frame: .zero)
         tagLabel.textColor = .label
         contentView.addSubview(tagLabel)
@@ -26,5 +36,4 @@ class TagCloudCollectionViewCell: UICollectionViewCell {
             tagLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
-    
 }

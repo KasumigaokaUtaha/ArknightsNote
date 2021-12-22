@@ -11,6 +11,7 @@ import UIKit
 class CharacterViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
     
+    /// A dictionary containing collection view in a character table view cell as key and the corresponding index path of this table view cell as value
     private var collectionViewIndexPaths: [UICollectionView : IndexPath] = [:]
     
     private lazy var characters: [Character] = {
@@ -34,20 +35,18 @@ class CharacterViewController: UIViewController {
         self.tableView.dataSource = self
         
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 200
+        self.tableView.estimatedRowHeight = UITableView.automaticDimension
     }
     
     // MARK: - Utility
-    private func updateRowHeight() {
-        DispatchQueue.main.async {
-            // Disable animation
-            UIView.performWithoutAnimation {
-                self.tableView.beginUpdates()
-                self.tableView.endUpdates()
-            }
-        }
+    private func computeItemSize(_ item: String) -> CGSize {
+        var itemSize = item.size(withAttributes: [.font: UIFont.systemFont(ofSize: 13)])
+        itemSize.width += itemSize.height
+        itemSize.height += itemSize.height / 2
+        
+        return itemSize
     }
-    
+
     private func makeXMLElementContentAttributedString(of text: String) -> NSAttributedString {
         let (extractedText, contentRanges) = Util.extractXMLContent(from: text, with: Defaults.Pattern.characterDescription)
         
@@ -78,8 +77,6 @@ extension CharacterViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        collectionViewIndexPaths.updateValue(indexPath, forKey: collectionView)
-
         let character = self.characters[indexPath.row]
         Nuke.loadImage(with: Defaults.URL.Character.avatar(of: character.name), into: cell.characterImageView)
         cell.characterNameLabel.text = character.name
@@ -92,7 +89,7 @@ extension CharacterViewController: UITableViewDataSource {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.didLayoutAction = updateRowHeight
+        collectionViewIndexPaths.updateValue(indexPath, forKey: collectionView)
         
         return cell
     }
@@ -106,17 +103,78 @@ extension CharacterViewController: UITableViewDelegate {
 // MARK: - Collection View Data Source
 extension CharacterViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        guard
+            let indexPath = collectionViewIndexPaths[collectionView],
+            indexPath.row < characters.count
+        else {
+            return 0
+        }
+        
+        let character = characters[indexPath.row]
+        return 2 + character.tagList.count // rarity, position and tags
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "characterTag", for: indexPath)
+        guard
+            let tableViewCellIndexPath = collectionViewIndexPaths[collectionView],
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "characterTag", for: indexPath) as? TagCloudCollectionViewCell,
+            tableViewCellIndexPath.row < characters.count
+        else {
+            return UICollectionViewCell()
+        }
+        
+        cell.layer.cornerRadius = 6
+        cell.tagLabel.textColor = .label
+        cell.tagLabel.font = UIFont.systemFont(ofSize: 13)
+        cell.backgroundColor = .secondarySystemBackground
+
+        let character = characters[tableViewCellIndexPath.row]
+        switch indexPath.item {
+        case 0:
+            // display rarity
+            let rarityText = NSLocalizedString(String(character.rarity), comment: "Character Rarity \(character.rarity)")
+            cell.tagLabel.text = rarityText // i18n
+        case 1:
+            // display position
+            let positionText = NSLocalizedString(character.position, comment: "Character Position \(character.position)")
+            cell.tagLabel.text = positionText
+        case 2 ..< 2 + character.tagList.count:
+            let tag = character.tagList[indexPath.item - 2]
+            cell.tagLabel.text = tag
+        default:
+            break
+        }
         
         return cell
     }
 }
 
 // MARK: - Collection View Delegate
-extension CharacterViewController: UICollectionViewDelegate {
-    
+extension CharacterViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard
+            let tableViewCellIndexPath = collectionViewIndexPaths[collectionView],
+            tableViewCellIndexPath.row < characters.count
+        else {
+            return .zero
+        }
+
+        let character = characters[tableViewCellIndexPath.row]
+        var tag: String
+        switch indexPath.item {
+        case 0:
+            // display rarity
+            tag = NSLocalizedString(String(character.rarity), comment: "Character Rarity \(character.rarity)")
+        case 1:
+            // display position
+            tag = NSLocalizedString(character.position, comment: "Character Position \(character.position)")
+        case 2 ..< 2 + character.tagList.count:
+            tag = character.tagList[indexPath.item - 2]
+        default:
+            return .zero
+        }
+
+        let itemSize = computeItemSize(tag)
+        return itemSize
+    }
 }

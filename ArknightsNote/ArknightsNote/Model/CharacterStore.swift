@@ -15,6 +15,7 @@ struct CharacterStore {
 
     init() {
         characters = []
+        // TODO: replace hardcoded character_table.json file with dynamic one that matches the currently chosen game region
         guard let asset = NSDataAsset(name: "character_table.json") else {
             fatalError("Missing data asset: character_table.json")
         }
