@@ -233,3 +233,24 @@
 
 /* Subprofession fearless */
 "fearless" = "fearless";
+
+/* Character Position RANGED */
+"RANGED" = "RANGED";
+
+/* Character Position MELEE */
+"MELEE" = "MELEE";
+
+/* Character Rarity 1 */
+"1" = "2 star";
+
+/* Character Rarity 2 */
+"2" = "3 star";
+
+/* Character Rarity 3 */
+"3" = "4 star";
+
+/* Character Rarity 4 */
+"4" = "5 star";
+
+/* Character Rarity 5 */
+"5" = "6 star";

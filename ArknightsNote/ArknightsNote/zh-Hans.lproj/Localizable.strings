@@ -235,3 +235,24 @@
 
 /* Subprofession fearless */
 "fearless" = "无畏者";
+
+/* Character Position RANGED */
+"RANGED" = "远程位";
+
+/* Character Position MELEE */
+"MELEE" = "近战位";
+
+/* Character Rarity 1 */
+"1" = "2星";
+
+/* Character Rarity 2 */
+"2" = "3星";
+
+/* Character Rarity 3 */
+"3" = "4星";
+
+/* Character Rarity 4 */
+"4" = "5星";
+
+/* Character Rarity 5 */
+"5" = "6星";
