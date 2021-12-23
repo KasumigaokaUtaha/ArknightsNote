@@ -40,33 +40,28 @@ class SettingsViewController: UIViewController {
 // MARK: - UITabelView Data Source
 extension SettingsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return 1
-        default:
-            return 0
-        }
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell", for: indexPath)
         var configuration = cell.defaultContentConfiguration()
 
-        switch (indexPath.section, indexPath.row) {
-        case (0, 0):
+        switch indexPath.row {
+        case 0:
             let cellText = NSLocalizedString("Remove Messages", comment: "Text of remove messages option in settings screen")
             configuration.text = cellText
             configuration.textProperties.color = .red
             configuration.image = UIImage(systemName: "trash")
             configuration.imageProperties.tintColor = .red
-        case (1, 0):
+        case 1:
             let cellText = NSLocalizedString("About", comment: "Text of about option in settings screen")
             configuration.text = cellText
+            configuration.image = UIImage(systemName: "exclamationmark.circle")
             cell.accessoryType = .disclosureIndicator
         default:
             break
