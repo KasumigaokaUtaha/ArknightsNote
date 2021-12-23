@@ -89,6 +89,7 @@ extension CharacterViewController: UITableViewDataSource {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.reloadData()
         collectionViewIndexPaths.updateValue(indexPath, forKey: collectionView)
         
         return cell
@@ -124,16 +125,44 @@ extension CharacterViewController: UICollectionViewDataSource {
         }
         
         cell.layer.cornerRadius = 6
+        cell.layer.masksToBounds = true
         cell.tagLabel.textColor = .label
         cell.tagLabel.font = UIFont.systemFont(ofSize: 13)
-        cell.backgroundColor = .secondarySystemBackground
+        cell.backgroundColor = UIColor.secondarySystemBackground
 
         let character = characters[tableViewCellIndexPath.row]
         switch indexPath.item {
         case 0:
             // display rarity
             let rarityText = NSLocalizedString(String(character.rarity), comment: "Character Rarity \(character.rarity)")
-            cell.tagLabel.text = rarityText // i18n
+            cell.tagLabel.text = rarityText
+            cell.tagLabel.textColor = .white
+
+            switch character.rarity {
+            case 0:
+                cell.backgroundColor = UIColor.systemGray
+            case 1:
+                cell.backgroundColor = UIColor.systemGreen
+            case 2:
+                cell.backgroundColor = UIColor.systemBlue
+            case 3:
+                cell.backgroundColor = UIColor.systemPurple
+            case 4:
+                cell.backgroundColor = UIColor.systemOrange
+            case 5:
+                let gradientLayer = CAGradientLayer()
+                gradientLayer.colors = [UIColor.systemYellow.cgColor, UIColor.systemOrange.cgColor, UIColor.systemRed.cgColor, UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
+                gradientLayer.locations = [0.0, 0.25, 0.5, 0.75 ,1.0]
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+                gradientLayer.frame.origin = CGPoint.zero
+                gradientLayer.frame.size = cell.frame.size
+                
+                cell.gradientLayer = gradientLayer
+                cell.layer.insertSublayer(gradientLayer, at: 0)
+            default:
+                break
+            }
         case 1:
             // display position
             let positionText = NSLocalizedString(character.position, comment: "Character Position \(character.position)")

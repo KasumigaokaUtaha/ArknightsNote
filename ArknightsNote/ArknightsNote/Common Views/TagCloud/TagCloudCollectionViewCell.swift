@@ -10,6 +10,7 @@ import UIKit
 class TagCloudCollectionViewCell: UICollectionViewCell {
     
     var tagLabel: UILabel! // TODO: Maybe replace UILabel with UIButton for better UX
+    var gradientLayer: CALayer?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,5 +36,11 @@ class TagCloudCollectionViewCell: UICollectionViewCell {
             tagLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             tagLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.gradientLayer?.removeFromSuperlayer()
     }
 }
