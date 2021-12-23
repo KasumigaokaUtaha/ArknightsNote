@@ -47,49 +47,49 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yz-9p-rKQ" userLabel="Separator">
-                                                                <rect key="frame" x="91" y="0.0" width="2" height="16"/>
+                                                                <rect key="frame" x="91" y="0.0" width="1" height="16"/>
                                                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="2" id="Aab-aZ-19y"/>
+                                                                    <constraint firstAttribute="width" constant="1" id="Aab-aZ-19y"/>
                                                                     <constraint firstAttribute="height" constant="16" id="zWx-J4-uWo"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="狙击" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yE-Fd-tZm" userLabel="Character Generic Trait">
-                                                                <rect key="frame" x="97" y="0.0" width="27" height="16"/>
+                                                                <rect key="frame" x="96" y="0.0" width="27" height="16"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QEO-I2-aSl" userLabel="Separator">
-                                                                <rect key="frame" x="128" y="0.0" width="2" height="16"/>
+                                                                <rect key="frame" x="127" y="0.0" width="1" height="16"/>
                                                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="16" id="1Zz-gj-FwB"/>
-                                                                    <constraint firstAttribute="width" constant="2" id="wWb-co-5ZP"/>
+                                                                    <constraint firstAttribute="width" constant="1" id="wWb-co-5ZP"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="散射手" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6B-9e-mot" userLabel="Character Concrete Trait">
-                                                                <rect key="frame" x="134" y="0.0" width="40" height="16"/>
+                                                                <rect key="frame" x="132" y="0.0" width="40" height="16"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vh0-4Z-sLq" userLabel="Separator">
-                                                                <rect key="frame" x="178" y="0.0" width="2" height="16"/>
+                                                                <rect key="frame" x="176" y="0.0" width="1" height="16"/>
                                                                 <color key="backgroundColor" systemColor="separatorColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="16" id="wat-vG-KUC"/>
-                                                                    <constraint firstAttribute="width" constant="2" id="xvD-UJ-b19"/>
+                                                                    <constraint firstAttribute="width" constant="1" id="xvD-UJ-b19"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="限定寻访" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMO-Q8-NAb" userLabel="Character Acquirement">
-                                                                <rect key="frame" x="184" y="0.0" width="53.5" height="16"/>
+                                                                <rect key="frame" x="181" y="0.0" width="53.5" height="16"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="0oR-T8-Ux8" userLabel="Spacer">
-                                                                <rect key="frame" x="241.5" y="0.0" width="141.5" height="16"/>
+                                                                <rect key="frame" x="238.5" y="0.0" width="144.5" height="16"/>
                                                             </view>
                                                         </subviews>
                                                     </stackView>
