@@ -28,6 +28,24 @@ class CharacterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        var filterImageName: String
+        if #available(iOS 15, *) {
+            filterImageName = "line.3.horizontal.decrease.circle"
+        } else {
+            filterImageName = "line.horizontal.3.decrease.circle"
+        }
+        
+        let switchToInfraAction = UIAction(title: "Infrastructure", state: .off) { action in
+            print("Switch to Infrastructure Skill Table")
+        }
+        let switchToFilterOptionsAction = UIAction(title: "Filter", state: .off) { action in
+            print("Switch to filter option popover")
+        }
+        let menuActions = [switchToInfraAction, switchToFilterOptionsAction]
+        let menu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: menuActions)
+        let filterBarItem = UIBarButtonItem(title: nil, image: UIImage(systemName: filterImageName), primaryAction: nil, menu: menu)
+        self.navigationItem.setLeftBarButton(filterBarItem, animated: false)
+
         let nib = UINib(nibName: String(describing: CharacterTableViewCell.self), bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "CharacterCell")
         
