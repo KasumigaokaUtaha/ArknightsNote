@@ -22,6 +22,9 @@ class RecruitmentViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     weak var collectionView: UICollectionView!
+    
+    /// The sum of offset of status bar and navigation bar with large title
+    var topOffset: CGFloat = .init(0.0)
 
     private var state: State = .initial
     private var selectedTags: [String] = [] {
@@ -44,10 +47,20 @@ class RecruitmentViewController: UIViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
 
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
-
-        if #available(iOS 15, *) {} else {
-            preventLargeTitleCollapsing()
-        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // always show whole content of the table view
+        self.tableView.setContentOffset(.init(x: 0, y: topOffset), animated: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let top = self.tableView.adjustedContentInset.top
+        topOffset = min(topOffset, -top)
     }
     
     // MARK: - Actions
@@ -79,14 +92,7 @@ class RecruitmentViewController: UIViewController {
             }
         }
     }
-    
-    // See https://stackoverflow.com/a/66504612
-    private func preventLargeTitleCollapsing() {
-        let dummyView = UIView()
-        view.addSubview(dummyView)
-        view.sendSubviewToBack(dummyView)
-    }
-    
+
     // MARK: - Utilities
     private func computeItemSize(_ item: String) -> CGSize {
         var itemSize = item.size(withAttributes: [.font: UIFont.preferredFont(forTextStyle: .body)])
