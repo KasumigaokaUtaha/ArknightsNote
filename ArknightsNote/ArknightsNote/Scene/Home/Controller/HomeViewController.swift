@@ -38,8 +38,10 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
 
         // subscribe to the message cache
-        self.cancellable = MessageStore.shared.messageCache.$elements.sink(receiveValue: { value in
-            self.render(with: value)
+        self.cancellable = MessageStore.shared.messageCache.$elements
+            .dropFirst()
+            .sink(receiveValue: { value in
+                self.render(with: value)
         })
         self.refresh()
     }
@@ -66,7 +68,10 @@ class HomeViewController: UIViewController {
             // update refresh control
             if let refreshControl = self.tableView.refreshControl {
                 refreshControl.endRefreshing()
-                refreshControl.isHidden = true
+                // fix the problem that the content of table view
+                // appears underneath the navigation title
+                let top = self.tableView.adjustedContentInset.top
+                self.tableView.setContentOffset(CGPoint(x: 0, y: -top), animated: false)
             }
         }
     }
