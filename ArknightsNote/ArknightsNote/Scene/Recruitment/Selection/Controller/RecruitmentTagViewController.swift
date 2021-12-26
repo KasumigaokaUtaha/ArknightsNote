@@ -35,6 +35,7 @@ class RecruitmentTagViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsSelection = false
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
 
