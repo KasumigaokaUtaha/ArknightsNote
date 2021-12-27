@@ -5,9 +5,9 @@
 //  Created by Kasumigaoka Utaha on 11.10.21.
 //
 
-import Kanna
 import Combine
 import Foundation
+import Kanna
 
 struct Message: Codable {
     var date: Date
@@ -19,13 +19,13 @@ struct Message: Codable {
 }
 
 enum Platform {
-    case Weibo
-    case Bilibili
+    case weibo
+    case bilibili
 }
 
 struct MessageStore {
     static let shared = MessageStore()
-    
+
     /// Stores cached messages
     ///
     /// It tries to first load locally cached messages.
@@ -38,19 +38,22 @@ struct MessageStore {
         messageCache = MessageCache()
         loadCachedMessages()
     }
-    
+
     func loadCachedMessages() {
         do {
-            let messages: [Message] = try FileHelper.loadJSON(from: .documentDirectory, fileName: Defaults.Cache.Message.rawValue)
+            let messages: [Message] = try FileHelper.loadJSON(
+                from: .documentDirectory,
+                fileName: Defaults.Cache.message.rawValue
+            )
             messageCache.setElements(messages)
         } catch {
             logger.debug("\(error.localizedDescription)", metadata: nil, source: "\(#file).\(#function)")
         }
     }
-    
+
     func fetchMessages(of platform: Platform, for user: String) {
         switch platform {
-        case .Weibo:
+        case .weibo:
             let token = SubscriptionToken()
             let messagePublisher = WeiboService.shared.messageDataRequest(uid: user)
             messagePublisher
@@ -60,8 +63,8 @@ struct MessageStore {
                     messageCache.merge(with: messages, sortBy: { $0.date > $1.date })
                 })
                 .seal(in: token)
-            
-        case .Bilibili:
+
+        case .bilibili:
             return
         }
     }

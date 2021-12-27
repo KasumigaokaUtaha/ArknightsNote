@@ -7,17 +7,20 @@
 
 import Foundation
 
+// swiftlint:disable nesting
 struct Character: Codable, Equatable, Hashable {
     // MARK: - Protocol implementation
+
     static func == (lhs: Character, rhs: Character) -> Bool {
-        return lhs.name == rhs.name
+        lhs.name == rhs.name
     }
-    
+
     func hash(into hasher: inout Hasher) {
-        hasher.combine(self.name)
+        hasher.combine(name)
     }
-    
+
     // MARK: - Property
+
     var name: String
     var description: String
     var canUseGeneralPotentialItem: Bool
@@ -46,10 +49,10 @@ struct Character: Codable, Equatable, Hashable {
 //    var potentialRanks: []
 //    var favorKeyFrames: []
 //    var allSkillLvup: []
-    
+
     struct Trait: Codable {
         var candidates: [Candidate]
-        
+
         struct Candidate: Codable {
             var unlockCondition: UnlockCondition
             var requiredPotentialRank: Int
@@ -62,14 +65,14 @@ struct Character: Codable, Equatable, Hashable {
                 var phase: Int
                 var level: Int
             }
-            
+
             struct Blackboard: Codable {
                 var key: String
                 var value: Double
             }
         }
     }
-    
+
     struct Phase: Codable {
         var characterPrefabKey: String
         var rangeId: String
@@ -104,23 +107,23 @@ struct Character: Codable, Equatable, Hashable {
             }
         }
     }
-    
+
     struct Skill: Codable {
         var skillId: String
         var overridePrefabKey: String?
         var overrideTokenKey: String?
         var levelUpCostCond: [LevelUpCostCond]
-        
+
         struct LevelUpCostCond: Codable {
             var unlockCond: UnlockCond
             var lvlUpTime: Int
             var levelUpCost: [LevelUpCost]?
-            
+
             struct UnlockCond: Codable {
                 var phase: Int
                 var level: Int
             }
-            
+
             struct LevelUpCost: Codable {
                 var id: String
                 var count: Int
@@ -128,10 +131,10 @@ struct Character: Codable, Equatable, Hashable {
             }
         }
     }
-    
+
     struct Talent: Codable {
         var candidates: [Candidate]
-        
+
         struct Candidate: Codable {
             var unlockCondition: UnlockCondition
             var requiredPotentialRank: Int
@@ -145,7 +148,7 @@ struct Character: Codable, Equatable, Hashable {
                 var phase: Int
                 var level: Int
             }
-            
+
             struct Blackboard: Codable {
                 var key: String
                 var value: Double

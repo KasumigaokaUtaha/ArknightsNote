@@ -8,13 +8,12 @@
 import UIKit
 
 class TagCloudCollectionView: UICollectionView {
-    
     // See https://stackoverflow.com/a/64390373
     var didLayoutAction: (() -> Void)?
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         didLayoutAction?()
         didLayoutAction = nil
     }
@@ -30,10 +29,9 @@ class TagCloudCollectionView: UICollectionView {
 //            self.invalidateIntrinsicContentSize()
 //        }
 //    }
-    
+
 //    override func reloadData() {
 //        super.reloadData()
 //        self.invalidateIntrinsicContentSize()
 //    }
-
 }

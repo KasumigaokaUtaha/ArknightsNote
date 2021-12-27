@@ -9,58 +9,58 @@ import Foundation
 
 class MessageCache {
     @Published private(set) var elements: [Message]
-    
+
     init() {
-        self.elements = []
+        elements = []
     }
-    
+
     init(elements: [Message]) {
         self.elements = elements
     }
 
     // MARK: - Getters
-    
+
     func getElements() -> [Message] {
-        return elements
+        elements
     }
-    
+
     // MARK: - Setters
-    
+
     func setElements(_ newElements: [Message]) {
-        self.elements = newElements
+        elements = newElements
     }
-    
+
     // MARK: - Operators
 
     func append(_ element: Message) {
         elements.append(element)
     }
-    
+
     private func computeMergedElements(with newElements: [Message]) -> [Message] {
-        var dict: [Date : Message] = [:]
+        var dict: [Date: Message] = [:]
         newElements.forEach { dict.updateValue($0, forKey: $0.date) }
         elements.forEach { dict.updateValue($0, forKey: $0.date) }
         return Array(dict.values)
     }
-    
+
     func merge(with newElements: [Message]) {
-        // TODO add another parameter: on key: KeyPath<...>
+        // TODO: add another parameter: on key: KeyPath<...>
         elements = computeMergedElements(with: newElements)
     }
-    
+
     func sort(by areInIncreasingOrder: (Message, Message) throws -> Bool) rethrows {
         try elements.sort(by: areInIncreasingOrder)
     }
-    
+
     func merge(with newElements: [Message], sortBy areInIncreasingOrder: (Message, Message) throws -> Bool) rethrows {
         let mergedElements = computeMergedElements(with: newElements)
         elements = try mergedElements.sorted(by: areInIncreasingOrder)
     }
-    
+
     func removeAll() {
         elements.removeAll()
     }
-    
+
     // MARK: - Storage Operators
 
     func writeCache(to directory: FileManager.SearchPathDirectory, fileName: String) {

@@ -5,12 +5,12 @@
 //  Created by Kasumigaoka Utaha on 11.10.21.
 //
 
-import UIKit
 import Combine
+import UIKit
 
 class HomeViewController: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet var tableView: UITableView!
+
     private var messages: [Message]?
     private var cancellable: AnyCancellable?
     private var dateFormatter: DateFormatter = {
@@ -21,39 +21,40 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let lastUpdateDate = UserDefaults.standard.value(forKey: "lastUpdateDate") as? Date
-        
+
         let refreshControl = UIRefreshControl()
-        self.updateRefreshControlTitle(with: lastUpdateDate, for: refreshControl)
+        updateRefreshControlTitle(with: lastUpdateDate, for: refreshControl)
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.refreshControl = refreshControl
-        
+
         tableView.dataSource = self
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableView.automaticDimension
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         // subscribe to the message cache
-        self.cancellable = MessageStore.shared.messageCache.$elements
+        cancellable = MessageStore.shared.messageCache.$elements
             .dropFirst()
             .sink(receiveValue: { value in
                 self.render(with: value)
-        })
-        self.refresh()
+            })
+        refresh()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+
         // cancel the subscription to message cache
-        self.cancellable = nil
+        cancellable = nil
     }
-    
+
     // MARK: - Updating Appearance
+
     func render(with value: [Message]) {
         DispatchQueue.main.async {
             self.messages = value
@@ -75,15 +76,18 @@ class HomeViewController: UIViewController {
             }
         }
     }
-    
+
     func updateRefreshControlTitle(with lastUpdateDate: Date?, for control: UIRefreshControl? = nil) {
-        var refreshControl = self.tableView.refreshControl
+        var refreshControl = tableView.refreshControl
         if control != nil {
             refreshControl = control
         }
 
         guard let lastUpdateDate = lastUpdateDate else {
-            let text = NSLocalizedString("Last update: unknown", comment: "Text of unknown last update date in home screen")
+            let text = NSLocalizedString(
+                "Last update: unknown",
+                comment: "Text of unknown last update date in home screen"
+            )
             refreshControl?.attributedTitle = NSAttributedString(string: text)
             return
         }
@@ -93,6 +97,7 @@ class HomeViewController: UIViewController {
     }
 
     // MARK: - Format
+
     func formatLastUpdateDate(_ date: Date) -> String {
         let seconds = date.distance(to: Date())
         let days = seconds / 86400.0
@@ -109,24 +114,28 @@ class HomeViewController: UIViewController {
         let lastUpdateText = NSLocalizedString("Last update: %@", comment: "Last update template text in home screen")
         return String(format: lastUpdateText, text)
     }
-    
+
     // MARK: - Actions
+
     @objc func openDetailURL(sender: UIButton) {
         let selectedRow = sender.tag
-        guard let message = self.messages?[selectedRow], let detailURL = URL(string: message.detailLink) else { return }
+        guard let message = messages?[selectedRow], let detailURL = URL(string: message.detailLink) else {
+            return
+        }
 
         UIApplication.shared.open(detailURL, options: [:])
     }
 
     @objc func refresh() {
-        self.tableView.refreshControl?.beginRefreshing()
-        MessageStore.shared.fetchMessages(of: .Weibo, for: Defaults.UID.Weibo.arknights)
+        tableView.refreshControl?.beginRefreshing()
+        MessageStore.shared.fetchMessages(of: .weibo, for: Defaults.UID.Weibo.arknights)
     }
 }
 
-// MARK: - UITableView Data Source
+// MARK: UITableViewDataSource
+
 extension HomeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return messages?.count ?? 0
@@ -134,11 +143,13 @@ extension HomeViewController: UITableViewDataSource {
             return 0
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "message", for: indexPath)
 
-        guard let messages = messages else { return cell }
+        guard let messages = messages else {
+            return cell
+        }
 
         if let cell = cell as? HomeMessageCell {
             let message = messages[indexPath.row]
@@ -150,7 +161,7 @@ extension HomeViewController: UITableViewDataSource {
             cell.moreButton.tag = indexPath.row
             cell.moreButton.addTarget(self, action: #selector(openDetailURL(sender:)), for: .touchUpInside)
         }
-        
+
         return cell
     }
 }

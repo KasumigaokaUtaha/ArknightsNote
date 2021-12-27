@@ -8,8 +8,7 @@
 import UIKit
 
 class RecruitmentSelectionTableViewCell: UITableViewCell {
-    
-    @IBOutlet private weak var collectionView: UICollectionView! // Why weak?
+    @IBOutlet private var collectionView: UICollectionView! // Why weak?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,11 +22,15 @@ class RecruitmentSelectionTableViewCell: UITableViewCell {
     }
 
     func getCollectionView() -> UICollectionView? {
-        return collectionView
+        collectionView
     }
-    
+
     // See https://stackoverflow.com/a/64390373
-    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
-        return collectionView.contentSize
+    override func systemLayoutSizeFitting(
+        _: CGSize,
+        withHorizontalFittingPriority _: UILayoutPriority,
+        verticalFittingPriority _: UILayoutPriority
+    ) -> CGSize {
+        collectionView.contentSize
     }
 }

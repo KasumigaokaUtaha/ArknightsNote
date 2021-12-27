@@ -7,6 +7,7 @@
 
 import Foundation
 
+// swiftlint:disable nesting
 enum Defaults {
     enum URL {
         enum Weibo {
@@ -14,46 +15,47 @@ enum Defaults {
             static let host = "https://m.weibo.cn"
             static let index = "/api/container/getIndex"
         }
-        
+
         enum Character {
             static let host = "https://cdn.jsdelivr.net"
             static let path = "/gh/godofhuaye/arknight-assets@master/cg"
         }
     }
-    
+
     enum UID {
         enum Weibo {
             static let arknights = "6279793937"
         }
     }
-    
+
     enum Cache: String {
-        case Message = "MessageCache.json"
+        case message = "MessageCache.json"
     }
-    
+
     enum Pattern {
         static let characterDescription = #"(<.*?>(.*?)<.*?\/>)"#
     }
 }
 
 extension Defaults.URL {
-    static func merge(base: String, params: [String : Any]) -> String {
-        let queries = params.map({
-            [$0.key, String.init(describing: $0.value)].joined(separator: "=")
-        }).joined(separator: "&")
+    static func merge(base: String, params: [String: Any]) -> String {
+        let queries = params.map {
+            [$0.key, String(describing: $0.value)].joined(separator: "=")
+        }.joined(separator: "&")
         return [base, queries].joined(separator: "?")
     }
 }
 
 extension Defaults.URL.Weibo {
     static func home(uid: String) -> String {
-        return Defaults.URL.merge(base: host + index, params: [
+        Defaults.URL.merge(base: host + index, params: [
             "type": "uid",
             "value": uid
         ])
     }
+
     static func mblogs(uid: String, containerId: String) -> String {
-        return Defaults.URL.merge(base: host + index, params: [
+        Defaults.URL.merge(base: host + index, params: [
             "type": "uid",
             "value": uid,
             "containerid": containerId

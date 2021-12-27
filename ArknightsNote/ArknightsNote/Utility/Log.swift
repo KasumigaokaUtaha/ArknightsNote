@@ -8,4 +8,4 @@
 import Foundation
 import Logging
 
-let logger: Logger = Logger(label: "io.github.ravencrow.ArknightsNote")
+let logger: Logger = .init(label: "io.github.ravencrow.ArknightsNote")

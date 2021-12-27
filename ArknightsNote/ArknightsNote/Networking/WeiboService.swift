@@ -19,16 +19,16 @@ struct WeiboService {
         formatter.dateFormat = "E MMM d HH:mm:ss Z yyyy"
         return formatter
     }()
-    
+
     func indexDataRequest(uid: String) -> AnyPublisher<Agent.Response<WeiboIndex>, AppError> {
         guard let url = URL(string: Defaults.URL.Weibo.home(uid: uid)) else {
             return Fail(outputType: Agent.Response<WeiboIndex>.self, failure: AppError.requestError)
                 .eraseToAnyPublisher()
         }
-        
+
         return agent.get(request: URLRequest(url: url))
     }
-    
+
     func profileImageDataRequest(url: String) -> AnyPublisher<Agent.Response<Data>, AppError> {
         guard let url = URL(string: url) else {
             return Fail(outputType: Agent.Response<Data>.self, failure: AppError.requestError)
@@ -36,16 +36,19 @@ struct WeiboService {
         }
         return agent.get(request: URLRequest(url: url))
     }
-    
-    func containerDataRequest(uid: String, containerId: String) -> AnyPublisher<Agent.Response<WeiboContainerIndex>, AppError> {
+
+    func containerDataRequest(
+        uid: String,
+        containerId: String
+    ) -> AnyPublisher<Agent.Response<WeiboContainerIndex>, AppError> {
         guard let url = URL(string: Defaults.URL.Weibo.mblogs(uid: uid, containerId: containerId)) else {
             return Fail(outputType: Agent.Response<WeiboContainerIndex>.self, failure: AppError.requestError)
                 .eraseToAnyPublisher()
         }
-        
+
         return agent.get(request: URLRequest(url: url))
     }
-    
+
     func messageDataRequest(uid: String) -> AnyPublisher<[Message], AppError> {
         let messagePublisher = indexDataRequest(uid: uid)
             .tryMap { element throws -> (String, String, String) in
@@ -54,8 +57,8 @@ struct WeiboService {
                 let userName = userInfo.screenName
                 let profileImageURL = userInfo.profileImageURL
                 let containerId = data.tabsInfo.tabs
-                    .filter({ $0.tabType == "weibo" })
-                    .map({ $0.containerId })
+                    .filter { $0.tabType == "weibo" }
+                    .map(\.containerId)
                     .first
                 guard let containerId = containerId else {
                     // TODO: Add debug log
@@ -63,33 +66,43 @@ struct WeiboService {
                 }
                 return (userName, containerId, profileImageURL)
             }
-            .mapError({ $0 as! AppError })
+            .mapError { error in
+                error as? AppError ?? AppError.unknown
+            }
             .flatMap { element -> Publishers.Zip3<
-                    Result<String, AppError>.Publisher,
-                    AnyPublisher<Agent.Response<Data>, AppError>,
-                    AnyPublisher<Agent.Response<WeiboContainerIndex>, AppError>
-                > in
-                let (userName, containerId, imageURL) = element
-                let imagePublisher = profileImageDataRequest(url: imageURL)
-                let containerDataPublisher = containerDataRequest(uid: uid, containerId: containerId)
-                let info: Result<String, AppError> = .success(userName)
-                return Publishers.Zip3(
-                    info.publisher,
-                    imagePublisher,
-                    containerDataPublisher
-                )
+                Result<String, AppError>.Publisher,
+                AnyPublisher<Agent.Response<Data>, AppError>,
+                AnyPublisher<Agent.Response<WeiboContainerIndex>, AppError>
+            > in
+            let (userName, containerId, imageURL) = element
+            let imagePublisher = profileImageDataRequest(url: imageURL)
+            let containerDataPublisher = containerDataRequest(uid: uid, containerId: containerId)
+            let info: Result<String, AppError> = .success(userName)
+            return Publishers.Zip3(
+                info.publisher,
+                imagePublisher,
+                containerDataPublisher
+            )
             }
             .map { element -> [Message] in
                 let (userName, imageData, containerData) = element
                 let cards = containerData.value.data.cards
-                    .filter({ $0.cardType == 9 })
+                    .filter { $0.cardType == 9 }
                 let messages = cards
                     .map { card -> Message in
                         let mBlog = card.mBlog
                         let detailLink = card.scheme
                         let date = dateFormatter.date(from: mBlog.createdAt)!
-                        let content = Util.extractText(from: mBlog.text.replacingOccurrences(of: "<br />", with: "\n")) ?? ""
-                        let message = Message(date: date, profile: imageData.value, content: content, username: userName, platform: "微博", detailLink: detailLink)
+                        let content = Util
+                            .extractText(from: mBlog.text.replacingOccurrences(of: "<br />", with: "\n")) ?? ""
+                        let message = Message(
+                            date: date,
+                            profile: imageData.value,
+                            content: content,
+                            username: userName,
+                            platform: "微博",
+                            detailLink: detailLink
+                        )
                         return message
                     }
                 return messages

@@ -5,12 +5,12 @@
 //  Created by Kasumigaoka Utaha on 14.08.21.
 //
 
-import UIKit
 import Foundation
+import UIKit
 
 struct CharacterStore {
     static let shared = CharacterStore()
-    
+
     private var characters: [Character]
 
     init() {
@@ -19,17 +19,23 @@ struct CharacterStore {
         guard let asset = NSDataAsset(name: "character_table.json") else {
             fatalError("Missing data asset: character_table.json")
         }
-        guard let characterTables = try? JSONSerialization.jsonObject(with: asset.data, options: .mutableContainers) as? [String:Any] else {
+        guard let characterTables = try? JSONSerialization.jsonObject(
+            with: asset.data,
+            options: .mutableContainers
+        ) as? [String: Any]
+        else {
             fatalError("Could not parse contents of data asset: character_table.json as json")
         }
-        
+
         let decoder = JSONDecoder()
         for key in characterTables.keys {
-            guard key.hasPrefix("char") else { continue }
+            guard key.hasPrefix("char") else {
+                continue
+            }
             guard let data = try? JSONSerialization.data(withJSONObject: characterTables[key]!) else {
                 fatalError("Could not convert parsed data into JSON Object")
             }
-            
+
             do {
                 let character = try decoder.decode(Character.self, from: data)
                 characters.append(character)
@@ -41,7 +47,7 @@ struct CharacterStore {
             } catch let DecodingError.valueNotFound(value, context) {
                 print("Value '\(value)' not found:", context.debugDescription)
                 print("codingPath:", context.codingPath)
-            } catch let DecodingError.typeMismatch(type, context)  {
+            } catch let DecodingError.typeMismatch(type, context) {
                 print("Type '\(type)' mismatch:", context.debugDescription)
                 print("codingPath:", context.codingPath)
             } catch {
@@ -49,16 +55,16 @@ struct CharacterStore {
             }
         }
     }
-    
+
     func getCharacters() -> [Character] {
-        return characters
+        characters
     }
-    
+
     func getAllProfessions() -> [String] {
-        return Array(Set(characters.map({ $0.profession })))
+        Array(Set(characters.map(\.profession)))
     }
-    
+
     func getAllSubProfessions() -> [String] {
-        return Array(Set(characters.map( {$0.subProfessionId} )))
+        Array(Set(characters.map(\.subProfessionId)))
     }
 }

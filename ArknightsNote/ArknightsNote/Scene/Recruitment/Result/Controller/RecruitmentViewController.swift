@@ -8,31 +8,30 @@
 import UIKit
 
 class RecruitmentViewController: UIViewController {
-    
     struct Section {
         let name: String
         let numberOfRows: Int?
         let cellIdentifier: String?
     }
-    
+
     enum State {
         case initial
         case showResults
     }
-    
-    @IBOutlet weak var tableView: UITableView!
+
+    @IBOutlet var tableView: UITableView!
     weak var collectionView: UICollectionView!
-    
+
     /// The sum of offset of status bar and navigation bar with large title
     var topOffset: CGFloat = .init(0.0)
 
     private var state: State = .initial
     private var selectedTags: [String] = [] {
         didSet {
-            self.state = self.selectedTags.count == 0 ? .initial : .showResults
+            state = selectedTags.count == 0 ? .initial : .showResults
         }
     }
-    
+
     private let logicController = RecruitmentLogicController()
     private let recruitmentStore = RecruitmentStore()
     private var recruitmentResults = [[String]: [Character]]()
@@ -48,27 +47,28 @@ class RecruitmentViewController: UIViewController {
 
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         // always show whole content of the table view
-        self.tableView.setContentOffset(.init(x: 0, y: topOffset), animated: true)
+        tableView.setContentOffset(.init(x: 0, y: topOffset), animated: true)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        let top = self.tableView.adjustedContentInset.top
+
+        let top = tableView.adjustedContentInset.top
         topOffset = min(topOffset, -top)
     }
-    
+
     // MARK: - Actions
+
     func setSelectedTags(_ tags: [String]) {
         selectedTags = tags
-        
+
         DispatchQueue.global().async {
-            var results = [[String] : [Character]]()
+            var results = [[String]: [Character]]()
             for (key, value) in self.logicController.computeCharactersWith(tags: tags) {
                 results.updateValue(
                     self.sortedCharacters(value),
@@ -76,14 +76,15 @@ class RecruitmentViewController: UIViewController {
                 )
             }
             self.recruitmentResults = results
-            self.recruitmentResultTags = self.sortedTags(results.keys.map({ $0 }))
+            self.recruitmentResultTags = self.sortedTags(results.keys.map { $0 })
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
     }
-    
+
     // MARK: - Layout Actions
+
     private func updateRowHeight() {
         DispatchQueue.main.async {
             UIView.performWithoutAnimation {
@@ -94,38 +95,41 @@ class RecruitmentViewController: UIViewController {
     }
 
     // MARK: - Utilities
+
     private func computeItemSize(_ item: String) -> CGSize {
         var itemSize = item.size(withAttributes: [.font: UIFont.preferredFont(forTextStyle: .body)])
         itemSize.width += itemSize.height
         itemSize.height += itemSize.height / 2
-        
+
         return itemSize
     }
 
     private func sortedCharacters(_ chars: [Character]) -> [Character] {
-        return chars.sorted(by: { $0.rarity >= $1.rarity })
+        chars.sorted(by: { $0.rarity >= $1.rarity })
     }
-    
+
     private func sortedTags(_ tags: [[String]]) -> [[String]] {
-        return tags.sorted(by: {
-            let maxTagRarityInFirst = $0.filter({ recruitmentStore.tagsOfCategory(.seniority).contains($0) }).map({ $0.count }).max()
-            let maxTagRarityInSecond = $1.filter({ recruitmentStore.tagsOfCategory(.seniority).contains($0) }).map({ $0.count }).max()
-            if maxTagRarityInFirst != nil && maxTagRarityInSecond == nil {
+        tags.sorted(by: {
+            let maxTagRarityInFirst = $0.filter { recruitmentStore.tagsOfCategory(.seniority).contains($0) }
+                .map(\.count).max()
+            let maxTagRarityInSecond = $1.filter { recruitmentStore.tagsOfCategory(.seniority).contains($0) }
+                .map(\.count).max()
+            if maxTagRarityInFirst != nil, maxTagRarityInSecond == nil {
                 return true
-            } else if maxTagRarityInFirst == nil && maxTagRarityInSecond != nil {
+            } else if maxTagRarityInFirst == nil, maxTagRarityInSecond != nil {
                 return false
-            } else if maxTagRarityInFirst != nil && maxTagRarityInSecond != nil {
+            } else if maxTagRarityInFirst != nil, maxTagRarityInSecond != nil {
                 return maxTagRarityInFirst! >= maxTagRarityInSecond!
             }
             if $0.count != $1.count {
                 let less: [String] = $0.count < $1.count ? $0 : $1
                 let more: [String] = $0.count < $1.count ? $1 : $0
-                let maxRarityInLess = recruitmentResults[less]!.map({ $0.rarity }).max()!
-                let maxRarityInMore = recruitmentResults[more]!.map({ $0.rarity }).max()!
+                let maxRarityInLess = recruitmentResults[less]!.map(\.rarity).max()!
+                let maxRarityInMore = recruitmentResults[more]!.map(\.rarity).max()!
                 return maxRarityInLess >= maxRarityInMore
             } else {
-                let maxRarityInFirst = recruitmentResults[$0]!.map({ $0.rarity }).max()!
-                let maxRarityInSecond = recruitmentResults[$1]!.map({ $0.rarity }).max()!
+                let maxRarityInFirst = recruitmentResults[$0]!.map(\.rarity).max()!
+                let maxRarityInSecond = recruitmentResults[$1]!.map(\.rarity).max()!
                 return maxRarityInFirst >= maxRarityInSecond
             }
         }).map {
@@ -134,35 +138,53 @@ class RecruitmentViewController: UIViewController {
             })
         }
     }
-
 }
 
-// MARK: - Table View Data Source
+// MARK: UITableViewDataSource
+
 extension RecruitmentViewController: UITableViewDataSource {
     func sections(for state: State) -> [Section] {
         let recruitmentResultSectionName = NSLocalizedString("Recruitment Result", comment: "recruitment result")
-        let recruitmentRequirementSectionName = NSLocalizedString("Recruitment Requirement", comment: "recruitment requirement")
+        let recruitmentRequirementSectionName = NSLocalizedString(
+            "Recruitment Requirement",
+            comment: "recruitment requirement"
+        )
 
         switch state {
         case .initial:
-            return [Section(name: recruitmentResultSectionName, numberOfRows: nil, cellIdentifier: "recruitmentResultRow")]
+            return [Section(
+                name: recruitmentResultSectionName,
+                numberOfRows: nil,
+                cellIdentifier: "recruitmentResultRow"
+            )]
         case .showResults:
-            return [Section(name: recruitmentRequirementSectionName, numberOfRows: 1, cellIdentifier: "displaySelectedTags"), Section(name: recruitmentResultSectionName, numberOfRows: nil, cellIdentifier: "recruitmentResultRow")]
+            return [
+                Section(
+                    name: recruitmentRequirementSectionName,
+                    numberOfRows: 1,
+                    cellIdentifier: "displaySelectedTags"
+                ),
+                Section(name: recruitmentResultSectionName, numberOfRows: nil, cellIdentifier: "recruitmentResultRow")
+            ]
         }
     }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sections(for: state).count
+
+    func numberOfSections(in _: UITableView) -> Int {
+        sections(for: state).count
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard sections(for: state).count > section else { return 0 }
-        
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard sections(for: state).count > section else {
+            return 0
+        }
+
         return sections(for: state)[section].numberOfRows ?? recruitmentResults.keys.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cellIdentifier = sections(for: state)[indexPath.section].cellIdentifier else {
+        guard
+            let cellIdentifier = sections(for: state)[indexPath.section].cellIdentifier
+        else {
             return UITableViewCell()
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
@@ -171,8 +193,10 @@ extension RecruitmentViewController: UITableViewDataSource {
         case "displaySelectedTags":
             guard let cell = cell as? RecruitmentResultTableViewCell,
                   let collectionView = cell.collectionView as? TagCloudCollectionView
-            else { return cell }
-            
+            else {
+                return cell
+            }
+
             collectionView.didLayoutAction = updateRowHeight
             collectionView.delegate = self
             collectionView.dataSource = self
@@ -183,20 +207,21 @@ extension RecruitmentViewController: UITableViewDataSource {
             let resultTags = recruitmentResultTags[indexPath.row]
             let resultChars = recruitmentResults[resultTags]
             cell.textLabel?.text = resultTags.joined(separator: ", ")
-            cell.detailTextLabel?.text = (resultChars?.map { $0.name })?.joined(separator: ", ")
+            cell.detailTextLabel?.text = (resultChars?.map(\.name))?.joined(separator: ", ")
         default:
             fatalError("tableView(_:willDisplay:forRowAt:) - Unknown cell identifier")
         }
-        
+
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections(for: state)[section].name
+
+    func tableView(_: UITableView, titleForHeaderInSection section: Int) -> String? {
+        sections(for: state)[section].name
     }
 }
 
-// MARK: - Table View Delegate
+// MARK: UITableViewDelegate
+
 extension RecruitmentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "sectionHeader")
@@ -213,14 +238,26 @@ extension RecruitmentViewController: UITableViewDelegate {
     }
 }
 
+// MARK: UICollectionViewDataSource
+
 extension RecruitmentViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectedTags.count
+    func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
+        selectedTags.count
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recruitmentTag", for: indexPath) as! TagCloudCollectionViewCell
-        guard indexPath.item < selectedTags.count else { return cell }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        guard
+            indexPath.item < selectedTags.count,
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "recruitmentTag",
+                for: indexPath
+            ) as? TagCloudCollectionViewCell
+        else {
+            return UICollectionViewCell()
+        }
 
         cell.layer.cornerRadius = 6
         cell.backgroundColor = .systemBlue
@@ -231,20 +268,30 @@ extension RecruitmentViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: UICollectionViewDelegateFlowLayout
+
 extension RecruitmentViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard indexPath.item < selectedTags.count else { return .zero }
-        
+    func collectionView(
+        _: UICollectionView,
+        layout _: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        guard indexPath.item < selectedTags.count else {
+            return .zero
+        }
+
         return computeItemSize(selectedTags[indexPath.item])
     }
 }
 
 extension RecruitmentViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         switch segue.identifier {
         case "chooseRecruitmentTags":
-            guard let destination = segue.destination as? RecruitmentTagViewController else { return }
-            
+            guard let destination = segue.destination as? RecruitmentTagViewController else {
+                return
+            }
+
             destination.configure(recruitmentStore: recruitmentStore, selectedTags: selectedTags)
             destination.viewWillDisappearAction = { data in
                 self.setSelectedTags(data)
