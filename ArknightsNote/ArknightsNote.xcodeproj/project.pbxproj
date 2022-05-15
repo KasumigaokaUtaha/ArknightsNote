@@ -20,6 +20,7 @@
 		62457071273E6B2300C89F83 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62457070273E6B2300C89F83 /* FileHelper.swift */; };
 		624ED2132718BE8E00BF2D9F /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 624ED2122718BE8E00BF2D9F /* Kanna */; };
 		624FB1232763EB4C0057EE0E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 624FB1252763EB4C0057EE0E /* Localizable.strings */; };
+		625027F5283006F10024143B /* CardPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625027F4283006F10024143B /* CardPresentationController.swift */; };
 		6258A0E826C6733300CDA04A /* RecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0E726C6733300CDA04A /* RecruitmentViewController.swift */; };
 		6258A0EA26C6734E00CDA04A /* RecruitmentLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0E926C6734E00CDA04A /* RecruitmentLogicController.swift */; };
 		6258A0EF26C674BB00CDA04A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6258A0EE26C674BB00CDA04A /* Character.swift */; };
@@ -29,7 +30,12 @@
 		62607B0A26C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62607B0926C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift */; };
 		62607B0F26C9B4DA00112C90 /* TagCloudCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62607B0E26C9B4DA00112C90 /* TagCloudCollectionView.swift */; };
 		627A3D8C2714944000D56876 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627A3D8B2714944000D56876 /* Defaults.swift */; };
+		628A6A0528201C2800FD8391 /* GachaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628A6A0428201C2800FD8391 /* GachaViewController.swift */; };
 		6294747D26D92DC4008EAC69 /* TagCloudCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6294747C26D92DC4008EAC69 /* TagCloudCollectionViewCell.swift */; };
+		629794832830F1F500748850 /* GachaReportImportPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629794822830F1F500748850 /* GachaReportImportPageView.swift */; };
+		629794862831451B00748850 /* GachaReportImportPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629794852831451B00748850 /* GachaReportImportPageViewController.swift */; };
+		629794882831772100748850 /* ANPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629794872831772100748850 /* ANPageViewController.swift */; };
+		6297948A2831922B00748850 /* ANButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629794892831922B00748850 /* ANButton.swift */; };
 		62A2D60B270CEE3900E89A6D /* RecruitmentResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2D60A270CEE3900E89A6D /* RecruitmentResultTableViewCell.swift */; };
 		62AEF78326C310DA00086004 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEF78226C310DA00086004 /* AppDelegate.swift */; };
 		62AEF78526C310DA00086004 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEF78426C310DA00086004 /* SceneDelegate.swift */; };
@@ -79,6 +85,7 @@
 		62457070273E6B2300C89F83 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		624FB1242763EB4C0057EE0E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		624FB1262763EB4F0057EE0E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		625027F4283006F10024143B /* CardPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresentationController.swift; sourceTree = "<group>"; };
 		6258A0E726C6733300CDA04A /* RecruitmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentViewController.swift; sourceTree = "<group>"; };
 		6258A0E926C6734E00CDA04A /* RecruitmentLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentLogicController.swift; sourceTree = "<group>"; };
 		6258A0EE26C674BB00CDA04A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -88,7 +95,12 @@
 		62607B0926C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		62607B0E26C9B4DA00112C90 /* TagCloudCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCloudCollectionView.swift; sourceTree = "<group>"; };
 		627A3D8B2714944000D56876 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		628A6A0428201C2800FD8391 /* GachaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaViewController.swift; sourceTree = "<group>"; };
 		6294747C26D92DC4008EAC69 /* TagCloudCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCloudCollectionViewCell.swift; sourceTree = "<group>"; };
+		629794822830F1F500748850 /* GachaReportImportPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaReportImportPageView.swift; sourceTree = "<group>"; };
+		629794852831451B00748850 /* GachaReportImportPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaReportImportPageViewController.swift; sourceTree = "<group>"; };
+		629794872831772100748850 /* ANPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANPageViewController.swift; sourceTree = "<group>"; };
+		629794892831922B00748850 /* ANButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANButton.swift; sourceTree = "<group>"; };
 		62A2D60A270CEE3900E89A6D /* RecruitmentResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentResultTableViewCell.swift; sourceTree = "<group>"; };
 		62AEF77F26C310DA00086004 /* ArknightsNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArknightsNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62AEF78226C310DA00086004 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +217,8 @@
 			isa = PBXGroup;
 			children = (
 				62607B0D26C9B44500112C90 /* TagCloud */,
+				629794872831772100748850 /* ANPageViewController.swift */,
+				629794892831922B00748850 /* ANButton.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -217,6 +231,33 @@
 				6294747C26D92DC4008EAC69 /* TagCloudCollectionViewCell.swift */,
 			);
 			path = TagCloud;
+			sourceTree = "<group>";
+		};
+		628A6A0228201BF700FD8391 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				629794842830F1FB00748850 /* View */,
+				628A6A0328201C0A00FD8391 /* Controller */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		628A6A0328201C0A00FD8391 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				628A6A0428201C2800FD8391 /* GachaViewController.swift */,
+				625027F4283006F10024143B /* CardPresentationController.swift */,
+				629794852831451B00748850 /* GachaReportImportPageViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		629794842830F1FB00748850 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				629794822830F1F500748850 /* GachaReportImportPageView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		62AEF77626C310DA00086004 = {
@@ -307,6 +348,7 @@
 		62E3D557270599F200A3E412 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				628A6A0228201BF700FD8391 /* Utility */,
 				62C121C127558B9500F00B66 /* Character */,
 				620D69D42714291D0018F117 /* Home */,
 				62EE4093273EB49C003F3BE5 /* Settings */,
@@ -548,6 +590,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6297948A2831922B00748850 /* ANButton.swift in Sources */,
 				6258A0E826C6733300CDA04A /* RecruitmentViewController.swift in Sources */,
 				6258A0F626C7CB5B00CDA04A /* CharacterStore.swift in Sources */,
 				62C121C327558BC800F00B66 /* CharacterViewController.swift in Sources */,
@@ -557,8 +600,10 @@
 				62D9ADC7274A678900EC9C3B /* Agent.swift in Sources */,
 				62D9ADCD274A976600EC9C3B /* Extensions.swift in Sources */,
 				620D69D3271349BB0018F117 /* Log.swift in Sources */,
+				625027F5283006F10024143B /* CardPresentationController.swift in Sources */,
 				620D69DD27146BEF0018F117 /* MessageStore.swift in Sources */,
 				62EE4096273EB4D7003F3BE5 /* SettingsViewController.swift in Sources */,
+				629794882831772100748850 /* ANPageViewController.swift in Sources */,
 				62AEF78326C310DA00086004 /* AppDelegate.swift in Sources */,
 				62D9ADCB274A91D400EC9C3B /* Util.swift in Sources */,
 				620D69DB27142CB80018F117 /* HomeMessageCell.swift in Sources */,
@@ -568,14 +613,17 @@
 				62C121C827558C4000F00B66 /* CharacterTableViewCell.swift in Sources */,
 				623645E32717748C000EA644 /* WeiboService.swift in Sources */,
 				62B1BE86276A501200A0954D /* CharacterSearchViewController.swift in Sources */,
+				629794832830F1F500748850 /* GachaReportImportPageView.swift in Sources */,
 				6245706F273DD53C00C89F83 /* MessageCache.swift in Sources */,
 				6258A0F826C83DAF00CDA04A /* RecruitmentTagViewController.swift in Sources */,
 				62A2D60B270CEE3900E89A6D /* RecruitmentResultTableViewCell.swift in Sources */,
+				629794862831451B00748850 /* GachaReportImportPageViewController.swift in Sources */,
 				620D69D6271429370018F117 /* HomeViewController.swift in Sources */,
 				62D9ADC9274A6EEA00EC9C3B /* AppError.swift in Sources */,
 				6258A0EA26C6734E00CDA04A /* RecruitmentLogicController.swift in Sources */,
 				620D69DF27146CE30018F117 /* WeiboMessage.swift in Sources */,
 				62AEF78526C310DA00086004 /* SceneDelegate.swift in Sources */,
+				628A6A0528201C2800FD8391 /* GachaViewController.swift in Sources */,
 				627A3D8C2714944000D56876 /* Defaults.swift in Sources */,
 				62607B0F26C9B4DA00112C90 /* TagCloudCollectionView.swift in Sources */,
 				62607B0A26C9B10500112C90 /* RecruitmentSelectionTableViewCell.swift in Sources */,

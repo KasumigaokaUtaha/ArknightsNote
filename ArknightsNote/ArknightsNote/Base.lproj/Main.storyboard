@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oHF-vV-09F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oHF-vV-09F">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -60,7 +60,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HHX-AS-vK3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4743.0769230769229" y="-225.35545023696682"/>
+            <point key="canvasLocation" x="2380" y="-970"/>
         </scene>
         <!--Character Table-->
         <scene sceneID="sYo-h9-v69">
@@ -93,23 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wfq-Y9-AYl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="423.1884057971015" y="1420.9821428571429"/>
-        </scene>
-        <!--Utility-->
-        <scene sceneID="6jq-Gy-NHh">
-            <objects>
-                <viewController id="0uU-Pm-Sxh" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tAM-Tq-NME">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="IGV-sg-bIL"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Utility" image="archivebox" catalog="system" id="fzK-Kf-AEr"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HmA-6y-ps3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2983.0769230769229" y="-225.35545023696682"/>
+            <point key="canvasLocation" x="291" y="511"/>
         </scene>
         <!--Home-->
         <scene sceneID="410-6F-Oox">
@@ -259,7 +243,7 @@
                         <segue destination="CtA-pl-w6y" kind="relationship" relationship="viewControllers" id="osO-VJ-dAP"/>
                         <segue destination="fRj-BL-xjw" kind="relationship" relationship="viewControllers" id="eHI-ru-NHn"/>
                         <segue destination="qM7-BQ-vVb" kind="relationship" relationship="viewControllers" id="m9D-gN-RAy"/>
-                        <segue destination="0uU-Pm-Sxh" kind="relationship" relationship="viewControllers" id="SFD-NS-DEq"/>
+                        <segue destination="P9o-Vb-KpS" kind="relationship" relationship="viewControllers" id="SFD-NS-DEq"/>
                         <segue destination="pq0-AI-HaJ" kind="relationship" relationship="viewControllers" id="ZQy-Fc-rqe"/>
                     </connections>
                 </tabBarController>
@@ -366,7 +350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0O-Ws-eL8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257.9710144927537" y="563.83928571428567"/>
+            <point key="canvasLocation" x="345" y="1270"/>
         </scene>
         <!--Recruitment Tag View Controller-->
         <scene sceneID="kYj-wC-VhX">
@@ -438,7 +422,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ad4-X6-Qbr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2092.753623188406" y="563.83928571428567"/>
+            <point key="canvasLocation" x="1203" y="1270"/>
         </scene>
         <!--Home-->
         <scene sceneID="lf6-yG-Nzp">
@@ -476,7 +460,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aiz-bN-8iy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3813.8461538461538" y="-225.35545023696682"/>
+            <point key="canvasLocation" x="1451" y="-970"/>
         </scene>
         <!--Character Table-->
         <scene sceneID="6A6-81-EW0">
@@ -495,7 +479,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fcm-j9-D0J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-486.95652173913049" y="1420.9821428571429"/>
+            <point key="canvasLocation" x="-488" y="511"/>
         </scene>
         <!--Recruitment-->
         <scene sceneID="ZHt-ti-IjH">
@@ -514,12 +498,84 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TmG-Qb-m89" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="347.82608695652175" y="563.83928571428567"/>
+            <point key="canvasLocation" x="-487" y="1270"/>
+        </scene>
+        <!--Gatcha Analysis-->
+        <scene sceneID="UFk-Ri-lj6">
+            <objects>
+                <viewController id="dqq-aw-SDW" userLabel="Gatcha Analysis" customClass="GachaViewController" customModule="ArknightsNote" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9sf-lR-3wh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6LZ-rE-UT5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Gatcha Analysis" largeTitleDisplayMode="never" id="7dK-lp-lD6">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" image="line.3.horizontal.decrease.circle" catalog="system" id="jg7-7d-xWk"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MjF-5l-8h2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4057.971014492754" y="510.9375"/>
+        </scene>
+        <!--Utility-->
+        <scene sceneID="bRw-gK-rJG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P9o-Vb-KpS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Utility" image="archivebox" catalog="system" id="fzK-Kf-AEr"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Bta-XP-Cfh">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rzG-J8-Ft9">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="kuq-2J-Zg2" kind="relationship" relationship="rootViewController" id="vIw-AE-sQd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mSm-q2-0P0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2379.7101449275365" y="510.9375"/>
+        </scene>
+        <!--Utility-->
+        <scene sceneID="QIc-Lu-pog">
+            <objects>
+                <viewController id="kuq-2J-Zg2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kfg-Jd-I2I">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TfF-7k-dkH">
+                                <rect key="frame" x="142.5" y="430.5" width="129" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Gacha Analysis"/>
+                                <connections>
+                                    <segue destination="dqq-aw-SDW" kind="show" id="naq-ud-Mra"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4sV-Ta-Ril"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TfF-7k-dkH" firstAttribute="centerY" secondItem="Kfg-Jd-I2I" secondAttribute="centerY" id="VMz-do-bCV"/>
+                            <constraint firstItem="TfF-7k-dkH" firstAttribute="centerX" secondItem="Kfg-Jd-I2I" secondAttribute="centerX" id="Win-ve-h2d"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Utility" id="SZ3-Ih-B0U"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iHR-1h-VxI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3200" y="511"/>
         </scene>
     </scenes>
     <resources>
         <image name="archivebox" catalog="system" width="128" height="106"/>
         <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="line.3.horizontal.decrease.circle" catalog="system" width="128" height="121"/>
         <image name="mail" catalog="system" width="128" height="93"/>
         <image name="rectangle.stack.person.crop" catalog="system" width="128" height="122"/>
         <image name="shippingbox" catalog="system" width="128" height="124"/>

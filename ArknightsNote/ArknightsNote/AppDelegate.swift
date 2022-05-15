@@ -15,7 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         // Override point for customization after application launch.
-        true
+        let pageControl = UIPageControl.appearance()
+        pageControl.backgroundColor = .systemBackground
+        pageControl.currentPageIndicatorTintColor = .secondaryLabel
+        pageControl.pageIndicatorTintColor = .secondarySystemBackground
+
+        return true
     }
 
     // MARK: UISceneSession Lifecycle
