@@ -15,16 +15,10 @@ class CardPresentationController: UIPresentationController {
             return .zero
         }
 
-        let inset: CGFloat = 16
-
-        let safeAreaFrame = containerView.bounds.inset(by: containerView.safeAreaInsets)
-        let targetWidth = safeAreaFrame.width - 2 * inset
-
-        var frame = safeAreaFrame
-        frame.origin.x += inset
-        frame.origin.y += safeAreaFrame.size.height * 0.6
-        frame.size.width = targetWidth
-        frame.size.height = safeAreaFrame.size.height * 0.4
+        let containerBounds = containerView.bounds
+        var frame = containerBounds
+        frame.origin.y += containerBounds.height * 0.55
+        frame.size.height = containerBounds.height * 0.45
 
         return frame
     }
@@ -39,12 +33,12 @@ class CardPresentationController: UIPresentationController {
         NSLayoutConstraint.activate(NSLayoutConstraint.constraints(
             withVisualFormat: "V:|[dimmingView]|",
             metrics: nil,
-            views: ["dimmingView": dimmingView]
+            views: ["dimmingView": dimmingView!]
         ))
         NSLayoutConstraint.activate(NSLayoutConstraint.constraints(
             withVisualFormat: "H:|[dimmingView]|",
             metrics: nil,
-            views: ["dimmingView": dimmingView]
+            views: ["dimmingView": dimmingView!]
         ))
 
         presentingViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
@@ -58,7 +52,16 @@ class CardPresentationController: UIPresentationController {
         }
     }
 
+    override func dismissalTransitionWillBegin() {
+        presentingViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
+            self.dimmingView.alpha = 0
+        }, completion: { _ in
+            self.dimmingView.removeFromSuperview()
+        })
+    }
+
     override func containerViewDidLayoutSubviews() {
         presentedView?.frame = frameOfPresentedViewInContainerView
+        presentedView?.roundedCorners([.topLeft, .topRight], radius: 12)
     }
 }

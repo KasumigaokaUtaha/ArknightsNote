@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GachaReportImportPageView: UIView {
+class GachaHistoryImportPageView: UIView {
     var bar: UIView!
 
     var titleLabel: UILabel?
@@ -19,13 +19,10 @@ class GachaReportImportPageView: UIView {
 
     private var origin: CGPoint!
 
-    private var panGestureRecognizer: UIPanGestureRecognizer
+    private var page: GachaHistoryImportPage?
 
-    private var page: GachaReportImportPage?
-
-    init(for page: GachaReportImportPage) {
+    init(for page: GachaHistoryImportPage) {
         self.page = page
-        panGestureRecognizer = UIPanGestureRecognizer()
 
         super.init(frame: .zero)
 
@@ -42,9 +39,6 @@ class GachaReportImportPageView: UIView {
         bar.layer.cornerRadius = 4
         bar.backgroundColor = .separator
         addSubview(bar)
-
-        bar.addGestureRecognizer(panGestureRecognizer)
-        panGestureRecognizer.addTarget(self, action: #selector(handlePanGesture))
 
         guard let page = page else {
             return
@@ -93,7 +87,7 @@ class GachaReportImportPageView: UIView {
 
         NSLayoutConstraint.activate([
             titleLabel!.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel!.topAnchor.constraint(equalTo: bar.bottomAnchor, constant: 8),
+            titleLabel!.topAnchor.constraint(equalTo: bar.bottomAnchor, constant: 16),
             actionButton!.centerXAnchor.constraint(equalTo: centerXAnchor),
             actionButton!.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.6)
         ])
@@ -125,21 +119,5 @@ class GachaReportImportPageView: UIView {
         super.layoutSubviews()
 
         origin = frame.origin
-    }
-
-    @objc private func handlePanGesture() {
-        let translation = panGestureRecognizer.translation(in: self)
-
-        guard translation.y >= 0 else {
-            return
-        }
-
-        frame.origin.y = origin.y + translation.y
-
-        if panGestureRecognizer.state == .ended {
-            if translation.y <= bounds.height {
-                frame.origin = origin
-            }
-        }
     }
 }

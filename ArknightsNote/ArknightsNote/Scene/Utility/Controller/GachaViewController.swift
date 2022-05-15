@@ -8,16 +8,16 @@
 import UIKit
 
 class GachaViewController: UIViewController {
-    let pages: [GachaReportImportPage] = [.login, .fetch, .paste]
-
-    var pageViewController: UIPageViewController!
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setup()
+    }
+
+    func setup() {
         let gachaImportButton = UIButton()
         gachaImportButton.setImage(UIImage(named: "plus.circle.dashed"), for: .normal)
-        gachaImportButton.addTarget(self, action: #selector(importGachaReports), for: .primaryActionTriggered)
+        gachaImportButton.addTarget(self, action: #selector(importGachaHistory), for: .primaryActionTriggered)
 
         let gachaImportTitleLabel = UILabel()
         gachaImportTitleLabel.numberOfLines = 0
@@ -48,19 +48,12 @@ class GachaViewController: UIViewController {
         ])
     }
 
-    @objc func importGachaReports() {
-        pageViewController = ANPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-        pageViewController.dataSource = self
-        pageViewController.modalPresentationStyle = .custom
-        pageViewController.transitioningDelegate = self
+    @objc func importGachaHistory() {
+        let importPageViewController = GachaHistoryImportPageViewController(for: .login)
+        importPageViewController.modalPresentationStyle = .custom
+        importPageViewController.transitioningDelegate = self
 
-        pageViewController.setViewControllers(
-            [GachaReportImportPageViewController(for: .login)],
-            direction: .forward,
-            animated: true
-        )
-
-        present(pageViewController, animated: true)
+        present(importPageViewController, animated: true)
     }
 }
 
@@ -73,65 +66,5 @@ extension GachaViewController: UIViewControllerTransitioningDelegate {
         source _: UIViewController
     ) -> UIPresentationController? {
         CardPresentationController(presentedViewController: presented, presenting: presenting)
-    }
-}
-
-// MARK: UIPageViewControllerDataSource
-
-extension GachaViewController: UIPageViewControllerDataSource {
-    func pageViewController(
-        _: UIPageViewController,
-        viewControllerBefore viewController: UIViewController
-    ) -> UIViewController? {
-        guard
-            let importPageViewController = viewController as? GachaReportImportPageViewController,
-            let page = importPageViewController.page,
-            let index = pages.firstIndex(of: page),
-            index - 1 >= 0
-        else {
-            return nil
-        }
-
-        let prevPage = pages[index - 1]
-        return GachaReportImportPageViewController(for: prevPage)
-    }
-
-    func pageViewController(
-        _: UIPageViewController,
-        viewControllerAfter viewController: UIViewController
-    ) -> UIViewController? {
-        guard
-            let importPageViewController = viewController as? GachaReportImportPageViewController,
-            let page = importPageViewController.page,
-            let index = pages.firstIndex(of: page),
-            index + 1 < pages.count
-        else {
-            return nil
-        }
-
-        let nextPage = pages[index + 1]
-        return GachaReportImportPageViewController(for: nextPage)
-    }
-
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        guard self.pageViewController === pageViewController else {
-            return 0
-        }
-
-        return pages.count
-    }
-
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        guard
-            self.pageViewController === pageViewController,
-            let viewControllers = pageViewController.viewControllers,
-            let importPageViewController = viewControllers[0] as? GachaReportImportPageViewController,
-            let page = importPageViewController.page,
-            let index = pages.firstIndex(of: page)
-        else {
-            return 0
-        }
-
-        return index
     }
 }
