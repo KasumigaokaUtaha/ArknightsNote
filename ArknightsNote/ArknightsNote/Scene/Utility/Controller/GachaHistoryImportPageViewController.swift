@@ -14,18 +14,7 @@ enum GachaHistoryImportPage {
 }
 
 class GachaHistoryImportPageViewController: UIViewController {
-    private(set) var page: GachaHistoryImportPage? {
-        didSet {
-            guard let page = page else {
-                return
-            }
-
-            importPageView.removeFromSuperview()
-            loadImportPageView(for: page)
-            setup(for: page)
-        }
-    }
-
+    private var page: GachaHistoryImportPage
     private var importPageView: GachaHistoryImportPageView!
 
     private var panGestureRecognizer: UIPanGestureRecognizer
@@ -55,12 +44,7 @@ class GachaHistoryImportPageViewController: UIViewController {
         view.addGestureRecognizer(panGestureRecognizer)
         panGestureRecognizer.addTarget(self, action: #selector(dismissController))
 
-        guard let page = page else {
-            return
-        }
-
-        loadImportPageView(for: page)
-        setup(for: page)
+        setupImagePageView()
     }
 
     override func viewDidLayoutSubviews() {
@@ -72,65 +56,35 @@ class GachaHistoryImportPageViewController: UIViewController {
         }
     }
 
-    // MARK: - Setup
-
-    func loadImportPageView(for page: GachaHistoryImportPage) {
+    func setupImagePageView() {
         importPageView = GachaHistoryImportPageView(for: page)
         importPageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(importPageView)
-    }
+        importPageView.tokenTextView.delegate = self
+        importPageView.nextStepBlock = { [weak self] in
+            guard let self = self else { return }
+            guard self.page == .login || self.page == .fetch else { return }
 
-    func setup(for page: GachaHistoryImportPage) {
-        importPageView.titleLabel?.numberOfLines = 0
-        importPageView.titleLabel?.textColor = .label
-        importPageView.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-
-        importPageView.detailLabel?.numberOfLines = 0
-        importPageView.detailLabel?.textAlignment = .center
-        importPageView.detailLabel?.textColor = .secondaryLabel
-        importPageView.detailLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-
-        importPageView.actionButton?.setTitleColor(.label, for: .normal)
-        importPageView.actionButton?.backgroundColor = .systemGray4 // .secondarySystemBackground
-        importPageView.actionButton?.layer.cornerRadius = 8
-
-        importPageView.nextStepButton?.setTitleColor(.secondaryLabel, for: .normal)
-        importPageView.nextStepButton?.backgroundColor = .systemGray4 // .secondarySystemBackground
-        importPageView.nextStepButton?.setTitle("Next", for: .normal)
-        importPageView.nextStepButton?.layer.cornerRadius = 8
-        importPageView.nextStepButton?.addTarget(self, action: #selector(handleNextStepButton), for: .touchUpInside)
-
-        importPageView.tokenTextView?.layer.cornerRadius = 8
-
-        switch page {
-        case .login:
-            importPageView.titleLabel?.text = "Log In"
-            importPageView.detailLabel?
-                .text = "Log in to your account on the official website to access your gacha history"
-            importPageView.actionButton?.setTitle("Log in", for: .normal)
-        // TODO: add action to action button
-        case .fetch:
-            importPageView.titleLabel?.text = "Fetch Token"
-            importPageView.detailLabel?.text = "Copy the whole content in the opend web page"
-            importPageView.actionButton?.setTitle("Fetch", for: .normal)
-        // TODO: add action to action button
-        case .paste:
-            importPageView.titleLabel?.text = "Paste Token"
-
-            importPageView.tokenTextView?.delegate = self
-            importPageView.tokenTextView?.text = "Paste your token here"
-            importPageView.tokenTextView?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-            importPageView.tokenTextView?.textColor = .placeholderText
-            importPageView.tokenTextView?.backgroundColor = .secondarySystemBackground
-
-            importPageView.actionButton?.setTitle("Analyze", for: .normal)
-            // TODO: add action to action button
+            self.importPageView.removeFromSuperview()
+            if self.page == .login {
+                self.page = .fetch
+            } else {
+                self.page = .paste
+            }
+            self.setupImagePageView()
         }
-
-        configureConstraints()
-    }
-
-    func configureConstraints() {
+        importPageView.actionBlock = { [weak self] in
+            guard let self = self else { return }
+            // TODO: complete action for different cases
+            switch self.page {
+            case .login:
+                print("action block called")
+            case .fetch:
+                print("action block called")
+            case .paste:
+                print("action block called")
+            }
+        }
+        view.addSubview(importPageView)
         NSLayoutConstraint.activate([
             importPageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             importPageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -140,14 +94,6 @@ class GachaHistoryImportPageViewController: UIViewController {
     }
 
     // MARK: - Actions
-
-    @objc func handleNextStepButton() {
-        if page == .login {
-            page = .fetch
-        } else if page == .fetch {
-            page = .paste
-        }
-    }
 
     @objc func dismissController(sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: view)
@@ -170,7 +116,7 @@ class GachaHistoryImportPageViewController: UIViewController {
     }
 }
 
-// MARK: UITextViewDelegate
+// MARK: - UITextViewDelegate
 
 extension GachaHistoryImportPageViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
