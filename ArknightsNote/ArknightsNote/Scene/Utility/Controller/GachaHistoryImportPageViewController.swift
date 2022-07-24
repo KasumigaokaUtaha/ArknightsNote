@@ -21,6 +21,7 @@ class GachaHistoryImportPageViewController: UIViewController {
 
     private var hasSetOriginPoint: Bool
     private var originPoint: CGPoint?
+    private var keyboardOffset: CGFloat?
 
     init(for page: GachaHistoryImportPage) {
         self.page = page
@@ -28,6 +29,10 @@ class GachaHistoryImportPageViewController: UIViewController {
         hasSetOriginPoint = false
 
         super.init(nibName: nil, bundle: nil)
+    }
+
+    deinit {
+        deregisterFromKeyboardNotifications()
     }
 
     @available(*, unavailable)
@@ -39,6 +44,8 @@ class GachaHistoryImportPageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        registerForKeyboardNotifications()
 
         view.backgroundColor = .systemBackground
         view.addGestureRecognizer(panGestureRecognizer)
@@ -59,7 +66,7 @@ class GachaHistoryImportPageViewController: UIViewController {
     func setupImagePageView() {
         importPageView = GachaHistoryImportPageView(for: page)
         importPageView.translatesAutoresizingMaskIntoConstraints = false
-        importPageView.tokenTextView.delegate = self
+        importPageView.tokenTextField.delegate = self
         importPageView.nextStepBlock = { [weak self] in
             guard let self = self else { return }
             guard self.page == .login || self.page == .fetch else { return }
@@ -114,22 +121,54 @@ class GachaHistoryImportPageViewController: UIViewController {
             }
         }
     }
-}
 
-// MARK: - UITextViewDelegate
+    // MARK: - Keyboard Handler
 
-extension GachaHistoryImportPageViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == .placeholderText {
-            textView.text = nil
-            textView.textColor = .label
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    func deregisterFromKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard
+            let info = notification.userInfo,
+            let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey]! as? NSValue)?.cgRectValue.size,
+            let keyWindow = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).flatMap({ $0.windows }).first(where: { $0.isKeyWindow }),
+            let rootViewController = keyWindow.rootViewController
+        else {
+            return
+        }
+
+        let rect = importPageView.convert(importPageView.tokenTextField.frame, to: rootViewController.view)
+        var offset = rootViewController.view.frame.size.height - (rect.origin.y + rect.size.height)
+        offset = keyboardSize.height - offset
+        if offset > 0 {
+            keyboardOffset = offset
+            view.frame.origin.y -= offset
         }
     }
 
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "Paste your token here"
-            textView.textColor = .placeholderText
+    @objc func keyboardWillHide(notification _: NSNotification) {
+        guard let keyboardOffset = keyboardOffset else {
+            return
         }
+
+        view.frame.origin.y += keyboardOffset
+    }
+}
+
+// TODO: request for paste right
+
+// MARK: - UITextFieldDelegate
+
+extension GachaHistoryImportPageViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
