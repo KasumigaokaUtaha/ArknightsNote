@@ -147,7 +147,7 @@ class GachaHistoryImportPageViewController: UIViewController {
         let rect = importPageView.convert(importPageView.tokenTextField.frame, to: rootViewController.view)
         var offset = rootViewController.view.frame.size.height - (rect.origin.y + rect.size.height)
         offset = keyboardSize.height - offset
-        if offset > 0 {
+        if offset > 0 && keyboardOffset == nil {
             keyboardOffset = offset
             view.frame.origin.y -= offset
         }
@@ -159,6 +159,7 @@ class GachaHistoryImportPageViewController: UIViewController {
         }
 
         view.frame.origin.y += keyboardOffset
+        self.keyboardOffset = nil
     }
 }
 
